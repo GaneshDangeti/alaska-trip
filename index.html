@@ -271,14 +271,10 @@ details.thread[open] summary{border-bottom:1px solid var(--sky-3)}
 @keyframes tw{from{opacity:.25}to{opacity:1}}
 .crew>g{opacity:0;transform:translateY(40px);animation:rise .8s cubic-bezier(.2,.8,.2,1) forwards}
 @keyframes rise{to{opacity:1;transform:translateY(0)}}
-.arm{transform-box:fill-box}
-.arm.l{transform-origin:100% 100%}.arm.r{transform-origin:0% 100%}
-.wave.l{animation:waveL 1.1s ease-in-out infinite alternate}
-.wave.r{animation:waveR 1.1s ease-in-out infinite alternate}
-@keyframes waveL{from{transform:rotate(-8deg)}to{transform:rotate(14deg)}}
-@keyframes waveR{from{transform:rotate(8deg)}to{transform:rotate(-14deg)}}
-.hop{animation:hop 1.4s ease-in-out infinite}
-@keyframes hop{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+.swing{transform-origin:0 0;animation:swing 1.2s ease-in-out infinite alternate}
+@keyframes swing{from{transform:rotate(-10deg)}to{transform:rotate(12deg)}}
+.sway{transform-origin:0 0;animation:sway2 3.6s ease-in-out infinite alternate}
+@keyframes sway2{from{transform:rotate(-1.6deg)}to{transform:rotate(1.6deg)}}
 .flake{animation:fall linear infinite}
 @keyframes fall{from{transform:translateY(-20px)}to{transform:translateY(600px)}}
 .intro-copy{position:relative;z-index:2;align-self:start;justify-self:center;text-align:center;margin-top:max(12vh,calc(env(safe-area-inset-top,0px) + 56px));padding-inline:max(16px,env(safe-area-inset-left,0px));display:grid;gap:10px;opacity:0;animation:copyIn 1s 1.9s ease forwards}
@@ -288,7 +284,7 @@ details.thread[open] summary{border-bottom:1px solid var(--sky-3)}
 @keyframes copyIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 #skip{position:absolute;z-index:3;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));font:600 13px var(--body);color:var(--ice);background:rgba(12,26,46,.7);border:1px solid var(--sky-3);border-radius:999px;padding:8px 14px;cursor:pointer;backdrop-filter:blur(4px)}
 body.intro-lock{overflow:hidden}
-@media (prefers-reduced-motion:reduce){.aur,.aur path,.star,.crew>g,.arm,.hop,.flake,.intro-copy{animation:none!important;opacity:1!important;transform:none!important}}
+@media (prefers-reduced-motion:reduce){.aur,.aur path,.star,.crew>g,.swing,.sway,.flake,.intro-copy{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
 </head>
 <body class="intro-lock">
@@ -317,7 +313,7 @@ body.intro-lock{overflow:hidden}
   <path d="M-3000 470 C -1000 455, -200 440, 0 470 C 80 440, 160 452, 220 448 S 340 438, 400 462 C 600 440, 1400 455, 3400 470" fill="none" stroke="#5df2b0" stroke-opacity=".25" stroke-width="1.2"/>
   <g class="crew" id="ig-crew"></g>
 </svg>
-<div class="intro-copy"><span class="k">Dec 24 · Fairbanks · 64.8°N</span><h2>The sky's throwing a <em>party</em>.<br>We're on the list.</h2></div>
+<div class="intro-copy"><span class="k">Dec 24 · Fairbanks · 64.8°N</span><h2 id="introLine">The sky's throwing a <em>party</em>.<br>We're on the list.</h2></div>
 <button id="skip" type="button">Skip intro</button>
 </div>
 <header class="hero">
@@ -784,44 +780,91 @@ body.intro-lock{overflow:hidden}
   var fl=document.getElementById('ig-flakes');
   for(var f=0;f<40;f++)el('circle',{cx:(Math.random()*400).toFixed(1),cy:(Math.random()*-500).toFixed(1),r:(Math.random()*1.4+.4).toFixed(2),opacity:(Math.random()*.6+.3).toFixed(2),class:'flake',style:'animation-duration:'+(6+Math.random()*6).toFixed(1)+'s;animation-delay:-'+(Math.random()*8).toFixed(1)+'s'},fl);
 
-  // the crew: g = girl, b = boy; pose: wave, point, phone, cheer
-  var C='#060d17',RIM='rgba(93,242,176,.55)';
-  var crew=[['b',64,1.02,'cheer','#ff8fa3'],['g',104,.95,'wave','#ffc46b'],['b',146,1.06,'point','#7cc8ff'],['g',184,.93,'phone','#a98bff'],['g',222,.96,'cheer','#5df2b0'],['b',262,1.04,'wave','#ffc46b'],['g',300,.94,'point','#ff8fa3'],['b',340,1.0,'cheer','#7cc8ff']];
+  // the crew, seen from behind, looking up at the sky. g = girl, b = boy
   var root=document.getElementById('ig-crew');
-  crew.forEach(function(p,idx){
-    var sex=p[0],x=p[1],k=p[2],pose=p[3],hat=p[4],ground=452-((x-200)*(x-200))/9000;
-    var wrap=el('g',{style:'animation-delay:'+(0.7+idx*0.09).toFixed(2)+'s'},root);
-    var g=el('g',{transform:'translate('+x+' '+ground.toFixed(1)+') scale('+k+')'},wrap);
-    var body=el('g',{class:pose==='cheer'?'hop':'',style:'animation-delay:'+(idx*.17).toFixed(2)+'s'},g);
-    var att={fill:C,stroke:RIM,'stroke-width':.8,'stroke-linejoin':'round'};
-    // legs + boots
-    el('path',Object.assign({d:'M-6 -26 L-7 -2 L-12 0 L-1 0 L-1 -26 Z M1 -26 L1 0 L12 0 L7 -2 L6 -26 Z'},att),body);
-    // parka
-    el('path',Object.assign({d:sex==='g'?'M-10 -58 Q -13 -40 -13 -26 L13 -26 Q 13 -40 10 -58 Q 0 -63 -10 -58 Z':'M-11 -58 Q -13 -42 -12 -26 L12 -26 Q 13 -42 11 -58 Q 0 -63 -11 -58 Z'},att),body);
-    // arms (upper pose)
-    function arm(side,ang,wave,extra){var a=el('g',{class:'arm '+side+(wave?' wave '+side:''),style:'animation-delay:'+(idx*.13).toFixed(2)+'s'},body);
-      var sx=side==='l'?-9:9;var inner=el('g',{transform:'translate('+sx+' -55) rotate('+ang+')'},a);
-      el('rect',Object.assign({x:-2.6,y:-24,width:5.2,height:25,rx:2.6},att),inner);
-      el('circle',Object.assign({cx:0,cy:-24,r:3.2},att),inner);
-      if(extra==='phone'){el('rect',{x:-3.5,y:-34,width:7,height:11,rx:1.2,fill:'#0c1a2e',stroke:'#e6eef7','stroke-width':.8},inner);el('rect',{x:-2.4,y:-32.8,width:4.8,height:8.4,rx:.6,fill:'#5df2b0',opacity:.85},inner)}
-      return a}
-    if(pose==='cheer'){arm('l',-28,true);arm('r',28,true)}
-    else if(pose==='wave'){arm('l',-150,false);arm('r',22,true)}
-    else if(pose==='point'){arm('l',-150,false);arm('r',38,false)}
-    else {arm('l',-150,false);arm('r',8,false,'phone')}
-    // scarf
-    el('path',{d:'M-7 -60 Q 0 -56 7 -60 L7 -57 Q 0 -53 -7 -57 Z M3 -57 L6 -46 L2 -46 Z',fill:hat,opacity:.9},body);
-    // head
+  function gy(x){return 452-((x-200)*(x-200))/9000}
+  // [sex, x, scale, pose, accent, row(0 back,1 front), stance, lean]
+  var crew=[
+    ['g',112,.84,'cheer','#ffc46b',0,5,-2],
+    ['b',228,.86,'point','#7cc8ff',0,7,3],
+    ['g',292,.83,'phone','#a98bff',0,4,0],
+    ['b',70,1.02,'hugR','#ff8fa3',1,8,4],
+    ['g',122,.95,'hugL','#5df2b0',1,5,-3],
+    ['b',186,1.05,'cheer','#ffc46b',1,9,0],
+    ['g',252,.94,'wave','#ff8fa3',1,4,2],
+    ['b',322,1.0,'point','#7cc8ff',1,7,-4]
+  ];
+  var arms={ // [left end, right end] relative to each shoulder; null = hanging
+    cheer:[[-9,-23],[9,-23]],
+    wave:[null,[7,-23]],
+    point:[null,[16,-18]],
+    phone:[[8,-22],[-8,-22]],
+    hugR:[null,[25,3]],
+    hugL:[null,[6,-23]]
+  };
+  var waving={cheer:true,wave:true,hugL:true};
+  function figure(parent,p,col,isRim){
+    var sex=p[0],pose=p[3],accent=p[4],stance=p[6];
+    var sw=sex==='b'?12:10.5, hip=sex==='b'?10:9.5;
+    var a={fill:col};
+    // legs with a little knee bend, boots
+    el('path',{d:'M-4 -30 Q '+(-stance/2-1)+' -15 '+(-stance)+' -2',fill:'none',stroke:col,'stroke-width':6.5,'stroke-linecap':'round'},parent);
+    el('path',{d:'M4 -30 Q '+(stance/2+1)+' -15 '+stance+' -2',fill:'none',stroke:col,'stroke-width':6.5,'stroke-linecap':'round'},parent);
+    el('ellipse',{cx:-stance-1.5,cy:-1.6,rx:4.6,ry:2.6,fill:col},parent);
+    el('ellipse',{cx:stance+1.5,cy:-1.6,rx:4.6,ry:2.6,fill:col},parent);
+    // puffy parka
+    el('path',Object.assign({d:'M'+(-sw)+' -57 Q '+(-sw-3)+' -44 '+(-hip-1)+' -27 Q 0 -23 '+(hip+1)+' -27 Q '+(sw+3)+' -44 '+sw+' -57 Q 0 -63 '+(-sw)+' -57 Z'},a),parent);
+    // arms
+    var pr=arms[pose];
+    [[-1,pr[0]],[1,pr[1]]].forEach(function(s){
+      var side=s[0],end=s[1],sx=side*(sw-2.5),sy=-55;
+      var host=el('g',{transform:'translate('+sx+' '+sy+')'},parent);
+      var spin=el('g',{class:(waving[pose]&&end&&end[1]<-10)?'swing':'' ,style:'animation-delay:'+(p[1]%7*0.13).toFixed(2)+'s'},host);
+      var e=end||[side*3,23];
+      var mx=e[0]*0.5+side*(end?4:2.5), my=Math.abs(e[0])>20?-8:e[1]*0.5+(end?2:0);
+      el('path',{d:'M0 0 Q '+mx+' '+my+' '+e[0]+' '+e[1],fill:'none',stroke:col,'stroke-width':6,'stroke-linecap':'round'},spin);
+      el('circle',{cx:e[0],cy:e[1],r:3.4,fill:col},spin);
+      if(pose==='phone'&&side===1&&!isRim){
+        var ph=el('g',{transform:'translate(-11 -30)'},spin);
+        el('rect',{x:-4,y:-11,width:8,height:12,rx:1.4,fill:col,stroke:'#5df2b0','stroke-opacity':.7,'stroke-width':.8},ph);
+        el('ellipse',{cx:0,cy:-5,rx:9,ry:7,fill:'#5df2b0',opacity:.18},ph);
+      }
+    });
+    // head, tilted back to look up
+    var hd=el('g',{transform:'translate(0.5 -69) rotate('+(p[7]*2)+')'},parent);
     if(sex==='g'){
-      el('path',Object.assign({d:'M-8 -70 Q -10 -56 -6 -50 L6 -50 Q 10 -56 8 -70 Z'},att),body); // long hair
+      el('path',{d:'M-7.5 -2 Q -9 10 -6.5 17 Q 0 20 6.5 17 Q 9 10 7.5 -2 Z',fill:col},hd); // hair down the back
     }
-    el('circle',Object.assign({cx:0,cy:-70,r:7.5},att),body);
-    // beanie + pompom
-    el('path',{d:'M-8 -71 Q 0 -84 8 -71 Z',fill:hat},body);
-    el('rect',{x:-8.4,y:-72.5,width:16.8,height:3,rx:1.5,fill:hat,opacity:.75},body);
-    if(sex==='g')el('circle',{cx:0,cy:-82,r:3.2,fill:hat},body);
-    else el('rect',{x:-1.5,y:-83,width:3,height:3,rx:1,fill:hat},body);
+    el('ellipse',{cx:0,cy:0,rx:7.2,ry:7.8,fill:col},hd);
+    if(!isRim){
+      el('path',{d:'M-7.8 1 Q -8.2 -9.5 0 -10.5 Q 8.2 -9.5 7.8 1 Z',fill:accent},hd);
+      el('rect',{x:-8.2,y:-1.2,width:16.4,height:3.2,rx:1.6,fill:accent,opacity:.7},hd);
+      if(sex==='g')el('circle',{cx:0,cy:-12.5,r:3.4,fill:accent},hd);
+      else el('rect',{x:-1.6,y:-13.2,width:3.2,height:3,rx:1,fill:accent},hd);
+      el('path',{d:'M'+(-sw+2)+' -58 Q 0 -54 '+(sw-2)+' -58 L'+(sw-2.5)+' -54.5 Q 0 -50.5 '+(-sw+2.5)+' -54.5 Z',fill:accent,opacity:.85},parent); // scarf band
+    }
+  }
+  crew.sort(function(a,b){return a[5]-b[5]}).forEach(function(p,idx){
+    var row=p[5],x=p[1],k=p[2],base=gy(x)-(row?0:9);
+    var wrap=el('g',{style:'animation-delay:'+(0.6+idx*0.1).toFixed(2)+'s'},root);
+    var place=el('g',{transform:'translate('+x+' '+base.toFixed(1)+') scale('+k+')'},wrap);
+    el('ellipse',{cx:0,cy:0,rx:18,ry:3.4,fill:'#01050b',opacity:row?.6:.4},place); // shadow on the snow
+    var body=el('g',{class:'sway',style:'animation-delay:-'+(idx*0.7).toFixed(1)+'s;animation-duration:'+(3.2+idx%3*0.6).toFixed(1)+'s'},place);
+    var rim=el('g',{transform:'translate(0 -1.3)'},body);
+    figure(rim,p,row?'rgba(140,255,205,.8)':'rgba(140,255,205,.45)',true);
+    figure(body,p,row?'#040a14':'#0a1828',false);
   });
+
+  // a different line every visit
+  var lines=[
+    'The sky\'s throwing a <em>party</em>.<br>We\'re on the list.',
+    'Cold hands. Warm hearts.<br><em>Green</em> skies.',
+    'Somewhere up north,<br>the <em>sky</em> is waiting for us.',
+    'Same sky.<br>But this time, it <em>dances</em>.',
+    'Let the sky<br><em>show off</em>.',
+    'Ten days. Zero sunlight.<br>No <em>regrets</em>.'
+  ];
+  document.getElementById('introLine').innerHTML=lines[Math.floor(Math.random()*lines.length)];
 
   var done=false;
   function finish(){if(done)return;done=true;intro.classList.add('out');document.body.classList.remove('intro-lock');setTimeout(function(){intro.remove()},950)}
