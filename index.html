@@ -225,11 +225,11 @@ footer{padding-block:40px 56px;color:var(--frost);font-size:13px}
 .linkcard .by{font-size:12px;color:var(--frost)}
 .del{background:none;border:none;color:var(--frost);font:500 12px var(--body);cursor:pointer;padding:0;text-decoration:underline}
 .ideas{display:grid;gap:10px}
-.idea{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;background:var(--sky-2);border:1px solid var(--sky-3);border-radius:12px;padding:12px 14px}
+.ideacard{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;background:var(--sky-2);border:1px solid var(--sky-3);border-radius:12px;padding:12px 14px}
 .upv{display:grid;justify-items:center;gap:0;background:var(--sky);border:1px solid var(--sky-3);border-radius:10px;padding:6px 10px;cursor:pointer;color:var(--frost);font:600 13px var(--mono);min-width:48px}
 .upv.on{border-color:var(--violet);color:var(--violet)}
-.idea p{margin:0;font-size:15px;overflow-wrap:anywhere}
-.idea .cat{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--violet)}
+.ideacard p{margin:0;font-size:15px;overflow-wrap:anywhere}
+.ideacard .cat{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--violet)}
 
 details.thread{margin-top:28px;border:1px solid var(--sky-3);border-radius:12px;background:rgba(12,26,46,.5)}
 details.thread summary{cursor:pointer;list-style:none;padding:12px 16px;font-size:14px;color:var(--frost);display:flex;align-items:center;gap:8px}
@@ -258,6 +258,34 @@ details.thread[open] summary{border-bottom:1px solid var(--sky-3)}
   .coords{left:max(16px,env(safe-area-inset-left,0px));right:auto}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+
+/* ---------- tabs ---------- */
+[hidden]{display:none!important}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:rgba(5,12,22,.92)}
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(5,12,22,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--sky-3)}
+.topbar .wrap{display:flex;align-items:center;gap:12px;height:56px}
+.brand{font-family:var(--display);font-weight:800;font-size:15px;color:var(--ice);text-decoration:none;white-space:nowrap;display:flex;align-items:center;gap:8px}
+.brand i{width:10px;height:10px;border-radius:50%;background:var(--aurora);box-shadow:0 0 12px var(--aurora)}
+.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0;mask-image:linear-gradient(90deg,#000 88%,transparent);-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent)}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;font:600 14px var(--body);color:var(--frost);text-decoration:none;padding:8px 12px;border-radius:999px;white-space:nowrap;transition:color .15s,background .15s}
+.tab:hover{color:var(--ice);background:var(--sky-2)}
+.tab[aria-current="page"]{color:#04261a;background:var(--aurora)}
+.tab:focus-visible,.menubtn:focus-visible,.menu a:focus-visible{outline:2px solid var(--aurora);outline-offset:2px}
+.menubtn{flex:none;display:none;place-items:center;width:40px;height:40px;border-radius:10px;border:1px solid var(--sky-3);background:var(--sky-2);color:var(--ice);cursor:pointer;font-size:18px}
+.menu{position:absolute;left:0;right:0;top:100%;background:#050c16;box-shadow:0 24px 40px rgba(0,0,0,.5);border-bottom:1px solid var(--sky-3);padding-block:12px 18px}
+.menu .wrap{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;height:auto}
+.menu a{display:grid;gap:2px;padding:12px 14px;border-radius:12px;background:var(--sky-2);border:1px solid var(--sky-3);color:var(--ice);text-decoration:none;font-weight:700}
+.menu a small{font-weight:400;color:var(--frost);font-size:12px}
+.menu a[aria-current="page"]{border-color:var(--aurora)}
+.nextnav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:40px}
+.nextnav a{display:inline-flex;align-items:center;gap:8px;font:600 15px var(--body);color:var(--ice);text-decoration:none;padding:12px 18px;border-radius:999px;border:1px solid var(--sky-3);background:var(--sky-2)}
+.nextnav a.fwd{background:var(--aurora);border-color:var(--aurora);color:#04261a;margin-left:auto}
+section[data-tab]{scroll-margin-top:72px}
+main{min-height:60vh}
+@media (max-width:1000px){.menubtn{display:grid}}
+@media (max-width:560px){.brand span{display:none}.topbar .wrap{gap:8px}}
 
 /* ---------- opening scene ---------- */
 #intro{position:fixed;inset:0;z-index:100;background:#030a14;overflow:hidden;display:grid;cursor:pointer;transition:opacity .9s ease,transform .9s cubic-bezier(.6,0,.2,1)}
@@ -321,7 +349,15 @@ body.intro-lock{overflow:hidden}
 <div class="intro-copy"><span class="k">Dec 24 · Fairbanks · 64.8°N</span><h2 id="introLine">The sky's throwing a <em>party</em>.<br>We're on the list.</h2></div>
 <button id="skip" type="button">Skip intro</button>
 </div>
-<header class="hero">
+<nav class="topbar" aria-label="Trip sections">
+  <div class="wrap">
+    <a class="brand" href="#home"><i aria-hidden="true"></i><span>Alaska '26</span></a>
+    <div class="tabs" id="tabs"></div>
+    <button class="menubtn" id="menubtn" type="button" aria-expanded="false" aria-controls="menu" aria-label="All sections">☰</button>
+  </div>
+  <div class="menu" id="menu" hidden><div class="wrap" id="menuGrid"></div></div>
+</nav>
+<header class="hero" data-tab="home">
   <canvas id="sky" aria-hidden="true"></canvas>
   <div class="wrap">
     <span class="eyebrow">Friends' trip · Winter 2026</span>
@@ -340,7 +376,7 @@ body.intro-lock{overflow:hidden}
 
 <main>
 
-<section id="rsvp">
+<section data-tab="home" id="rsvp">
   <div class="wrap">
     <div id="offline" class="offline" hidden></div>
     <div class="sec-head">
@@ -372,17 +408,9 @@ body.intro-lock{overflow:hidden}
     </div>
   </div>
 </section>
-<section>
-  <div class="wrap">
-    <div class="legend">
-      <span><span class="pill ok">Decided</span> agreed by the group</span>
-      <span><span class="pill wait">Deciding</span> vote needed</span>
-      <span><span class="pill idea">Proposed</span> draft plan</span>
-    </div>
-  </div>
-</section>
 
-<section id="flights">
+
+<section data-tab="flights" id="flights">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">01 · Getting there</span>
@@ -426,12 +454,17 @@ body.intro-lock{overflow:hidden}
   </div>
 </section>
 
-<section id="days">
+<section data-tab="plan" id="days">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">02 · Day by day</span>
       <h2>Ten days, about four hours of sun each</h2>
       <p>The gold bar shows roughly how much daylight we get. Plan outdoor stuff in that window, aurora after 10 pm.</p>
+      <div class="legend">
+      <span><span class="pill ok">Decided</span> agreed by the group</span>
+      <span><span class="pill wait">Deciding</span> vote needed</span>
+      <span><span class="pill idea">Proposed</span> draft plan</span>
+    </div>
     </div>
 
     <div class="leg-label"><span class="eyebrow">Fairbanks leg</span></div>
@@ -468,7 +501,7 @@ body.intro-lock{overflow:hidden}
         <div class="date"><span class="dow">Sun</span><span class="dn">Dec 27</span></div>
         <div class="body">
           <div class="row1"><h3>Check out, then option A, B or C</h3><span class="pill wait">Deciding</span></div>
-          <p>Where we sleep Dec 27–28 is still open. See the options below.</p>
+          <p>Where we sleep Dec 27–28 is still open. <a href="#vote">Go to the vote →</a></p>
           <div class="light" data-rise="10.97" data-set="14.73"></div>
         </div>
       </div>
@@ -531,7 +564,7 @@ body.intro-lock{overflow:hidden}
   </div>
 </section>
 
-<section id="options">
+<section data-tab="vote" id="options">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">03 · Vote</span>
@@ -583,7 +616,7 @@ body.intro-lock{overflow:hidden}
   </div>
 </section>
 
-<section id="basecamp">
+<section data-tab="stay" id="basecamp">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">04 · Basecamp</span>
@@ -624,7 +657,7 @@ body.intro-lock{overflow:hidden}
   </div>
 </section>
 
-<section id="wheels">
+<section data-tab="stay" id="wheels">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">05 · Wheels</span>
@@ -642,7 +675,7 @@ body.intro-lock{overflow:hidden}
   </div>
 </section>
 
-<section id="aurora">
+<section data-tab="aurora" id="aurora">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">06 · The big night</span>
@@ -678,7 +711,7 @@ body.intro-lock{overflow:hidden}
   </div>
 </section>
 
-<section id="packing">
+<section data-tab="packing" id="packing">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">07 · Pack</span>
@@ -712,7 +745,7 @@ body.intro-lock{overflow:hidden}
 </section>
 
 
-<section id="stash">
+<section data-tab="stash" id="stash">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">08 · The stash</span>
@@ -754,7 +787,7 @@ body.intro-lock{overflow:hidden}
   </div>
 </section>
 
-<section id="todo" style="border-bottom:none">
+<section data-tab="todo" id="todo" style="border-bottom:none">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">09 · Still to do</span>
@@ -877,6 +910,39 @@ body.intro-lock{overflow:hidden}
   intro.addEventListener('click',finish);
   var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   setTimeout(finish,still?1800:5200);
+})();
+</script>
+<script>
+(function(){
+  var TABS=[['home','Home','Roll call & countdown'],['plan','Plan','Day by day'],['flights','Flights','3 legs'],['vote','Vote','Dec 27–28 stay'],['stay','Stay & cars','Cabin and SUVs'],['aurora','Aurora night','The big drive'],['packing','Packing','Checklist'],['stash','Stash','Links & ideas'],['todo','To-do','Still to book']];
+  var ids=TABS.map(function(t){return t[0]});
+  var tabs=document.getElementById('tabs'),grid=document.getElementById('menuGrid'),menu=document.getElementById('menu'),mb=document.getElementById('menubtn');
+  TABS.forEach(function(t){
+    var a=document.createElement('a');a.className='tab';a.href='#'+t[0];a.textContent=t[1];a.dataset.go=t[0];tabs.appendChild(a);
+    var m=document.createElement('a');m.href='#'+t[0];m.dataset.go=t[0];m.innerHTML=t[1]+'<small>'+t[2]+'</small>';grid.appendChild(m);
+  });
+  // prev / next buttons at the end of each tab
+  TABS.forEach(function(t,i){
+    var secs=document.querySelectorAll('section[data-tab="'+t[0]+'"]');if(!secs.length)return;
+    var last=secs[secs.length-1].querySelector('.wrap'),nav=document.createElement('div');nav.className='nextnav';
+    if(i>0)nav.innerHTML+='<a href="#'+TABS[i-1][0]+'">← '+TABS[i-1][1]+'</a>';
+    if(i<TABS.length-1)nav.innerHTML+='<a class="fwd" href="#'+TABS[i+1][0]+'">'+TABS[i+1][1]+' →</a>';
+    last.appendChild(nav);
+  });
+  function closeMenu(){menu.hidden=true;mb.setAttribute('aria-expanded','false');mb.textContent='☰'}
+  mb.addEventListener('click',function(){var open=menu.hidden;menu.hidden=!open;mb.setAttribute('aria-expanded',String(open));mb.textContent=open?'✕':'☰'});
+  function current(){var h=(location.hash||'').slice(1);return ids.indexOf(h)>=0?h:'home'}
+  function show(scroll){
+    var cur=current();
+    document.querySelectorAll('[data-tab]').forEach(function(el){el.hidden=el.dataset.tab!==cur});
+    document.querySelectorAll('[data-go]').forEach(function(a){if(a.dataset.go===cur)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+    var act=tabs.querySelector('[aria-current]');if(act)act.scrollIntoView({block:'nearest',inline:'center'});
+    closeMenu();
+    if(scroll)window.scrollTo({top:0,behavior:'auto'});
+    var t=TABS[ids.indexOf(cur)];document.title=(cur==='home'?'':t[1]+' · ')+'Alaska Aurora Trip';
+  }
+  window.addEventListener('hashchange',function(){show(true)});
+  show(false);
 })();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
@@ -1052,7 +1118,7 @@ body.intro-lock{overflow:hidden}
   async function loadIdeas(){
     var r=await sb.rpc('get_ideas');if(r.error)return;
     document.getElementById('ideas').innerHTML=r.data.length?r.data.map(function(i){
-      return '<div class="idea"><button class="upv'+(i.voted?' on':'')+'" data-idea="'+i.id+'" data-voted="'+i.voted+'" aria-pressed="'+i.voted+'" aria-label="Upvote">▲<span>'+i.votes+'</span></button>'+
+      return '<div class="ideacard"><button class="upv'+(i.voted?' on':'')+'" data-idea="'+i.id+'" data-voted="'+i.voted+'" aria-pressed="'+i.voted+'" aria-label="Upvote">▲<span>'+i.votes+'</span></button>'+
         '<div><span class="cat">'+esc(catLabel[i.category]||'Other')+(i.mine?' · yours':'')+'</span><p>'+esc(i.body)+'</p></div></div>'}).join(''):'<p class="empty">No ideas yet.</p>';
   }
   document.getElementById('ideas').addEventListener('click',async function(e){
