@@ -1,0 +1,936 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Our friends' Christmas-to-New-Year trip to Fairbanks and Anchorage.">
+<title>Alaska Aurora Trip</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one long polar night. A live aurora canvas opens the page, then the trip reads top to bottom
+   as flights → days → the open decision → basecamp → wheels → aurora night → packing. */
+:root{
+  --sky:#07111f;          /* polar night */
+  --sky-2:#0c1a2e;        /* raised surface */
+  --sky-3:#132640;        /* card / line */
+  --ice:#e6eef7;          /* main text */
+  --frost:#93a7bf;        /* muted text */
+  --aurora:#5df2b0;       /* accent, aurora green */
+  --violet:#a98bff;       /* secondary aurora band */
+  --amber:#ffc46b;        /* daylight / warnings */
+  --rose:#ff8fa3;
+  --display:"Unbounded","Arial Black",system-ui,sans-serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--sky);color:var(--ice);font-family:var(--body);font-size:16px;line-height:1.6;margin:0}
+a{color:var(--aurora)}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.1}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--frost)}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--sky-3)}
+#sky{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero .wrap{position:relative;padding-block:72px 48px;display:grid;gap:28px}
+.hero h1{font-size:clamp(40px,9vw,92px);font-weight:800;letter-spacing:-.02em;max-width:12ch}
+.hero h1 em{font-style:normal;color:var(--aurora);text-shadow:0 0 32px rgba(93,242,176,.45)}
+.hero p.lede{max-width:56ch;color:var(--frost);font-size:18px;margin:0}
+.facts{display:flex;flex-wrap:wrap;gap:10px}
+.fact{background:rgba(12,26,46,.72);backdrop-filter:blur(6px);border:1px solid var(--sky-3);border-radius:999px;padding:8px 14px;font-size:14px}
+.fact b{color:var(--ice)}
+.countdown{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.countdown .n{font-family:var(--display);font-size:clamp(48px,10vw,88px);font-weight:800;color:var(--aurora);line-height:1}
+.countdown .l{color:var(--frost);max-width:22ch}
+.coords{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:16px;font-family:var(--mono);font-size:12px;color:var(--frost);opacity:.8}
+
+section{padding-block:64px;border-bottom:1px solid var(--sky-3)}
+.sec-head{display:grid;gap:10px;margin-bottom:32px}
+.sec-head h2{font-size:clamp(26px,4.4vw,40px);font-weight:600}
+.sec-head p{color:var(--frost);margin:0;max-width:62ch}
+
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:14px;color:var(--frost)}
+.pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.pill.ok{color:var(--aurora)}
+.pill.wait{color:var(--amber)}
+.pill.idea{color:var(--violet)}
+
+/* FLIGHTS: boarding passes */
+.passes{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
+.pass{background:var(--sky-2);border:1px solid var(--sky-3);border-radius:14px;display:grid;grid-template-rows:auto auto;overflow:hidden}
+.pass-top{padding:18px 20px;display:grid;gap:14px}
+.pass-route{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px}
+.iata{font-family:var(--display);font-size:34px;font-weight:800;letter-spacing:-.01em}
+.path{position:relative;height:2px;background:repeating-linear-gradient(90deg,var(--frost) 0 4px,transparent 4px 9px)}
+.path span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--sky-2);padding:0 6px;font-family:var(--mono);font-size:11px;color:var(--frost);white-space:nowrap}
+.pass-times{display:flex;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:14px}
+.pass-times small{display:block;color:var(--frost);font-size:11px}
+.pass-stub{border-top:2px dashed var(--sky-3);padding:12px 20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--frost);position:relative}
+.pass-stub::before,.pass-stub::after{content:"";position:absolute;top:-9px;width:16px;height:16px;border-radius:50%;background:var(--sky)}
+.pass-stub::before{left:-9px}.pass-stub::after{right:-9px}
+.pass-stub b{color:var(--ice);font-weight:600}
+.note{margin-top:20px;background:rgba(255,196,107,.07);border:1px solid rgba(255,196,107,.3);border-radius:12px;padding:16px 18px;display:grid;gap:6px;font-size:15px}
+.note strong{color:var(--amber)}
+.note ul{margin:0;padding-left:18px;color:var(--frost)}
+.note li b{color:var(--ice)}
+
+/* TIMELINE */
+.days{display:grid;gap:0;position:relative}
+.day{display:grid;grid-template-columns:110px 1fr;gap:20px;padding:20px 0;border-top:1px solid var(--sky-3)}
+.day:first-child{border-top:none}
+.day .date{display:grid;align-content:start;gap:2px}
+.day .date .dow{font-family:var(--mono);font-size:12px;color:var(--frost);letter-spacing:.1em;text-transform:uppercase}
+.day .date .dn{font-family:var(--display);font-size:30px;font-weight:600;line-height:1}
+.day .body{min-width:0;display:grid;gap:8px}
+.day .row1{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.day h3{font-family:var(--body);font-size:19px;font-weight:700}
+.day p{margin:0;color:var(--frost);max-width:66ch}
+.day .night{font-size:14px;color:var(--violet)}
+.day .sleep{font-size:13px;color:var(--frost)}
+.day .sleep b{color:var(--ice);font-weight:600}
+.light{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;color:var(--frost);max-width:420px}
+.lightbar{position:relative;height:6px;border-radius:3px;background:var(--sky-3);overflow:hidden}
+.lightbar i{position:absolute;top:0;bottom:0;background:linear-gradient(90deg,var(--amber),#ffe2a8,var(--amber));border-radius:3px}
+.day.deciding .dn{color:var(--amber)}
+.leg-label{margin:28px 0 4px;display:flex;align-items:center;gap:12px}
+.leg-label::after{content:"";flex:1;height:1px;background:var(--sky-3)}
+
+/* OPTIONS */
+.options{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.opt{background:var(--sky-2);border:1px solid var(--sky-3);border-radius:14px;padding:22px;display:grid;gap:14px;align-content:start;cursor:pointer;transition:border-color .2s,transform .2s}
+.opt:hover{border-color:var(--frost)}
+.opt:focus-visible{outline:2px solid var(--aurora);outline-offset:3px}
+.opt.picked{border-color:var(--aurora);box-shadow:0 0 0 1px var(--aurora),0 0 40px -10px rgba(93,242,176,.5)}
+.opt .letter{font-family:var(--display);font-size:44px;font-weight:800;line-height:1;color:var(--sky-3);-webkit-text-stroke:1px var(--frost)}
+.opt.picked .letter{color:var(--aurora);-webkit-text-stroke:0}
+.opt h3{font-size:20px;font-weight:600}
+.nights{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.nights div{background:var(--sky);border:1px solid var(--sky-3);border-radius:10px;padding:10px 12px;font-size:14px}
+.nights small{display:block;font-family:var(--mono);font-size:11px;color:var(--frost)}
+.price{font-family:var(--mono);font-size:15px}
+.price b{font-size:22px;color:var(--aurora);font-weight:600}
+.proscons{display:grid;gap:6px;font-size:14px;margin:0;padding:0;list-style:none}
+.proscons li{padding-left:22px;position:relative;color:var(--frost)}
+.proscons li::before{position:absolute;left:0;font-family:var(--mono)}
+.proscons .p::before{content:"+";color:var(--aurora)}
+.proscons .c::before{content:"–";color:var(--rose)}
+.pickhint{font-size:13px;color:var(--frost);margin-top:14px}
+
+/* BASECAMP */
+.split{display:grid;grid-template-columns:1.2fr 1fr;gap:24px}
+.split>*{min-width:0}
+.panel{background:var(--sky-2);border:1px solid var(--sky-3);border-radius:14px;padding:22px;display:grid;gap:16px;align-content:start}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.stat{display:grid;gap:2px}
+.stat b{font-family:var(--display);font-size:28px;font-weight:600}
+.stat span{font-size:12px;color:var(--frost)}
+.dist{display:grid;gap:10px}
+.dist div{display:grid;grid-template-columns:1fr auto;gap:12px;font-size:15px;padding-bottom:10px;border-bottom:1px solid var(--sky-3)}
+.dist div:last-child{border-bottom:none;padding-bottom:0}
+.dist span{color:var(--frost)}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:15px}
+.checks li{display:grid;grid-template-columns:20px 1fr;gap:10px;color:var(--frost)}
+.checks li::before{content:"?";font-family:var(--mono);color:var(--amber);text-align:center}
+
+/* AURORA NIGHT */
+.route{display:grid;gap:0;position:relative;padding-left:28px}
+.route::before{content:"";position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--aurora),var(--violet))}
+.stop{position:relative;padding:10px 0 14px}
+.stop::before{content:"";position:absolute;left:-26px;top:16px;width:14px;height:14px;border-radius:50%;background:var(--sky);border:2px solid var(--aurora)}
+.stop.alt::before{border-color:var(--violet)}
+.stop .t{font-family:var(--mono);font-size:13px;color:var(--aurora)}
+.stop.alt .t{color:var(--violet)}
+.stop b{display:block;font-size:17px}
+.stop span{color:var(--frost);font-size:14px}
+.kp{display:grid;gap:10px}
+.kpbar{display:grid;grid-template-columns:repeat(10,1fr);gap:4px}
+.kpbar div{height:34px;border-radius:5px;display:grid;place-items:center;font-family:var(--mono);font-size:12px;background:var(--sky-3);color:var(--frost)}
+.kpbar div.on{background:linear-gradient(180deg,var(--aurora),#2fb882);color:#04261a;font-weight:600}
+.kpbar div.big{background:linear-gradient(180deg,var(--violet),#6b4fd8);color:#fff}
+.rules{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.rules li{background:var(--sky-2);border:1px solid var(--sky-3);border-radius:10px;padding:12px 14px;font-size:14px;color:var(--frost)}
+.rules li b{color:var(--ice);display:block;font-size:15px}
+
+/* PACKING */
+.packs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.packs h3{font-family:var(--body);font-size:16px;font-weight:700;margin-bottom:10px}
+.tick{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--sky-3);cursor:pointer;font-size:15px}
+.tick input{width:18px;height:18px;accent-color:var(--aurora);flex:none}
+.tick input:checked+span{color:var(--frost);text-decoration:line-through}
+.packprog{font-family:var(--mono);font-size:13px;color:var(--frost);margin-top:16px}
+
+.todo{display:grid;gap:10px}
+.todo div{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;background:var(--sky-2);border:1px solid var(--sky-3);border-radius:12px;padding:14px 16px}
+.todo div p{margin:0;color:var(--frost);font-size:14px}
+.todo div b{font-size:16px}
+footer{padding-block:40px 56px;color:var(--frost);font-size:13px}
+
+
+/* ---------- live / shared features ---------- */
+.btn{font:600 15px var(--body);border-radius:999px;padding:10px 18px;border:1px solid var(--sky-3);background:var(--sky-2);color:var(--ice);cursor:pointer;transition:border-color .15s,background .15s}
+.btn:hover{border-color:var(--frost)}
+.btn:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--aurora);outline-offset:2px}
+.btn.primary{background:var(--aurora);color:#04261a;border-color:var(--aurora)}
+.btn.sel-going{background:var(--aurora);color:#04261a;border-color:var(--aurora)}
+.btn.sel-maybe{background:var(--amber);color:#2a1a00;border-color:var(--amber)}
+.btn.sel-no{background:var(--rose);color:#2a0710;border-color:var(--rose)}
+.btn[disabled]{opacity:.5;cursor:default}
+.field{display:grid;gap:6px;font-size:13px;color:var(--frost)}
+.field input,.field textarea,.field select{font:400 15px var(--body);color:var(--ice);background:var(--sky);border:1px solid var(--sky-3);border-radius:10px;padding:10px 12px;width:100%}
+.field textarea{resize:vertical;min-height:70px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:end}
+.row>.field{flex:1 1 200px;min-width:0}
+.status{font-size:13px;color:var(--frost);min-height:1.4em}
+.status.err{color:var(--rose)}
+.offline{background:rgba(255,143,163,.08);border:1px solid rgba(255,143,163,.35);border-radius:12px;padding:12px 16px;font-size:14px;color:var(--ice);margin-bottom:20px}
+
+.rsvp-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:24px}
+.rsvp-grid>*{min-width:0}
+.rsvp-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.rsvp-col h3{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:8px;display:flex;justify-content:space-between}
+.rsvp-col.going h3{color:var(--aurora)}.rsvp-col.maybe h3{color:var(--amber)}.rsvp-col.no h3{color:var(--rose)}
+.person{display:flex;gap:8px;align-items:center;padding:6px 0;font-size:15px;border-bottom:1px solid var(--sky-3)}
+.avatar{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font:700 12px var(--body);flex:none;color:#07111f}
+.person small{display:block;color:var(--frost);font-size:12px;line-height:1.3}
+.person .who{min-width:0;overflow-wrap:anywhere}
+.empty{color:var(--frost);font-size:14px;font-style:italic}
+
+.tally{display:grid;gap:6px;border-top:1px solid var(--sky-3);padding-top:12px}
+.tally .bar{height:8px;border-radius:4px;background:var(--sky-3);overflow:hidden}
+.tally .bar i{display:block;height:100%;background:var(--aurora);width:0;transition:width .4s}
+.tally .meta{display:flex;justify-content:space-between;gap:8px;font-family:var(--mono);font-size:12px;color:var(--frost)}
+.tally .names{font-size:13px;color:var(--frost);overflow-wrap:anywhere}
+.opt.leader .letter{color:var(--amber);-webkit-text-stroke:0}
+.opt .yours{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--aurora)}
+
+.stash{display:grid;grid-template-columns:1.25fr 1fr;gap:24px}
+.stash>*{min-width:0;display:grid;gap:16px;align-content:start}
+.links{display:grid;gap:12px}
+.linkcard{display:grid;grid-template-columns:96px 1fr;gap:14px;background:var(--sky-2);border:1px solid var(--sky-3);border-radius:12px;overflow:hidden;text-decoration:none;color:inherit}
+.linkcard:hover{border-color:var(--frost)}
+.linkcard .thumb{background:var(--sky-3) center/cover no-repeat;min-height:96px;display:grid;place-items:center;font-family:var(--display);font-size:22px;color:var(--frost)}
+.linkcard .info{padding:12px 14px 12px 0;display:grid;gap:4px;min-width:0}
+.linkcard .t{font-weight:700;font-size:15px;line-height:1.3;overflow-wrap:anywhere}
+.linkcard .d{font-family:var(--mono);font-size:11px;color:var(--aurora)}
+.linkcard .n{font-size:13px;color:var(--frost);overflow-wrap:anywhere}
+.linkcard .by{font-size:12px;color:var(--frost)}
+.del{background:none;border:none;color:var(--frost);font:500 12px var(--body);cursor:pointer;padding:0;text-decoration:underline}
+.ideas{display:grid;gap:10px}
+.idea{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;background:var(--sky-2);border:1px solid var(--sky-3);border-radius:12px;padding:12px 14px}
+.upv{display:grid;justify-items:center;gap:0;background:var(--sky);border:1px solid var(--sky-3);border-radius:10px;padding:6px 10px;cursor:pointer;color:var(--frost);font:600 13px var(--mono);min-width:48px}
+.upv.on{border-color:var(--violet);color:var(--violet)}
+.idea p{margin:0;font-size:15px;overflow-wrap:anywhere}
+.idea .cat{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--violet)}
+
+details.thread{margin-top:28px;border:1px solid var(--sky-3);border-radius:12px;background:rgba(12,26,46,.5)}
+details.thread summary{cursor:pointer;list-style:none;padding:12px 16px;font-size:14px;color:var(--frost);display:flex;align-items:center;gap:8px}
+details.thread summary::-webkit-details-marker{display:none}
+details.thread summary b{color:var(--ice)}
+details.thread[open] summary{border-bottom:1px solid var(--sky-3)}
+.thread-body{padding:14px 16px;display:grid;gap:12px}
+.cmt{display:grid;grid-template-columns:26px 1fr;gap:10px}
+.cmt p{margin:2px 0 0;font-size:15px;overflow-wrap:anywhere}
+.cmt .meta{font-size:12px;color:var(--frost)}
+.cmt .meta b{color:var(--ice);font-size:14px;margin-right:6px}
+
+@media (max-width:720px){
+  .rsvp-grid,.stash{grid-template-columns:1fr}
+  .rsvp-cols{grid-template-columns:1fr}
+  .linkcard{grid-template-columns:72px 1fr}
+  .linkcard .thumb{min-height:72px}
+}
+
+@media (max-width:720px){
+  .split{grid-template-columns:1fr}
+  .day{grid-template-columns:72px 1fr;gap:14px}
+  .day .date .dn{font-size:24px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .hero .wrap{padding-block:56px 56px}
+  .coords{left:max(16px,env(safe-area-inset-left,0px));right:auto}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <span class="eyebrow">Friends' trip · Winter 2026</span>
+    <h1>Chasing the <em>aurora</em> in Alaska</h1>
+    <p class="lede">Christmas in a Fairbanks log cabin, a do-it-yourself hunt for the northern lights, then Girdwood and New Year's Eve in Anchorage.</p>
+    <div class="facts">
+      <span class="fact"><b>Dec 24 → Jan 2</b></span>
+      <span class="fact"><b id="heroGoing">6–10</b> <span id="heroGoingL">friends (planning for 8)</span></span>
+      <span class="fact">Fairbanks → Anchorage</span>
+      <span class="fact">No tours, our own cars</span>
+    </div>
+    <div class="countdown"><span class="n" id="cd">—</span><span class="l" id="cdl">days until we fly out of Miami</span></div>
+  </div>
+  <span class="coords">64.85°N 147.97°W · inside the aurora oval</span>
+</header>
+
+<main>
+
+<section id="rsvp">
+  <div class="wrap">
+    <div id="offline" class="offline" hidden></div>
+    <div class="sec-head">
+      <span class="eyebrow">00 · Roll call</span>
+      <h2>Are you in?</h2>
+      <p>Tap your answer. You can change it any time from this phone or laptop.</p>
+    </div>
+    <div class="rsvp-grid">
+      <form id="rsvpForm" class="panel" autocomplete="off">
+        <label class="field" for="rsvpName">Your name
+          <input id="rsvpName" maxlength="40" placeholder="e.g. Priya" required>
+        </label>
+        <div class="row" role="group" aria-label="Your answer">
+          <button type="button" class="btn" data-status="going">I'm in</button>
+          <button type="button" class="btn" data-status="maybe">Maybe</button>
+          <button type="button" class="btn" data-status="no">Can't make it</button>
+        </div>
+        <label class="field" for="rsvpNote">Anything we should know? (optional)
+          <input id="rsvpNote" maxlength="200" placeholder="Flying from a different city, arriving late…">
+        </label>
+        <div class="row"><button class="btn primary" type="submit" id="rsvpSave">Save my answer</button></div>
+        <div class="status" id="rsvpStatus"></div>
+      </form>
+      <div class="rsvp-cols" id="rsvpCols">
+        <div class="rsvp-col going"><h3>Going <span data-count="going">0</span></h3><div data-list="going"><p class="empty">Nobody yet</p></div></div>
+        <div class="rsvp-col maybe"><h3>Maybe <span data-count="maybe">0</span></h3><div data-list="maybe"><p class="empty">Nobody yet</p></div></div>
+        <div class="rsvp-col no"><h3>Can't <span data-count="no">0</span></h3><div data-list="no"><p class="empty">Nobody yet</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <div class="legend">
+      <span><span class="pill ok">Decided</span> agreed by the group</span>
+      <span><span class="pill wait">Deciding</span> vote needed</span>
+      <span><span class="pill idea">Proposed</span> draft plan</span>
+    </div>
+  </div>
+</section>
+
+<section id="flights">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">01 · Getting there</span>
+      <h2>Three flights on Alaska Airlines</h2>
+      <p>All three legs connect or start in Alaska's network, so one multi-city booking covers the whole trip.</p>
+    </div>
+    <div class="passes">
+      <article class="pass">
+        <div class="pass-top">
+          <span class="eyebrow">Thu, Dec 24 · out</span>
+          <div class="pass-route"><span class="iata">MIA</span><div class="path"><span>via SEA · 1h 49m</span></div><span class="iata">FAI</span></div>
+          <div class="pass-times"><div>6:11 pm<small>Miami</small></div><div style="text-align:right">2:48 am<small>Fairbanks · Dec 25</small></div></div>
+        </div>
+        <div class="pass-stub"><span>Lands <b>Christmas morning</b></span><span class="pill ok">Decided</span></div>
+      </article>
+      <article class="pass">
+        <div class="pass-top">
+          <span class="eyebrow">Tue, Dec 29 · hop</span>
+          <div class="pass-route"><span class="iata">FAI</span><div class="path"><span>nonstop · 1h 17m</span></div><span class="iata">ANC</span></div>
+          <div class="pass-times"><div>7:03 am<small>Fairbanks</small></div><div style="text-align:right">8:20 am<small>Anchorage</small></div></div>
+        </div>
+        <div class="pass-stub"><span>Flight <b class="mono">AS 419</b></span><span class="pill ok">Decided</span></div>
+      </article>
+      <article class="pass">
+        <div class="pass-top">
+          <span class="eyebrow">Sat, Jan 2 · home</span>
+          <div class="pass-route"><span class="iata">ANC</span><div class="path"><span>via SEA · 1h 28m</span></div><span class="iata">TPA</span></div>
+          <div class="pass-times"><div>3:15 pm<small>Anchorage</small></div><div style="text-align:right">5:40 am<small>Tampa · Jan 3</small></div></div>
+        </div>
+        <div class="pass-stub"><span>Airport by <b>1:15 pm</b></span><span class="pill ok">Decided</span></div>
+      </article>
+    </div>
+    <div class="note">
+      <strong>Plan around these</strong>
+      <ul>
+        <li><b>We leave from Miami</b>, about 4 hours from Tampa. Sort out rides down.</li>
+        <li><b>3 am landing:</b> rental counter and Airbnb host both need to know we arrive in the middle of the night.</li>
+        <li><b>Christmas Day:</b> stores are closed. Grab snacks in Seattle; the big group dinner moves to Dec 26.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="days">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">02 · Day by day</span>
+      <h2>Ten days, about four hours of sun each</h2>
+      <p>The gold bar shows roughly how much daylight we get. Plan outdoor stuff in that window, aurora after 10 pm.</p>
+    </div>
+
+    <div class="leg-label"><span class="eyebrow">Fairbanks leg</span></div>
+    <div class="days">
+      <div class="day">
+        <div class="date"><span class="dow">Thu</span><span class="dn">Dec 24</span></div>
+        <div class="body">
+          <div class="row1"><h3>Fly north</h3><span class="pill ok">Decided</span></div>
+          <p>Miami at 6:11 pm, Seattle connection, overnight into Fairbanks.</p>
+          <div class="sleep">Sleep: <b>on the plane</b></div>
+        </div>
+      </div>
+      <div class="day">
+        <div class="date"><span class="dow">Fri</span><span class="dn">Dec 25</span></div>
+        <div class="body">
+          <div class="row1"><h3>Christmas at the cabin</h3><span class="pill ok">Decided</span></div>
+          <p>Land 2:48 am, pick up both SUVs, check in around 4 am. Sleep in, snowshoe, keep meals simple.</p>
+          <div class="light" data-rise="10.98" data-set="14.68"></div>
+          <div class="night">Night: aurora from the yard, or the big aurora drive if it's clear</div>
+          <div class="sleep">Sleep: <b>Grandma & Grandpa's Cabin</b></div>
+        </div>
+      </div>
+      <div class="day">
+        <div class="date"><span class="dow">Sat</span><span class="dn">Dec 26</span></div>
+        <div class="body">
+          <div class="row1"><h3>Museum, Santa, feast</h3><span class="pill ok">Decided</span></div>
+          <p>Groceries, Museum of the North, Santa Claus House in North Pole, then the big group dinner at the cabin.</p>
+          <div class="light" data-rise="10.98" data-set="14.70"></div>
+          <div class="night">Night: aurora drive (if we didn't go on the 25th). Pack for checkout.</div>
+          <div class="sleep">Sleep: <b>Grandma & Grandpa's Cabin</b></div>
+        </div>
+      </div>
+      <div class="day deciding">
+        <div class="date"><span class="dow">Sun</span><span class="dn">Dec 27</span></div>
+        <div class="body">
+          <div class="row1"><h3>Check out, then option A, B or C</h3><span class="pill wait">Deciding</span></div>
+          <p>Where we sleep Dec 27–28 is still open. See the options below.</p>
+          <div class="light" data-rise="10.97" data-set="14.73"></div>
+        </div>
+      </div>
+      <div class="day deciding">
+        <div class="date"><span class="dow">Mon</span><span class="dn">Dec 28</span></div>
+        <div class="body">
+          <div class="row1"><h3>Chena Hot Springs day</h3><span class="pill wait">Deciding</span></div>
+          <p>Aurora Ice Museum, dog sledding, outdoor soak, dinner at the resort. Drive time depends on where we stay.</p>
+          <div class="light" data-rise="10.97" data-set="14.76"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="leg-label"><span class="eyebrow">Girdwood & Anchorage leg</span></div>
+    <div class="days">
+      <div class="day">
+        <div class="date"><span class="dow">Tue</span><span class="dn">Dec 29</span></div>
+        <div class="body">
+          <div class="row1"><h3>Hop south, Turnagain Arm</h3><span class="pill idea">Proposed</span></div>
+          <p>7:03 am flight, new cars in Anchorage, Seward Highway in daylight: Beluga Point and the Wildlife Conservation Center.</p>
+          <div class="light" data-rise="10.23" data-set="15.80"></div>
+          <div class="sleep">Sleep: <b>Girdwood chalet</b> (not booked)</div>
+        </div>
+      </div>
+      <div class="day">
+        <div class="date"><span class="dow">Wed</span><span class="dn">Dec 30</span></div>
+        <div class="body">
+          <div class="row1"><h3>Alyeska day</h3><span class="pill idea">Proposed</span></div>
+          <p>Aerial tram, skiing or snowboarding, snowshoeing, Nordic spa.</p>
+          <div class="light" data-rise="10.23" data-set="15.82"></div>
+          <div class="sleep">Sleep: <b>Girdwood chalet</b> (not booked)</div>
+        </div>
+      </div>
+      <div class="day">
+        <div class="date"><span class="dow">Thu</span><span class="dn">Dec 31</span></div>
+        <div class="body">
+          <div class="row1"><h3>New Year's Eve downtown</h3><span class="pill idea">Proposed</span></div>
+          <p>Drive to Anchorage. Free celebration 7–9 pm at the Chinook Lot (3rd Ave & E St), fireworks at 8 pm, then bars until midnight.</p>
+          <div class="light" data-rise="10.23" data-set="15.86"></div>
+          <div class="sleep">Sleep: <b>Anchorage rental</b> (not booked)</div>
+        </div>
+      </div>
+      <div class="day">
+        <div class="date"><span class="dow">Fri</span><span class="dn">Jan 1</span></div>
+        <div class="body">
+          <div class="row1"><h3>Slow New Year's Day</h3><span class="pill idea">Proposed</span></div>
+          <p>Brunch, Tony Knowles Coastal Trail, moose spotting at Kincaid Park.</p>
+          <div class="light" data-rise="10.22" data-set="15.88"></div>
+          <div class="sleep">Sleep: <b>Anchorage rental</b> (not booked)</div>
+        </div>
+      </div>
+      <div class="day">
+        <div class="date"><span class="dow">Sat</span><span class="dn">Jan 2</span></div>
+        <div class="body">
+          <div class="row1"><h3>Fly home</h3><span class="pill ok">Decided</span></div>
+          <p>Brunch, return the car, at the airport by 1:15 pm for the 3:15 pm flight.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="options">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">03 · Vote</span>
+      <h2>Where do we sleep Dec 27 & 28?</h2>
+      <p>Everyone leaves for the 7:03 am flight on Dec 29, cars back by about 6 am. Tap the one you'd pick. Everyone sees the votes live, and you can change yours any time.</p>
+    </div>
+    <div class="options" role="radiogroup" aria-label="Dec 27 to 29 options">
+      <article class="opt" tabindex="0" role="radio" aria-checked="false" data-opt="A">
+        <span class="letter">A</span>
+        <h3>Igloo night + aurora cabin</h3>
+        <div class="nights"><div><small>Dec 27</small>Igloo domes</div><div><small>Dec 28</small>Aurora cabin</div></div>
+        <div class="price"><b>~$1,200</b> + cabin<br><span style="color:var(--frost);font-size:13px">$400 per dome for 3 people, 3 domes for 8–9</span></div>
+        <ul class="proscons">
+          <li class="p">The igloo experience</li>
+          <li class="p">Chena is about 45 min from the domes</li>
+          <li class="c">Two check-ins in two days</li>
+          <li class="c">Group split across domes on night 1</li>
+        </ul>
+        <div class="tally" data-tally></div>
+      </article>
+      <article class="opt" tabindex="0" role="radio" aria-checked="false" data-opt="B">
+        <span class="letter">B</span>
+        <h3>Two nights, aurora cabin</h3>
+        <div class="nights"><div><small>Dec 27</small>Aurora cabin</div><div><small>Dec 28</small>Aurora cabin</div></div>
+        <div class="price"><b>TBD</b><br><span style="color:var(--frost);font-size:13px">Depends on the cabin we pick</span></div>
+        <ul class="proscons">
+          <li class="p">Whole group under one roof</li>
+          <li class="p">Big north-facing windows, dark skies</li>
+          <li class="c">No igloo</li>
+          <li class="c">Must check it has indoor bathrooms</li>
+        </ul>
+        <div class="tally" data-tally></div>
+      </article>
+      <article class="opt" tabindex="0" role="radio" aria-checked="false" data-opt="C">
+        <span class="letter">C</span>
+        <h3>Stay at the cabin</h3>
+        <div class="nights"><div><small>Dec 27</small>Same Airbnb</div><div><small>Dec 28</small>Same Airbnb</div></div>
+        <div class="price"><b>~$800</b> more<br><span style="color:var(--frost);font-size:13px">About $100 per person</span></div>
+        <ul class="proscons">
+          <li class="p">Cheapest, no packing</li>
+          <li class="p">10–15 min to the airport on Dec 29</li>
+          <li class="c">No igloo</li>
+          <li class="c">Chena is 1.5–2 hours each way</li>
+        </ul>
+        <div class="tally" data-tally></div>
+      </article>
+    </div>
+    <p class="pickhint" id="pickhint">Add your name in the roll call first so the group knows who voted.</p>
+  </div>
+</section>
+
+<section id="basecamp">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">04 · Basecamp</span>
+      <h2>Grandma & Grandpa's Cabin</h2>
+      <p>A real log cabin on the edge of Ester, west of Fairbanks. Dec 24, 25 and 26 nights, checkout the morning of Dec 27.</p>
+    </div>
+    <div class="split">
+      <div class="panel">
+        <div class="stats">
+          <div class="stat"><b>6</b><span>bedrooms</span></div>
+          <div class="stat"><b>11</b><span>beds</span></div>
+          <div class="stat"><b>2.5</b><span>baths</span></div>
+          <div class="stat"><b>14</b><span>guests max</span></div>
+        </div>
+        <div class="price"><b>~$1,200</b> for 3 nights · about <b style="font-size:inherit">$150</b> each for 8 people</div>
+        <p style="margin:0;color:var(--frost)">Full kitchen, dining table for 8, two-car garage to keep the SUVs warm, baseboard heat, washer and dryer, free cancellation.</p>
+        <div class="dist">
+          <div>Fairbanks airport<span class="mono">10–15 min</span></div>
+          <div>UAF · Museum of the North<span class="mono">10–15 min</span></div>
+          <div>Ester Dome lookout<span class="mono">~15 min</span></div>
+          <div>Cleary Summit<span class="mono">40–45 min</span></div>
+        </div>
+        <span class="pill wait" style="justify-self:start">Waiting on host</span>
+      </div>
+      <div class="panel">
+        <h3 style="font-family:var(--body);font-size:17px">Asking the host</h3>
+        <ul class="checks">
+          <li>Is the driveway plowed and easy to drive in winter?</li>
+          <li>Can both cars go in the garage?</li>
+          <li>Is there backup heat if the main heat fails?</li>
+          <li>Is self check-in OK around 4 am on Christmas morning?</li>
+          <li>Could you stock coffee and breakfast basics?</li>
+          <li>Is $1,200 the full total with fees and taxes?</li>
+          <li>Is there a carbon monoxide alarm?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="wheels">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">05 · Wheels</span>
+      <h2>Two SUVs, good tires</h2>
+      <p>In Fairbanks, tires matter more than AWD. We pick up and return at Fairbanks airport, so there's no one-way fee.</p>
+    </div>
+    <ul class="rules">
+      <li><b>Winter or studded tires</b>Non-negotiable. Confirm with the branch.</li>
+      <li><b>Engine block heater cords</b>Plug in overnight at −30°F.</li>
+      <li><b>3 am pickup on Dec 25</b>Call ahead so someone's at the counter.</li>
+      <li><b>Return by 6 am Dec 29</b>Before the 7:03 am flight.</li>
+      <li><b>2–3 snow drivers</b>People comfortable on ice.</li>
+      <li><b>Skip Murphy Dome</b>Too rough for regular SUVs.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="aurora">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">06 · The big night</span>
+      <h2>Aurora drive, 9 pm to 2 am</h2>
+      <p>Dec 25 or 26, whichever is clearer. Check the forecast and cloud cover around 6–7 pm and make the call.</p>
+    </div>
+    <div class="split">
+      <div class="route">
+        <div class="stop"><span class="t">8:30 pm</span><b>Check the sky</b><span>Aurora forecast, cloud map, fill thermoses</span></div>
+        <div class="stop"><span class="t">9:00 pm</span><b>Leave the cabin</b><span>Both cars, full tanks</span></div>
+        <div class="stop"><span class="t">9:15 – 11:00 pm</span><b>Ester Dome</b><span>Closest hilltop, about 15 min away</span></div>
+        <div class="stop alt"><span class="t">11:00 pm</span><b>Stay or move?</b><span>Clear and active, stay. Cloudy or quiet, drive on.</span></div>
+        <div class="stop alt"><span class="t">11:45 pm – 1:15 am</span><b>Cleary Summit</b><span>Local favorite. Skyline Drive as a backup stop.</span></div>
+        <div class="stop"><span class="t">2:00 am</span><b>Back at the cabin</b><span>Hot drinks, photo dump</span></div>
+      </div>
+      <div class="panel">
+        <div class="kp">
+          <span class="eyebrow">How strong is enough? · Kp index</span>
+          <div class="kpbar" aria-label="Kp index scale from 0 to 9">
+            <div>0</div><div>1</div><div class="on">2</div><div class="on">3</div><div class="on">4</div><div class="big">5</div><div class="big">6</div><div class="big">7</div><div class="big">8</div><div class="big">9</div>
+          </div>
+          <p style="margin:0;color:var(--frost);font-size:14px">Fairbanks sits under the aurora oval, so <b style="color:var(--aurora)">Kp 2–3</b> is usually enough. Clear skies matter more than the number. Best hours are 10 pm to 2 am.</p>
+        </div>
+        <ul class="checks" style="margin-top:4px">
+          <li>Two sober drivers who swap when tired</li>
+          <li>Keep both cars in sight, cell service is patchy</li>
+          <li>Park fully off the road at pullouts</li>
+          <li>Take turns warming up in the cars</li>
+          <li>If it's strong at Ester Dome, stay put</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="packing">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">07 · Pack</span>
+      <h2>Dress for −40°</h2>
+      <p>Tick things off as you pack. Your checklist is saved on your own phone.</p>
+    </div>
+    <div class="packs" id="packs">
+      <div>
+        <h3>Cold-weather gear</h3>
+        <label class="tick"><input type="checkbox" id="p1"><span>Insulated winter boots</span></label>
+        <label class="tick"><input type="checkbox" id="p2"><span>Warm parka</span></label>
+        <label class="tick"><input type="checkbox" id="p3"><span>Thermal base layers, top and bottom</span></label>
+        <label class="tick"><input type="checkbox" id="p4"><span>Mittens plus thin liner gloves</span></label>
+        <label class="tick"><input type="checkbox" id="p5"><span>Warm hat and neck gaiter</span></label>
+        <label class="tick"><input type="checkbox" id="p6"><span>Wool socks</span></label>
+        <label class="tick"><input type="checkbox" id="p7"><span>Hand and toe warmers</span></label>
+      </div>
+      <div>
+        <h3>Aurora night kit</h3>
+        <label class="tick"><input type="checkbox" id="p8"><span>Thermos</span></label>
+        <label class="tick"><input type="checkbox" id="p9"><span>Headlamp with red light</span></label>
+        <label class="tick"><input type="checkbox" id="p10"><span>Power bank and charger</span></label>
+        <label class="tick"><input type="checkbox" id="p11"><span>Tripod</span></label>
+        <label class="tick"><input type="checkbox" id="p12"><span>Swimsuit for Chena</span></label>
+        <label class="tick"><input type="checkbox" id="p13"><span>Lotion and lip balm</span></label>
+        <label class="tick"><input type="checkbox" id="p14"><span>Photo ID for the ice bar</span></label>
+      </div>
+    </div>
+    <div class="packprog" id="packprog">0 of 14 packed</div>
+  </div>
+</section>
+
+
+<section id="stash">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">08 · The stash</span>
+      <h2>Links and ideas</h2>
+      <p>Drop anything useful: Airbnbs, tours, restaurants, photo spots. Ideas are anonymous, so suggest freely and upvote the good ones.</p>
+    </div>
+    <div class="stash">
+      <div>
+        <form id="linkForm" class="panel" autocomplete="off">
+          <h3 style="font-family:var(--body);font-size:17px">Share a link</h3>
+          <label class="field" for="linkUrl">Link
+            <input id="linkUrl" type="url" inputmode="url" placeholder="https://…" required maxlength="600">
+          </label>
+          <label class="field" for="linkNote">Why it's worth a look (optional)
+            <input id="linkNote" maxlength="280" placeholder="Dog sledding, $95 each, has Dec 28 slots">
+          </label>
+          <div class="row"><button class="btn primary" type="submit" id="linkSave">Add link</button></div>
+          <div class="status" id="linkStatus"></div>
+        </form>
+        <div class="links" id="links"><p class="empty">No links yet. Add the first one.</p></div>
+      </div>
+      <div>
+        <form id="ideaForm" class="panel" autocomplete="off">
+          <h3 style="font-family:var(--body);font-size:17px">Suggest something, anonymously</h3>
+          <label class="field" for="ideaBody">Your idea
+            <textarea id="ideaBody" maxlength="280" placeholder="Ice fishing on Chena Lakes?" required></textarea>
+          </label>
+          <div class="row">
+            <label class="field" for="ideaCat">Type
+              <select id="ideaCat"><option value="activity">Activity</option><option value="food">Food</option><option value="stay">Stay</option><option value="other">Other</option></select>
+            </label>
+            <button class="btn primary" type="submit" id="ideaSave">Post idea</button>
+          </div>
+          <div class="status" id="ideaStatus">No name is attached to ideas.</div>
+        </form>
+        <div class="ideas" id="ideas"><p class="empty">No ideas yet.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="todo" style="border-bottom:none">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">09 · Still to do</span>
+      <h2>Before we can relax</h2>
+    </div>
+    <div class="todo">
+      <div><span class="pill wait">Book</span><span><b>Flights</b><p>All three Alaska Airlines legs as one multi-city ticket.</p></span></div>
+      <div><span class="pill wait">Book</span><span><b>The cabin</b><p>As soon as the host answers our questions.</p></span></div>
+      <div><span class="pill wait">Book</span><span><b>Two SUVs in Fairbanks</b><p>Winter tires and a 3 am pickup confirmed.</p></span></div>
+      <div><span class="pill wait">Vote</span><span><b>Dec 27–28 stay</b><p>Option A, B or C.</p></span></div>
+      <div><span class="pill idea">Later</span><span><b>Girdwood and Anchorage stays</b><p>Plus Anchorage cars and Chena dog sledding.</p></span></div>
+      <div><span class="pill idea">Money</span><span><b>Splitwise and deposits</b><p>Holiday bookings need prepayment.</p></span></div>
+    </div>
+  </div>
+</section>
+</main>
+<footer><div class="wrap">Planned together · Fairbanks 64.8°N · Anchorage 61.2°N · see you under the lights</div></footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+(function(){
+  /* ---------- static bits ---------- */
+  var dep=new Date(2026,11,24,18,11);
+  var days=Math.ceil((dep-new Date())/86400000);
+  var cd=document.getElementById('cd'),cdl=document.getElementById('cdl');
+  if(days>0){cd.textContent=days;cdl.textContent=(days===1?'day':'days')+' until we fly out of Miami';}
+  else{cd.textContent='Now';cdl.textContent='We are in Alaska';}
+
+  function fmt(h){var H=Math.floor(h),M=Math.round((h-H)*60);if(M===60){H++;M=0}var ap=H>=12?'pm':'am';var h12=H%12||12;return h12+':'+(M<10?'0':'')+M+' '+ap}
+  document.querySelectorAll('.light').forEach(function(el){
+    var r=+el.dataset.rise,s=+el.dataset.set,len=s-r,h=Math.floor(len),m=Math.round((len-h)*60);
+    el.innerHTML='<span>'+fmt(r)+'</span><div class="lightbar" title="Approximate daylight"><i style="left:'+(r/24*100)+'%;width:'+(len/24*100)+'%"></i></div><span>'+h+'h '+m+'m light</span>';
+  });
+
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+
+  var boxes=document.querySelectorAll('#packs input'),prog=document.getElementById('packprog');
+  function count(){var n=0;boxes.forEach(function(b){if(b.checked)n++});prog.textContent=n+' of '+boxes.length+' packed'+(n===boxes.length?' · ready for the cold':'');}
+  boxes.forEach(function(b){if(get('ak-'+b.id)==='1')b.checked=true;b.addEventListener('change',function(){set('ak-'+b.id,b.checked?'1':'0');count()})});
+  count();
+
+  /* ---------- aurora canvas ---------- */
+  var c=document.getElementById('sky'),ctx=c.getContext('2d'),W,H,stars=[],dpr=Math.min(window.devicePixelRatio||1,2);
+  var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function size(){W=c.clientWidth;H=c.clientHeight;c.width=W*dpr;c.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+    stars=[];var n=Math.round(W*H/2600);for(var i=0;i<n;i++)stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.2+.2,p:Math.random()*6.28})}
+  function band(t,hue,yBase,amp,alpha,speed){var step=6;
+    for(var x=0;x<=W;x+=step){var y=yBase+Math.sin(x*0.004+t*speed)*amp+Math.sin(x*0.011-t*speed*1.7)*amp*0.4;
+      var hgt=H*0.32+Math.sin(x*0.007+t*speed*0.6)*H*0.08;var g=ctx.createLinearGradient(0,y-hgt,0,y);
+      g.addColorStop(0,'hsla('+hue+',90%,65%,0)');g.addColorStop(0.7,'hsla('+hue+',90%,65%,'+alpha*0.6+')');g.addColorStop(1,'hsla('+hue+',95%,70%,'+alpha+')');
+      ctx.fillStyle=g;ctx.fillRect(x,y-hgt,step+1,hgt);}}
+  function draw(ts){var t=(ts||0)/1000;var bg=ctx.createLinearGradient(0,0,0,H);bg.addColorStop(0,'#030a14');bg.addColorStop(1,'#07111f');
+    ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+    stars.forEach(function(s){ctx.globalAlpha=.4+.4*Math.sin(t*1.5+s.p);ctx.fillStyle='#e6eef7';ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,6.28);ctx.fill()});
+    ctx.globalAlpha=1;ctx.globalCompositeOperation='lighter';
+    band(t,152,H*0.48,H*0.06,0.32,0.25);band(t+40,165,H*0.40,H*0.08,0.18,0.18);band(t+90,262,H*0.30,H*0.05,0.12,0.15);
+    ctx.globalCompositeOperation='source-over';var f=ctx.createLinearGradient(0,H*0.55,0,H);f.addColorStop(0,'rgba(7,17,31,0)');f.addColorStop(1,'rgba(7,17,31,0.95)');
+    ctx.fillStyle=f;ctx.fillRect(0,H*0.55,W,H*0.45);if(!still)requestAnimationFrame(draw);}
+  size();window.addEventListener('resize',function(){size();if(still)draw(0)});
+  if(still)draw(4000);else requestAnimationFrame(draw);
+
+  /* ---------- shared data (Supabase) ---------- */
+  var SUPABASE_URL='https://zfiipirenpjflwdmqpen.supabase.co';
+  var SUPABASE_KEY='sb_publishable_raLigp2T7AblzqnRNHoOkg_ZqFtnutm';
+  var offline=document.getElementById('offline');
+  function showOffline(msg){offline.textContent=msg;offline.hidden=false;}
+  if(!window.supabase){showOffline('Live features could not load. Check your connection and refresh.');return;}
+  var sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+  var me=null, rsvps=[], votes=[];
+
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+  var palette=['#5df2b0','#a98bff','#ffc46b','#7cc8ff','#ff8fa3','#9be38b','#f2a5ff','#ffd27a'];
+  function hue(s){var h=0;s=String(s||'');for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return palette[Math.abs(h)%palette.length]}
+  function avatar(name,key){return '<span class="avatar" style="background:'+hue(key||name)+'">'+esc((name||'?').trim().charAt(0).toUpperCase())+'</span>'}
+  function ago(ts){var s=(Date.now()-new Date(ts))/1000;if(s<60)return'just now';if(s<3600)return Math.floor(s/60)+' min ago';if(s<86400)return Math.floor(s/3600)+' h ago';return new Date(ts).toLocaleDateString(undefined,{month:'short',day:'numeric'})}
+  function myName(){return (document.getElementById('rsvpName').value||get('ak-name')||'').trim()}
+  function nameFor(uid){var r=rsvps.find(function(x){return x.user_id===uid});return r?r.name:null}
+  function setStatus(id,msg,err){var el=document.getElementById(id);el.textContent=msg;el.classList.toggle('err',!!err)}
+  function friendly(e){var m=(e&&e.message)||'';if(/anonymous/i.test(m))return 'Sign-in for guests is switched off. The trip organizer needs to turn on anonymous sign-ins in Supabase.';if(/fetch|network/i.test(m))return 'No connection. Check your internet and try again.';return 'That did not save. Try again in a moment.'}
+
+  /* RSVP */
+  var chosen=null;
+  document.getElementById('rsvpName').value=get('ak-name')||'';
+  document.querySelectorAll('[data-status]').forEach(function(b){b.addEventListener('click',function(){chosen=b.dataset.status;paintChoice()})});
+  function paintChoice(){document.querySelectorAll('[data-status]').forEach(function(b){b.className='btn'+(b.dataset.status===chosen?' sel-'+chosen:'')})}
+  document.getElementById('rsvpForm').addEventListener('submit',async function(e){
+    e.preventDefault();var name=myName();
+    if(!name){setStatus('rsvpStatus','Add your name first.',true);return}
+    if(!chosen){setStatus('rsvpStatus','Pick I\'m in, Maybe or Can\'t make it.',true);return}
+    if(!me){setStatus('rsvpStatus','Still connecting. Try again in a second.',true);return}
+    set('ak-name',name);
+    var btn=document.getElementById('rsvpSave');btn.disabled=true;
+    var r=await sb.from('rsvps').upsert({user_id:me,name:name,status:chosen,note:document.getElementById('rsvpNote').value.trim()||null,updated_at:new Date().toISOString()});
+    btn.disabled=false;
+    if(r.error)setStatus('rsvpStatus',friendly(r.error),true);else{setStatus('rsvpStatus','Saved. Thanks, '+name+'!');loadRsvps()}
+  });
+  async function loadRsvps(){
+    var r=await sb.from('rsvps').select('user_id,name,status,note,updated_at').order('updated_at');
+    if(r.error)return;rsvps=r.data;
+    ['going','maybe','no'].forEach(function(s){
+      var list=rsvps.filter(function(x){return x.status===s});
+      document.querySelector('[data-count="'+s+'"]').textContent=list.length;
+      document.querySelector('[data-list="'+s+'"]').innerHTML=list.length?list.map(function(p){
+        return '<div class="person">'+avatar(p.name,p.user_id)+'<span class="who">'+esc(p.name)+(p.user_id===me?' (you)':'')+(p.note?'<small>'+esc(p.note)+'</small>':'')+'</span></div>'}).join(''):'<p class="empty">Nobody yet</p>';
+    });
+    var going=rsvps.filter(function(x){return x.status==='going'}).length;
+    if(rsvps.length){document.getElementById('heroGoing').textContent=going;document.getElementById('heroGoingL').textContent=going===1?'friend is in':'friends are in';}
+    var mine=rsvps.find(function(x){return x.user_id===me});
+    if(mine&&!chosen){chosen=mine.status;paintChoice();document.getElementById('rsvpNote').value=mine.note||'';if(!document.getElementById('rsvpName').value)document.getElementById('rsvpName').value=mine.name}
+    paintVotes();
+  }
+
+  /* Votes */
+  var opts=document.querySelectorAll('.opt');
+  opts.forEach(function(o){
+    function go(){castVote(o.dataset.opt)}
+    o.addEventListener('click',function(e){if(e.target.closest('a,button'))return;go()});
+    o.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}});
+  });
+  async function castVote(l){
+    var hint=document.getElementById('pickhint');
+    if(!me){hint.textContent='Still connecting. Try again in a second.';return}
+    if(!nameFor(me)){hint.textContent='Add your name in the roll call at the top first, so everyone knows who voted.';document.getElementById('rsvpName').focus();return}
+    var r=await sb.from('votes').upsert({user_id:me,option:l,updated_at:new Date().toISOString()});
+    if(r.error){hint.textContent=friendly(r.error);return}
+    hint.textContent='You voted for option '+l+'. Tap another card to change it.';loadVotes();
+  }
+  async function loadVotes(){var r=await sb.from('votes').select('user_id,option');if(r.error)return;votes=r.data;paintVotes()}
+  function paintVotes(){
+    var total=votes.length,max=0,counts={A:0,B:0,C:0};
+    votes.forEach(function(v){counts[v.option]++});
+    Object.keys(counts).forEach(function(k){if(counts[k]>max)max=counts[k]});
+    var mine=(votes.find(function(v){return v.user_id===me})||{}).option;
+    opts.forEach(function(o){
+      var k=o.dataset.opt,n=counts[k],pct=total?Math.round(n/total*100):0;
+      var names=votes.filter(function(v){return v.option===k}).map(function(v){return nameFor(v.user_id)||'Someone'});
+      o.classList.toggle('picked',mine===k);o.setAttribute('aria-checked',mine===k);
+      o.classList.toggle('leader',max>0&&n===max);
+      o.querySelector('[data-tally]').innerHTML=
+        '<div class="meta"><span>'+n+(n===1?' vote':' votes')+(max>0&&n===max?' · leading':'')+'</span><span>'+pct+'%</span></div>'+
+        '<div class="bar"><i style="width:'+pct+'%"></i></div>'+
+        (names.length?'<div class="names">'+esc(names.join(', '))+'</div>':'')+
+        (mine===k?'<span class="yours">Your vote</span>':'');
+    });
+  }
+
+  /* Links with previews */
+  document.getElementById('linkForm').addEventListener('submit',async function(e){
+    e.preventDefault();if(!me){setStatus('linkStatus','Still connecting. Try again in a second.',true);return}
+    var url=document.getElementById('linkUrl').value.trim(),note=document.getElementById('linkNote').value.trim();
+    if(!/^https?:\/\//i.test(url)){setStatus('linkStatus','Paste a full link starting with https://',true);return}
+    var btn=document.getElementById('linkSave');btn.disabled=true;setStatus('linkStatus','Fetching a preview…');
+    var title=null,image=null;
+    try{var ctl=new AbortController();var tm=setTimeout(function(){ctl.abort()},6000);
+      var p=await fetch('https://api.microlink.io/?url='+encodeURIComponent(url),{signal:ctl.signal});clearTimeout(tm);
+      var j=await p.json();if(j&&j.status==='success'&&j.data){title=(j.data.title||'').slice(0,200)||null;image=(j.data.image&&j.data.image.url)||(j.data.logo&&j.data.logo.url)||null;if(image&&image.length>800)image=null}}catch(err){}
+    var r=await sb.from('links').insert({url:url,note:note||null,title:title,image:image,added_by:myName()||null});
+    btn.disabled=false;
+    if(r.error)setStatus('linkStatus',friendly(r.error),true);else{setStatus('linkStatus','Added.');document.getElementById('linkForm').reset();loadLinks()}
+  });
+  function domain(u){try{return new URL(u).hostname.replace(/^www\./,'')}catch(e){return u}}
+  async function loadLinks(){
+    var r=await sb.from('links').select('id,user_id,url,title,note,image,added_by,created_at').order('created_at',{ascending:false});if(r.error)return;
+    var box=document.getElementById('links');
+    box.innerHTML=r.data.length?r.data.map(function(l){
+      var d=domain(l.url),safeImg=l.image&&/^https:\/\//i.test(l.image)?l.image:null;
+      return '<div><a class="linkcard" href="'+esc(l.url)+'" target="_blank" rel="noopener noreferrer">'+
+        '<div class="thumb"'+(safeImg?' style="background-image:url(&quot;'+esc(safeImg)+'&quot;)"':'')+'>'+(safeImg?'':esc(d.charAt(0).toUpperCase()))+'</div>'+
+        '<div class="info"><span class="d">'+esc(d)+'</span><span class="t">'+esc(l.title||d)+'</span>'+(l.note?'<span class="n">'+esc(l.note)+'</span>':'')+
+        '<span class="by">'+(l.added_by?'Added by '+esc(l.added_by)+' · ':'')+ago(l.created_at)+'</span></div></a>'+
+        (l.user_id===me?'<button class="del" data-del-link="'+l.id+'">Remove my link</button>':'')+'</div>'}).join(''):'<p class="empty">No links yet. Add the first one.</p>';
+  }
+  document.getElementById('links').addEventListener('click',async function(e){var b=e.target.closest('[data-del-link]');if(!b)return;b.disabled=true;await sb.from('links').delete().eq('id',b.dataset.delLink);loadLinks()});
+
+  /* Anonymous ideas */
+  document.getElementById('ideaForm').addEventListener('submit',async function(e){
+    e.preventDefault();if(!me){setStatus('ideaStatus','Still connecting. Try again in a second.',true);return}
+    var body=document.getElementById('ideaBody').value.trim();if(!body)return;
+    var btn=document.getElementById('ideaSave');btn.disabled=true;
+    var r=await sb.from('ideas').insert({body:body,category:document.getElementById('ideaCat').value});
+    btn.disabled=false;
+    if(r.error)setStatus('ideaStatus',friendly(r.error),true);else{setStatus('ideaStatus','Posted anonymously.');document.getElementById('ideaBody').value='';loadIdeas()}
+  });
+  var catLabel={activity:'Activity',food:'Food',stay:'Stay',other:'Other'};
+  async function loadIdeas(){
+    var r=await sb.rpc('get_ideas');if(r.error)return;
+    document.getElementById('ideas').innerHTML=r.data.length?r.data.map(function(i){
+      return '<div class="idea"><button class="upv'+(i.voted?' on':'')+'" data-idea="'+i.id+'" data-voted="'+i.voted+'" aria-pressed="'+i.voted+'" aria-label="Upvote">▲<span>'+i.votes+'</span></button>'+
+        '<div><span class="cat">'+esc(catLabel[i.category]||'Other')+(i.mine?' · yours':'')+'</span><p>'+esc(i.body)+'</p></div></div>'}).join(''):'<p class="empty">No ideas yet.</p>';
+  }
+  document.getElementById('ideas').addEventListener('click',async function(e){
+    var b=e.target.closest('[data-idea]');if(!b||!me)return;b.disabled=true;
+    if(b.dataset.voted==='true')await sb.from('idea_votes').delete().eq('idea_id',b.dataset.idea).eq('user_id',me);
+    else await sb.from('idea_votes').insert({idea_id:+b.dataset.idea});
+    loadIdeas();
+  });
+
+  /* Comments under each section */
+  var sections={flights:'flights',days:'the plan',options:'the options',basecamp:'the cabin',wheels:'the cars',aurora:'the aurora night',packing:'packing',todo:'the to-do list'};
+  Object.keys(sections).forEach(function(id){
+    var sec=document.getElementById(id);if(!sec)return;
+    var d=document.createElement('details');d.className='thread';d.dataset.section=id;
+    d.innerHTML='<summary><span aria-hidden="true">💬</span> <b data-n>0</b> <span data-l>comments on '+sections[id]+'</span></summary>'+
+      '<div class="thread-body"><div data-items><p class="empty">No comments yet.</p></div>'+
+      '<form class="row" autocomplete="off"><label class="field" for="c-'+id+'">Add a comment<input id="c-'+id+'" maxlength="500" placeholder="Say something about '+sections[id]+'" required></label><button class="btn primary" type="submit">Post</button></form>'+
+      '<div class="status"></div></div>';
+    sec.querySelector('.wrap').appendChild(d);
+    d.querySelector('form').addEventListener('submit',async function(e){
+      e.preventDefault();var st=d.querySelector('.status');var name=myName();
+      if(!name){st.textContent='Add your name in the roll call at the top first.';st.classList.add('err');return}
+      if(!me){st.textContent='Still connecting. Try again in a second.';st.classList.add('err');return}
+      var inp=d.querySelector('input');var r=await sb.from('comments').insert({section:id,name:name,body:inp.value.trim()});
+      if(r.error){st.textContent=friendly(r.error);st.classList.add('err')}else{st.textContent='';st.classList.remove('err');inp.value='';loadComments()}
+    });
+  });
+  async function loadComments(){
+    var r=await sb.from('comments').select('id,user_id,section,name,body,created_at').order('created_at');if(r.error)return;
+    document.querySelectorAll('details.thread').forEach(function(d){
+      var list=r.data.filter(function(c){return c.section===d.dataset.section});
+      d.querySelector('[data-n]').textContent=list.length;
+      d.querySelector('[data-l]').textContent=(list.length===1?'comment on ':'comments on ')+sections[d.dataset.section];
+      d.querySelector('[data-items]').innerHTML=list.length?list.map(function(c){
+        return '<div class="cmt">'+avatar(c.name,c.user_id)+'<div><div class="meta"><b>'+esc(c.name)+'</b>'+ago(c.created_at)+
+          (c.user_id===me?' · <button class="del" data-del-cmt="'+c.id+'">Delete</button>':'')+'</div><p>'+esc(c.body)+'</p></div></div>'}).join(''):'<p class="empty">No comments yet.</p>';
+    });
+  }
+  document.addEventListener('click',async function(e){var b=e.target.closest('[data-del-cmt]');if(!b)return;b.disabled=true;await sb.from('comments').delete().eq('id',b.dataset.delCmt);loadComments()});
+
+  /* Boot: silent guest sign-in, then load + live updates */
+  (async function(){
+    var s=await sb.auth.getSession();
+    if(!s.data.session){var a=await sb.auth.signInAnonymously();if(a.error){showOffline(friendly(a.error));return}}
+    var u=await sb.auth.getUser();me=u.data.user&&u.data.user.id;
+    await loadRsvps();loadVotes();loadLinks();loadIdeas();loadComments();
+    sb.channel('trip').on('postgres_changes',{event:'*',schema:'public',table:'rsvps'},loadRsvps)
+      .on('postgres_changes',{event:'*',schema:'public',table:'votes'},loadVotes)
+      .on('postgres_changes',{event:'*',schema:'public',table:'links'},loadLinks)
+      .on('postgres_changes',{event:'*',schema:'public',table:'comments'},loadComments).subscribe();
+    setInterval(loadIdeas,30000);
+  })();
+})();
+</script>
+</body>
+</html>
