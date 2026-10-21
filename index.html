@@ -318,6 +318,156 @@ main{min-height:60vh}
 #skip{position:absolute;z-index:3;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));font:600 13px var(--body);color:var(--ice);background:rgba(12,26,46,.7);border:1px solid var(--sky-3);border-radius:999px;padding:8px 14px;cursor:pointer;backdrop-filter:blur(4px)}
 body.intro-lock{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.aur,.aur path,.star,.crew>g,.swing,.sway,.flake,.intro-copy{animation:none!important;opacity:1!important;transform:none!important}}
+
+/* ---------- v3 pages ---------- */
+.glance{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.gcard{background:var(--sky-2);border:1px solid var(--sky-3);border-radius:14px;padding:18px;display:grid;gap:6px;align-content:start}
+.gcard b{font-family:var(--display);font-weight:600;font-size:18px;line-height:1.25}
+.gcard p{margin:0;color:var(--frost);font-size:14px}
+.weather{margin-top:14px;font-size:15px;color:var(--frost)}
+.weather b{color:var(--ice)}
+.steps{margin-top:28px;background:rgba(93,242,176,.06);border:1px solid rgba(93,242,176,.3);border-radius:14px;padding:20px 22px}
+.steps h3{font-family:var(--body);font-size:18px;font-weight:700;margin-bottom:10px}
+.steps ol{margin:0;padding-left:22px;display:grid;gap:8px;color:var(--frost)}
+.steps li b{color:var(--ice)}
+
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mapfig{margin:0;background:#06101c;border:1px solid var(--sky-3);border-radius:14px;overflow:hidden;display:grid;min-width:0}
+.mapfig.big{grid-row:span 2}
+.mapfig figcaption{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--frost);padding:12px 14px 0}
+.mapfig svg{width:100%;height:auto;display:block}
+.maplegend{display:flex;flex-wrap:wrap;gap:18px;margin-top:12px;font-size:13px;color:var(--frost)}
+.maplegend span{display:flex;align-items:center;gap:8px}
+.lg{display:inline-block;width:26px;height:0;border-top:2px solid var(--aurora)}
+.lg.fly{border-top:2px dashed var(--ice)}
+.lg.night{border-top:2px dashed var(--violet)}
+.lg.dot{width:10px;height:10px;border:none;border-radius:50%;background:var(--amber)}
+
+.legs{display:grid;gap:0;margin-top:32px}
+.legday{display:grid;grid-template-columns:110px 1fr;gap:20px;padding:18px 0;border-top:1px solid var(--sky-3)}
+.legday .date{display:grid;gap:2px;align-content:start}
+.legday .dow{font-family:var(--mono);font-size:12px;color:var(--frost);letter-spacing:.1em;text-transform:uppercase}
+.legday .dn{font-family:var(--display);font-size:24px;font-weight:600;line-height:1}
+.legday .dayn{font-family:var(--mono);font-size:11px;color:var(--aurora)}
+.leglist{display:grid;gap:10px;min-width:0}
+.leg{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start}
+.mode{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;border:1px solid;white-space:nowrap;margin-top:2px}
+.mode.m-fly{color:var(--ice);border-color:var(--frost)}
+.mode.m-drive{color:var(--aurora);border-color:var(--aurora)}
+.mode.m-night{color:var(--violet);border-color:var(--violet)}
+.mode.m-stay{color:var(--amber);border-color:var(--amber)}
+.leg b{display:block;font-size:16px}
+.leg span.m{font-size:14px;color:var(--frost)}
+
+.stays{display:grid;gap:0}
+.stay{display:grid;grid-template-columns:130px 1fr;gap:20px;padding:22px 0;border-top:1px solid var(--sky-3)}
+.stay-dates{display:grid;gap:4px;align-content:start}
+.stay-dates .mono{font-size:13px;color:var(--aurora)}
+.stay-dates b{font-family:var(--display);font-size:20px;font-weight:600}
+.stay-body{display:grid;gap:8px;min-width:0}
+.stay-body .row1{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.stay-body h3{font-family:var(--body);font-size:20px;font-weight:700}
+.stay-body p{margin:0;color:var(--frost);max-width:66ch}
+.stay-body p b{color:var(--ice)}
+.stay-body .where{color:var(--ice);font-size:14px}
+.stay-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.stay-links .btn{text-decoration:none;font-size:14px;padding:8px 14px}
+.optlist{margin:0;padding-left:18px;display:grid;gap:8px;color:var(--frost)}
+.optlist b{color:var(--ice)}
+details.mini summary{cursor:pointer;color:var(--frost);font-size:14px}
+details.mini .checks{margin-top:10px}
+
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.tile{position:relative;background:var(--sky-2);border:1px solid var(--sky-3);border-radius:16px;padding:18px;display:grid;gap:8px;align-content:start;overflow:hidden}
+.tile::before{content:"";position:absolute;inset:-40% -40% auto auto;width:160px;height:160px;border-radius:50%;background:var(--glow,rgba(93,242,176,.16));filter:blur(30px);pointer-events:none}
+.tile .top{display:flex;justify-content:space-between;gap:8px;align-items:center;position:relative}
+.tile .when{font-family:var(--mono);font-size:12px;color:var(--frost)}
+.tile .price{font-family:var(--mono);font-size:12px;padding:2px 8px;border-radius:999px;border:1px solid var(--sky-3);color:var(--ice);background:var(--sky)}
+.tile h3{font-family:var(--display);font-size:19px;font-weight:600;position:relative}
+.tile p{margin:0;color:var(--frost);font-size:14px;position:relative}
+.tile .vote-chip{font-size:12px;color:var(--amber);position:relative}
+
+.decisions{display:grid;gap:14px}
+.decision{background:var(--sky-2);border:1px solid var(--sky-3);border-radius:14px;padding:18px;display:grid;gap:12px}
+.decision .dh{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.decision h3{font-family:var(--body);font-size:18px;font-weight:700}
+.decision .dd{margin:0;color:var(--frost);font-size:14px}
+.decision .state{font-family:var(--mono);font-size:12px;color:var(--frost)}
+.decision .state.done{color:var(--aurora)}
+.dopts{display:grid;gap:8px}
+.dopt{display:grid;gap:6px;text-align:left;background:var(--sky);border:1px solid var(--sky-3);border-radius:12px;padding:12px 14px;cursor:pointer;color:var(--ice);font:inherit;width:100%}
+.dopt:hover{border-color:var(--frost)}
+.dopt:focus-visible{outline:2px solid var(--aurora);outline-offset:2px}
+.dopt.mine{border-color:var(--aurora);box-shadow:0 0 0 1px var(--aurora)}
+.dopt .l1{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.dopt .lbl{font-weight:700;font-size:15px}
+.dopt .cnt{font-family:var(--mono);font-size:12px;color:var(--frost);white-space:nowrap}
+.dopt .det{font-size:13px;color:var(--frost)}
+.dopt .bar{height:6px;border-radius:3px;background:var(--sky-3);overflow:hidden}
+.dopt .bar i{display:block;height:100%;width:0;background:var(--aurora);transition:width .4s}
+.dopt.lead .bar i{background:var(--amber)}
+.dopt .who{display:flex;flex-wrap:wrap;gap:4px}
+.dopt .who .avatar{width:22px;height:22px;font-size:11px}
+.dopt .yours{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--aurora)}
+.vprog{margin-bottom:18px;font-size:15px;color:var(--frost)}
+.vprog b{color:var(--ice)}
+.vprog .track{height:8px;border-radius:4px;background:var(--sky-3);overflow:hidden;margin-top:8px;max-width:420px}
+.vprog .track i{display:block;height:100%;background:var(--aurora);width:0;transition:width .4s}
+.decide-sec .sec-head h2{font-size:clamp(22px,3.4vw,30px)}
+
+.budget-top{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:end;margin-bottom:18px}
+.sizepick{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:14px;color:var(--frost)}
+.sizepick .btn{min-width:48px;padding:8px 14px}
+.sizepick .btn.on{background:var(--aurora);color:#04261a;border-color:var(--aurora)}
+.total{display:grid;gap:2px;text-align:right}
+.total b{font-family:var(--display);font-size:clamp(28px,5vw,40px);font-weight:800;color:var(--aurora);line-height:1.1;font-variant-numeric:tabular-nums}
+.total .sub{font-size:13px;color:var(--frost)}
+.btable-wrap{overflow-x:auto;border:1px solid var(--sky-3);border-radius:14px}
+.btable{width:100%;border-collapse:collapse;font-size:15px;min-width:560px}
+.btable th{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--frost);font-weight:600;text-align:left;padding:12px 14px;background:var(--sky-2);border-bottom:1px solid var(--sky-3)}
+.btable td{padding:12px 14px;border-bottom:1px solid var(--sky-3);vertical-align:top}
+.btable tr:last-child td{border-bottom:none}
+.btable .num{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--mono);font-size:14px;white-space:nowrap}
+.btable td small{display:block;color:var(--frost);font-size:12px;margin-top:2px}
+.btable tr.sum td{background:var(--sky-2);font-weight:700}
+.btable tr.sum td.num{color:var(--aurora)}
+.btable tr.optional td{color:var(--frost)}
+.bbar{display:block;height:4px;border-radius:2px;background:var(--sky-3);margin-top:6px;overflow:hidden}
+.bbar i{display:block;height:100%;background:var(--violet)}
+.fine{font-size:13px;color:var(--frost);margin-top:12px;max-width:72ch}
+.pill.quote{color:var(--aurora)}
+.pill.est{color:var(--frost)}
+
+.ph{font-family:var(--body);font-size:17px}
+.sheet{position:fixed;inset:0;z-index:90;background:rgba(2,6,12,.7);display:grid;place-items:center;padding:16px}
+.sheet-card{background:var(--sky-2);border:1px solid var(--sky-3);border-radius:16px;padding:22px;display:grid;gap:12px;width:min(420px,100%)}
+.sheet-card h3{font-family:var(--body);font-size:20px}
+.sheet-card p{margin:0;color:var(--frost);font-size:14px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:95;background:var(--ice);color:#07111f;font-weight:600;font-size:14px;padding:10px 16px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+
+@media (max-width:640px){
+  .btable{min-width:0}
+  .btable thead{display:none}
+  .btable tr{display:grid;grid-template-columns:1fr auto;gap:6px 12px;padding:14px;border-bottom:1px solid var(--sky-3)}
+  .btable tr:last-child{border-bottom:none}
+  .btable td{padding:0;border:none}
+  .btable td:nth-child(1){grid-column:1;grid-row:1 / span 2}
+  .btable td:nth-child(2){grid-column:2;grid-row:2;text-align:right}
+  .btable td:nth-child(3){grid-column:2;grid-row:1;font-size:15px;color:var(--ice)}
+  .btable td:nth-child(4){display:none}
+  .btable tr.sum{background:var(--sky-2)}
+  .btable tr.sum td{background:none}
+}
+@media (max-width:820px){
+  .maps{grid-template-columns:1fr}
+  .mapfig.big{grid-row:auto}
+}
+@media (max-width:720px){
+  .legday,.stay{grid-template-columns:1fr;gap:10px}
+  .legday .date{grid-auto-flow:column;justify-content:start;align-items:baseline;gap:10px}
+  .stay-dates{grid-auto-flow:column;justify-content:start;align-items:baseline;gap:10px}
+  .total{text-align:left}
+}
 </style>
 </head>
 <body class="intro-lock">
@@ -349,40 +499,61 @@ body.intro-lock{overflow:hidden}
 <div class="intro-copy"><span class="k">Dec 24 · Fairbanks · 64.8°N</span><h2 id="introLine">The sky's throwing a <em>party</em>.<br>We're on the list.</h2></div>
 <button id="skip" type="button">Skip intro</button>
 </div>
-<nav class="topbar" aria-label="Trip sections">
+<nav class="topbar" aria-label="Trip pages">
   <div class="wrap">
     <a class="brand" href="#home"><i aria-hidden="true"></i><span>Alaska '26</span></a>
     <div class="tabs" id="tabs"></div>
-    <button class="menubtn" id="menubtn" type="button" aria-expanded="false" aria-controls="menu" aria-label="All sections">☰</button>
+    <button class="menubtn" id="menubtn" type="button" aria-expanded="false" aria-controls="menu" aria-label="All pages">☰</button>
   </div>
   <div class="menu" id="menu" hidden><div class="wrap" id="menuGrid"></div></div>
 </nav>
+
 <header class="hero" data-tab="home">
   <canvas id="sky" aria-hidden="true"></canvas>
   <div class="wrap">
-    <span class="eyebrow">Friends' trip · Winter 2026</span>
+    <span class="eyebrow">Friends' trip · Christmas to New Year 2026</span>
     <h1>Chasing the <em>aurora</em> in Alaska</h1>
-    <p class="lede">Christmas in a Fairbanks log cabin, a do-it-yourself hunt for the northern lights, then Girdwood and New Year's Eve in Anchorage.</p>
-    <div class="facts">
-      <span class="fact"><b>Dec 24 → Jan 2</b></span>
-      <span class="fact"><b id="heroGoing">6–10</b> <span id="heroGoingL">friends (planning for 8)</span></span>
-      <span class="fact">Fairbanks → Anchorage</span>
-      <span class="fact">No tours, our own cars</span>
-    </div>
-    <div class="countdown"><span class="n" id="cd">—</span><span class="l" id="cdl">days until we fly out of Miami</span></div>
+    <p class="lede">Ten days in the Alaskan winter: Christmas in a Fairbanks log cabin, chasing the northern lights ourselves, then Girdwood and New Year's Eve in Anchorage.</p>
+    <div class="countdown"><span class="n" id="cd">—</span><span class="l" id="cdl">days until we fly</span></div>
   </div>
   <span class="coords">64.85°N 147.97°W · inside the aurora oval</span>
 </header>
 
 <main>
-
-<section data-tab="home" id="rsvp">
+<!-- ================= HOME ================= -->
+<section data-tab="home">
   <div class="wrap">
     <div id="offline" class="offline" hidden></div>
     <div class="sec-head">
-      <span class="eyebrow">00 · Roll call</span>
+      <span class="eyebrow">The trip at a glance</span>
+      <h2>Everything in one look</h2>
+    </div>
+    <div class="glance">
+      <div class="gcard"><span class="eyebrow">When</span><b>Thu, Dec 24 → Sat, Jan 2</b><p>10 days, 9 nights in Alaska. We land in Fairbanks early on Christmas morning.</p></div>
+      <div class="gcard"><span class="eyebrow">Where</span><b>Fairbanks → Girdwood → Anchorage</b><p>5 nights up north for the aurora, 2 in a ski town, 2 in the city for New Year's Eve.</p></div>
+      <div class="gcard"><span class="eyebrow">Who</span><b><span id="whoCount">Friends</span></b><p id="whoNames">Add your name below so we know you're coming.</p></div>
+      <div class="gcard"><span class="eyebrow">Cost per person</span><b id="costHead">About $2,100 – $3,300</b><p>Estimate including flights, for 8 people sharing. <a href="#budget">See the budget →</a></p></div>
+    </div>
+    <div class="weather"><b>Weather:</b> Fairbanks is usually −10°F to −40°F at Christmas, with about 4 hours of daylight. Anchorage is milder, around 0°F to 25°F. <a href="#todo">Packing list →</a></div>
+
+    <div class="steps">
+      <h3>What you need to do now</h3>
+      <ol>
+        <li><b>Tell us if you're in.</b> Add your name just below.</li>
+        <li><b>Vote on the open decisions.</b> Each one is voted on separately, so pick what you actually want. <a href="#todo">Go to To-do →</a></li>
+        <li><b>Don't book flights yet.</b> We book together once the flights vote is settled.</li>
+        <li><b>Drop ideas and links</b> in the <a href="#stash">Stash</a>. Ideas are anonymous.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section data-tab="home" id="rsvp">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Roll call</span>
       <h2>Are you in?</h2>
-      <p>Tap your answer. You can change it any time from this phone or laptop.</p>
+      <p>No account or login needed. This phone remembers you, so you can change your answer any time.</p>
     </div>
     <div class="rsvp-grid">
       <form id="rsvpForm" class="panel" autocomplete="off">
@@ -395,12 +566,12 @@ body.intro-lock{overflow:hidden}
           <button type="button" class="btn" data-status="no">Can't make it</button>
         </div>
         <label class="field" for="rsvpNote">Anything we should know? (optional)
-          <input id="rsvpNote" maxlength="200" placeholder="Flying from a different city, arriving late…">
+          <input id="rsvpNote" maxlength="200" placeholder="Arriving late, flying from another city…">
         </label>
         <div class="row"><button class="btn primary" type="submit" id="rsvpSave">Save my answer</button></div>
         <div class="status" id="rsvpStatus"></div>
       </form>
-      <div class="rsvp-cols" id="rsvpCols">
+      <div class="rsvp-cols">
         <div class="rsvp-col going"><h3>Going <span data-count="going">0</span></h3><div data-list="going"><p class="empty">Nobody yet</p></div></div>
         <div class="rsvp-col maybe"><h3>Maybe <span data-count="maybe">0</span></h3><div data-list="maybe"><p class="empty">Nobody yet</p></div></div>
         <div class="rsvp-col no"><h3>Can't <span data-count="no">0</span></h3><div data-list="no"><p class="empty">Nobody yet</p></div></div>
@@ -409,13 +580,39 @@ body.intro-lock{overflow:hidden}
   </div>
 </section>
 
-
-<section data-tab="flights" id="flights">
+<!-- ================= TRAVEL ================= -->
+<section data-tab="travel">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">01 · Getting there</span>
-      <h2>Three flights on Alaska Airlines</h2>
-      <p>All three legs connect or start in Alaska's network, so one multi-city booking covers the whole trip.</p>
+      <span class="eyebrow">Travel</span>
+      <h2>How we get around, day by day</h2>
+      <p>Three flights and short drives. Dashed lines are flights, solid lines are drives. Maps are simplified, not to road scale.</p>
+    </div>
+    <div class="maps">
+      <figure class="mapfig big"><figcaption>The whole trip</figcaption><svg id="mapAll" role="img" aria-label="Map of Alaska showing the flight from Fairbanks to Anchorage and the drive to Girdwood"></svg></figure>
+      <figure class="mapfig"><figcaption>Fairbanks area · Dec 25 – 29</figcaption><svg id="mapFai" role="img" aria-label="Fairbanks area map with the cabin, Ester Dome, Cleary Summit, North Pole and Chena Hot Springs"></svg></figure>
+      <figure class="mapfig"><figcaption>Anchorage & Girdwood · Dec 29 – Jan 2</figcaption><svg id="mapAnc" role="img" aria-label="Anchorage area map with the airport, downtown, Turnagain Arm, the wildlife center and Girdwood"></svg></figure>
+    </div>
+    <div class="maplegend"><span><i class="lg fly"></i>Flight</span><span><i class="lg drive"></i>Drive</span><span><i class="lg night"></i>Aurora drive</span><span><i class="lg dot"></i>Where we sleep</span></div>
+
+    <div class="legs" id="legs"></div>
+
+    <div class="note">
+      <strong>Getting to Miami, and home from Tampa</strong>
+      <ul>
+        <li>The trip <b>starts in Miami</b> (about 4 hours' drive from Tampa) and <b>ends in Tampa</b>. If you drive to Miami, your car stays there. A one-way rental or a ride down works better.</li>
+        <li>We land at <b>2:48 am on Christmas morning</b>. The rental counter and the cabin host both need a heads-up.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section data-tab="travel">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Flights</span>
+      <h2>The three flights</h2>
+      <p>Not booked yet. We book once the flights vote is settled.</p>
     </div>
     <div class="passes">
       <article class="pass">
@@ -424,7 +621,7 @@ body.intro-lock{overflow:hidden}
           <div class="pass-route"><span class="iata">MIA</span><div class="path"><span>via SEA · 1h 49m</span></div><span class="iata">FAI</span></div>
           <div class="pass-times"><div>6:11 pm<small>Miami</small></div><div style="text-align:right">2:48 am<small>Fairbanks · Dec 25</small></div></div>
         </div>
-        <div class="pass-stub"><span>Lands <b>Christmas morning</b></span><span class="pill ok">Decided</span></div>
+        <div class="pass-stub"><span>Lands <b>Christmas morning</b></span><span class="pill wait">Not booked</span></div>
       </article>
       <article class="pass">
         <div class="pass-top">
@@ -432,7 +629,7 @@ body.intro-lock{overflow:hidden}
           <div class="pass-route"><span class="iata">FAI</span><div class="path"><span>nonstop · 1h 17m</span></div><span class="iata">ANC</span></div>
           <div class="pass-times"><div>7:03 am<small>Fairbanks</small></div><div style="text-align:right">8:20 am<small>Anchorage</small></div></div>
         </div>
-        <div class="pass-stub"><span>Flight <b class="mono">AS 419</b></span><span class="pill ok">Decided</span></div>
+        <div class="pass-stub"><span>Flight <b class="mono">AS 419</b></span><span class="pill wait">Not booked</span></div>
       </article>
       <article class="pass">
         <div class="pass-top">
@@ -440,270 +637,132 @@ body.intro-lock{overflow:hidden}
           <div class="pass-route"><span class="iata">ANC</span><div class="path"><span>via SEA · 1h 28m</span></div><span class="iata">TPA</span></div>
           <div class="pass-times"><div>3:15 pm<small>Anchorage</small></div><div style="text-align:right">5:40 am<small>Tampa · Jan 3</small></div></div>
         </div>
-        <div class="pass-stub"><span>Airport by <b>1:15 pm</b></span><span class="pill ok">Decided</span></div>
+        <div class="pass-stub"><span>Airport by <b>1:15 pm</b></span><span class="pill wait">Not booked</span></div>
       </article>
     </div>
-    <div class="note">
-      <strong>Plan around these</strong>
-      <ul>
-        <li><b>We leave from Miami</b>, about 4 hours from Tampa. Sort out rides down.</li>
-        <li><b>3 am landing:</b> rental counter and Airbnb host both need to know we arrive in the middle of the night.</li>
-        <li><b>Christmas Day:</b> stores are closed. Grab snacks in Seattle; the big group dinner moves to Dec 26.</li>
-      </ul>
-    </div>
+    
   </div>
 </section>
 
-<section data-tab="plan" id="days">
+<section data-tab="travel">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">02 · Day by day</span>
-      <h2>Ten days, about four hours of sun each</h2>
-      <p>The gold bar shows roughly how much daylight we get. Plan outdoor stuff in that window, aurora after 10 pm.</p>
-      <div class="legend">
-      <span><span class="pill ok">Decided</span> agreed by the group</span>
-      <span><span class="pill wait">Deciding</span> vote needed</span>
-      <span><span class="pill idea">Proposed</span> draft plan</span>
-    </div>
-    </div>
-
-    <div class="leg-label"><span class="eyebrow">Fairbanks leg</span></div>
-    <div class="days">
-      <div class="day">
-        <div class="date"><span class="dow">Thu</span><span class="dn">Dec 24</span></div>
-        <div class="body">
-          <div class="row1"><h3>Fly north</h3><span class="pill ok">Decided</span></div>
-          <p>Miami at 6:11 pm, Seattle connection, overnight into Fairbanks.</p>
-          <div class="sleep">Sleep: <b>on the plane</b></div>
-        </div>
-      </div>
-      <div class="day">
-        <div class="date"><span class="dow">Fri</span><span class="dn">Dec 25</span></div>
-        <div class="body">
-          <div class="row1"><h3>Christmas at the cabin</h3><span class="pill ok">Decided</span></div>
-          <p>Land 2:48 am, pick up both SUVs, check in around 4 am. Sleep in, snowshoe, keep meals simple.</p>
-          <div class="light" data-rise="10.98" data-set="14.68"></div>
-          <div class="night">Night: aurora from the yard, or the big aurora drive if it's clear</div>
-          <div class="sleep">Sleep: <b>Grandma & Grandpa's Cabin</b></div>
-        </div>
-      </div>
-      <div class="day">
-        <div class="date"><span class="dow">Sat</span><span class="dn">Dec 26</span></div>
-        <div class="body">
-          <div class="row1"><h3>Museum, Santa, feast</h3><span class="pill ok">Decided</span></div>
-          <p>Groceries, Museum of the North, Santa Claus House in North Pole, then the big group dinner at the cabin.</p>
-          <div class="light" data-rise="10.98" data-set="14.70"></div>
-          <div class="night">Night: aurora drive (if we didn't go on the 25th). Pack for checkout.</div>
-          <div class="sleep">Sleep: <b>Grandma & Grandpa's Cabin</b></div>
-        </div>
-      </div>
-      <div class="day deciding">
-        <div class="date"><span class="dow">Sun</span><span class="dn">Dec 27</span></div>
-        <div class="body">
-          <div class="row1"><h3>Check out, then option A, B or C</h3><span class="pill wait">Deciding</span></div>
-          <p>Where we sleep Dec 27–28 is still open. <a href="#vote">Go to the vote →</a></p>
-          <div class="light" data-rise="10.97" data-set="14.73"></div>
-        </div>
-      </div>
-      <div class="day deciding">
-        <div class="date"><span class="dow">Mon</span><span class="dn">Dec 28</span></div>
-        <div class="body">
-          <div class="row1"><h3>Chena Hot Springs day</h3><span class="pill wait">Deciding</span></div>
-          <p>Aurora Ice Museum, dog sledding, outdoor soak, dinner at the resort. Drive time depends on where we stay.</p>
-          <div class="light" data-rise="10.97" data-set="14.76"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="leg-label"><span class="eyebrow">Girdwood & Anchorage leg</span></div>
-    <div class="days">
-      <div class="day">
-        <div class="date"><span class="dow">Tue</span><span class="dn">Dec 29</span></div>
-        <div class="body">
-          <div class="row1"><h3>Hop south, Turnagain Arm</h3><span class="pill idea">Proposed</span></div>
-          <p>7:03 am flight, new cars in Anchorage, Seward Highway in daylight: Beluga Point and the Wildlife Conservation Center.</p>
-          <div class="light" data-rise="10.23" data-set="15.80"></div>
-          <div class="sleep">Sleep: <b>Girdwood chalet</b> (not booked)</div>
-        </div>
-      </div>
-      <div class="day">
-        <div class="date"><span class="dow">Wed</span><span class="dn">Dec 30</span></div>
-        <div class="body">
-          <div class="row1"><h3>Alyeska day</h3><span class="pill idea">Proposed</span></div>
-          <p>Aerial tram, skiing or snowboarding, snowshoeing, Nordic spa.</p>
-          <div class="light" data-rise="10.23" data-set="15.82"></div>
-          <div class="sleep">Sleep: <b>Girdwood chalet</b> (not booked)</div>
-        </div>
-      </div>
-      <div class="day">
-        <div class="date"><span class="dow">Thu</span><span class="dn">Dec 31</span></div>
-        <div class="body">
-          <div class="row1"><h3>New Year's Eve downtown</h3><span class="pill idea">Proposed</span></div>
-          <p>Drive to Anchorage. Free celebration 7–9 pm at the Chinook Lot (3rd Ave & E St), fireworks at 8 pm, then bars until midnight.</p>
-          <div class="light" data-rise="10.23" data-set="15.86"></div>
-          <div class="sleep">Sleep: <b>Anchorage rental</b> (not booked)</div>
-        </div>
-      </div>
-      <div class="day">
-        <div class="date"><span class="dow">Fri</span><span class="dn">Jan 1</span></div>
-        <div class="body">
-          <div class="row1"><h3>Slow New Year's Day</h3><span class="pill idea">Proposed</span></div>
-          <p>Brunch, Tony Knowles Coastal Trail, moose spotting at Kincaid Park.</p>
-          <div class="light" data-rise="10.22" data-set="15.88"></div>
-          <div class="sleep">Sleep: <b>Anchorage rental</b> (not booked)</div>
-        </div>
-      </div>
-      <div class="day">
-        <div class="date"><span class="dow">Sat</span><span class="dn">Jan 2</span></div>
-        <div class="body">
-          <div class="row1"><h3>Fly home</h3><span class="pill ok">Decided</span></div>
-          <p>Brunch, return the car, at the airport by 1:15 pm for the 3:15 pm flight.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-tab="vote" id="options">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">03 · Vote</span>
-      <h2>Where do we sleep Dec 27 & 28?</h2>
-      <p>Everyone leaves for the 7:03 am flight on Dec 29, cars back by about 6 am. Tap the one you'd pick. Everyone sees the votes live, and you can change yours any time.</p>
-    </div>
-    <div class="options" role="radiogroup" aria-label="Dec 27 to 29 options">
-      <article class="opt" tabindex="0" role="radio" aria-checked="false" data-opt="A">
-        <span class="letter">A</span>
-        <h3>Igloo night + aurora cabin</h3>
-        <div class="nights"><div><small>Dec 27</small>Igloo domes</div><div><small>Dec 28</small>Aurora cabin</div></div>
-        <div class="price"><b>~$1,200</b> + cabin<br><span style="color:var(--frost);font-size:13px">$400 per dome for 3 people, 3 domes for 8–9</span></div>
-        <ul class="proscons">
-          <li class="p">The igloo experience</li>
-          <li class="p">Chena is about 45 min from the domes</li>
-          <li class="c">Two check-ins in two days</li>
-          <li class="c">Group split across domes on night 1</li>
-        </ul>
-        <div class="tally" data-tally></div>
-      </article>
-      <article class="opt" tabindex="0" role="radio" aria-checked="false" data-opt="B">
-        <span class="letter">B</span>
-        <h3>Two nights, aurora cabin</h3>
-        <div class="nights"><div><small>Dec 27</small>Aurora cabin</div><div><small>Dec 28</small>Aurora cabin</div></div>
-        <div class="price"><b>TBD</b><br><span style="color:var(--frost);font-size:13px">Depends on the cabin we pick</span></div>
-        <ul class="proscons">
-          <li class="p">Whole group under one roof</li>
-          <li class="p">Big north-facing windows, dark skies</li>
-          <li class="c">No igloo</li>
-          <li class="c">Must check it has indoor bathrooms</li>
-        </ul>
-        <div class="tally" data-tally></div>
-      </article>
-      <article class="opt" tabindex="0" role="radio" aria-checked="false" data-opt="C">
-        <span class="letter">C</span>
-        <h3>Stay at the cabin</h3>
-        <div class="nights"><div><small>Dec 27</small>Same Airbnb</div><div><small>Dec 28</small>Same Airbnb</div></div>
-        <div class="price"><b>~$800</b> more<br><span style="color:var(--frost);font-size:13px">About $100 per person</span></div>
-        <ul class="proscons">
-          <li class="p">Cheapest, no packing</li>
-          <li class="p">10–15 min to the airport on Dec 29</li>
-          <li class="c">No igloo</li>
-          <li class="c">Chena is 1.5–2 hours each way</li>
-        </ul>
-        <div class="tally" data-tally></div>
-      </article>
-    </div>
-    <p class="pickhint" id="pickhint">Add your name in the roll call first so the group knows who voted.</p>
-  </div>
-</section>
-
-<section data-tab="stay" id="basecamp">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">04 · Basecamp</span>
-      <h2>Grandma & Grandpa's Cabin</h2>
-      <p>A real log cabin on the edge of Ester, west of Fairbanks. Dec 24, 25 and 26 nights, checkout the morning of Dec 27.</p>
-    </div>
-    <div class="split">
-      <div class="panel">
-        <div class="stats">
-          <div class="stat"><b>6</b><span>bedrooms</span></div>
-          <div class="stat"><b>11</b><span>beds</span></div>
-          <div class="stat"><b>2.5</b><span>baths</span></div>
-          <div class="stat"><b>14</b><span>guests max</span></div>
-        </div>
-        <div class="price"><b>~$1,200</b> for 3 nights · about <b style="font-size:inherit">$150</b> each for 8 people</div>
-        <p style="margin:0;color:var(--frost)">Full kitchen, dining table for 8, two-car garage to keep the SUVs warm, baseboard heat, washer and dryer, free cancellation.</p>
-        <div class="dist">
-          <div>Fairbanks airport<span class="mono">10–15 min</span></div>
-          <div>UAF · Museum of the North<span class="mono">10–15 min</span></div>
-          <div>Ester Dome lookout<span class="mono">~15 min</span></div>
-          <div>Cleary Summit<span class="mono">40–45 min</span></div>
-        </div>
-        <span class="pill wait" style="justify-self:start">Waiting on host</span>
-      </div>
-      <div class="panel">
-        <h3 style="font-family:var(--body);font-size:17px">Asking the host</h3>
-        <ul class="checks">
-          <li>Is the driveway plowed and easy to drive in winter?</li>
-          <li>Can both cars go in the garage?</li>
-          <li>Is there backup heat if the main heat fails?</li>
-          <li>Is self check-in OK around 4 am on Christmas morning?</li>
-          <li>Could you stock coffee and breakfast basics?</li>
-          <li>Is $1,200 the full total with fees and taxes?</li>
-          <li>Is there a carbon monoxide alarm?</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-tab="stay" id="wheels">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">05 · Wheels</span>
-      <h2>Two SUVs, good tires</h2>
-      <p>In Fairbanks, tires matter more than AWD. We pick up and return at Fairbanks airport, so there's no one-way fee.</p>
+      <span class="eyebrow">Cars</span>
+      <h2>Two SUVs in each city</h2>
+      <p>Fairbanks: picked up and returned at the airport (Dec 25 – 29). Anchorage: picked up at the airport (Dec 29 – Jan 2).</p>
     </div>
     <ul class="rules">
-      <li><b>Winter or studded tires</b>Non-negotiable. Confirm with the branch.</li>
-      <li><b>Engine block heater cords</b>Plug in overnight at −30°F.</li>
-      <li><b>3 am pickup on Dec 25</b>Call ahead so someone's at the counter.</li>
-      <li><b>Return by 6 am Dec 29</b>Before the 7:03 am flight.</li>
+      <li><b>Winter or studded tires</b>Matter more than AWD. Confirm when booking.</li>
+      <li><b>Engine block heater cords</b>Plug in overnight when it's −30°F.</li>
+      <li><b>3 am pickup on Dec 25</b>Call the Fairbanks counter ahead.</li>
+      <li><b>Return by 6 am on Dec 29</b>Before the 7:03 am flight.</li>
       <li><b>2–3 snow drivers</b>People comfortable on ice.</li>
-      <li><b>Skip Murphy Dome</b>Too rough for regular SUVs.</li>
     </ul>
   </div>
 </section>
 
-<section data-tab="aurora" id="aurora">
+<section data-tab="travel" class="decide-sec"><div class="wrap"><div class="sec-head"><span class="eyebrow">Decide</span><h2>Your votes for Travel</h2></div><div class="decisions" data-decisions="travel"><p class="empty">Loading votes…</p></div></div></section>
+
+<!-- ================= STAY ================= -->
+<section data-tab="stay">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">06 · The big night</span>
+      <span class="eyebrow">Stay</span>
+      <h2>Where we sleep each night</h2>
+      <p>Nothing is booked yet. Links open the listing or a search for our dates.</p>
+    </div>
+    <div class="stays">
+      <article class="stay">
+        <div class="stay-dates"><span class="mono">Dec 24 – 27</span><b>3 nights</b></div>
+        <div class="stay-body">
+          <div class="row1"><h3>Grandma & Grandpa's Cabin</h3><span class="pill wait">Not booked</span></div>
+          <p class="where">Ester, about 15 min west of Fairbanks airport</p>
+          <p>Log cabin with 6 bedrooms, 11 beds, 2.5 baths. Full kitchen, dining table for 8, two-car garage to keep the cars warm. About <b>$1,200</b> for all 3 nights.</p>
+          <div class="stay-links"><a class="btn" href="https://www.airbnb.com/rooms/1658265901523497451" target="_blank" rel="noopener">View on Airbnb ↗</a></div>
+          <details class="mini"><summary>Questions we're asking the host</summary><ul class="checks"><li>Is the driveway plowed and easy to drive in winter?</li><li>Can both cars go in the garage?</li><li>Is there backup heat?</li><li>Is self check-in OK around 4 am on Christmas morning?</li><li>Could you stock coffee and breakfast basics?</li><li>Is $1,200 the full total with fees and taxes?</li></ul></details>
+        </div>
+      </article>
+      <article class="stay">
+        <div class="stay-dates"><span class="mono">Dec 27 – 29</span><b>2 nights</b></div>
+        <div class="stay-body">
+          <div class="row1"><h3>Up for a vote: A, B or C</h3><span class="pill wait">Voting</span></div>
+          <p class="where">Fairbanks area. We leave for the airport around 5 am on Dec 29.</p>
+          <ul class="optlist">
+            <li><b>A. Igloo night + aurora cabin.</b> Glass-roof domes at a reindeer ranch, $400 per dome for 3 people, then one night in an aurora cabin. <a href="https://www.google.com/maps/search/Pleasant+Acres+Reindeer+Ranch+Alaska" target="_blank" rel="noopener">Pleasant Acres on Maps ↗</a></li>
+            <li><b>B. Two nights in an aurora cabin.</b> Big north-facing windows, dark skies. <a href="https://www.airbnb.com/s/Fairbanks--AK/homes?checkin=2026-12-27&amp;checkout=2026-12-29&amp;adults=8" target="_blank" rel="noopener">Search cabins ↗</a></li>
+            <li><b>C. Stay at the same cabin.</b> About $800 more, no packing, 15 min from the airport.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="stay">
+        <div class="stay-dates"><span class="mono">Dec 29 – 31</span><b>2 nights</b></div>
+        <div class="stay-body">
+          <div class="row1"><h3>Girdwood</h3><span class="pill wait">Voting</span></div>
+          <p class="where">Ski town 45 min south of Anchorage, along Turnagain Arm</p>
+          <p>A chalet or condo for the group, or rooms at Hotel Alyeska.</p>
+          <div class="stay-links">
+            <a class="btn" href="https://www.airbnb.com/s/Girdwood--AK/homes?checkin=2026-12-29&amp;checkout=2026-12-31&amp;adults=8" target="_blank" rel="noopener">Search chalets ↗</a>
+            <a class="btn" href="https://www.alyeskaresort.com" target="_blank" rel="noopener">Hotel Alyeska ↗</a>
+          </div>
+        </div>
+      </article>
+      <article class="stay">
+        <div class="stay-dates"><span class="mono">Dec 31 – Jan 2</span><b>2 nights</b></div>
+        <div class="stay-body">
+          <div class="row1"><h3>Downtown Anchorage</h3><span class="pill wait">Not booked</span></div>
+          <p class="where">Walking distance to the New Year's Eve fireworks at 3rd Ave & E St</p>
+          <p>A house for the group so nobody has to drive on New Year's Eve. About 15 min to the airport.</p>
+          <div class="stay-links"><a class="btn" href="https://www.airbnb.com/s/Downtown-Anchorage--AK/homes?checkin=2026-12-31&amp;checkout=2027-01-02&amp;adults=8" target="_blank" rel="noopener">Search rentals ↗</a></div>
+        </div>
+      </article>
+      <article class="stay last">
+        <div class="stay-dates"><span class="mono">Jan 2</span><b>Fly home</b></div>
+        <div class="stay-body"><div class="row1"><h3>Overnight flight to Tampa</h3></div><p class="where">Leaves Anchorage 3:15 pm, lands Tampa 5:40 am on Jan 3</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section data-tab="stay" class="decide-sec"><div class="wrap"><div class="sec-head"><span class="eyebrow">Decide</span><h2>Your votes for Stay</h2></div><div class="decisions" data-decisions="stay"><p class="empty">Loading votes…</p></div></div></section>
+
+<!-- ================= HIGHLIGHTS ================= -->
+<section data-tab="highlights">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Highlights</span>
+      <h2>What's going to be fun</h2>
+      <p><b>Free</b> costs nothing extra, <b>$</b> is a small ticket, <b>$$</b> and <b>$$$</b> are bigger extras. Check prices before going.</p>
+    </div>
+    <div class="tiles" id="tiles"></div>
+  </div>
+</section>
+
+<section data-tab="highlights" id="aurora">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">The big night</span>
       <h2>Aurora drive, 9 pm to 2 am</h2>
       <p>Dec 25 or 26, whichever is clearer. Check the forecast and cloud cover around 6–7 pm and make the call.</p>
     </div>
     <div class="split">
       <div class="route">
-        <div class="stop"><span class="t">8:30 pm</span><b>Check the sky</b><span>Aurora forecast, cloud map, fill thermoses</span></div>
+        <div class="stop"><span class="t">8:30 pm</span><b>Check the sky</b><span>Aurora forecast and cloud map, fill the thermoses</span></div>
         <div class="stop"><span class="t">9:00 pm</span><b>Leave the cabin</b><span>Both cars, full tanks</span></div>
-        <div class="stop"><span class="t">9:15 – 11:00 pm</span><b>Ester Dome</b><span>Closest hilltop, about 15 min away</span></div>
+        <div class="stop"><span class="t">9:15 – 11:00 pm</span><b>Ester Dome</b><span>A hilltop 15 min from the cabin with wide views</span></div>
         <div class="stop alt"><span class="t">11:00 pm</span><b>Stay or move?</b><span>Clear and active, stay. Cloudy or quiet, drive on.</span></div>
-        <div class="stop alt"><span class="t">11:45 pm – 1:15 am</span><b>Cleary Summit</b><span>Local favorite. Skyline Drive as a backup stop.</span></div>
+        <div class="stop alt"><span class="t">11:45 pm – 1:15 am</span><b>Cleary Summit</b><span>The local favorite, 45 min north of town</span></div>
         <div class="stop"><span class="t">2:00 am</span><b>Back at the cabin</b><span>Hot drinks, photo dump</span></div>
       </div>
       <div class="panel">
         <div class="kp">
-          <span class="eyebrow">How strong is enough? · Kp index</span>
-          <div class="kpbar" aria-label="Kp index scale from 0 to 9">
-            <div>0</div><div>1</div><div class="on">2</div><div class="on">3</div><div class="on">4</div><div class="big">5</div><div class="big">6</div><div class="big">7</div><div class="big">8</div><div class="big">9</div>
-          </div>
-          <p style="margin:0;color:var(--frost);font-size:14px">Fairbanks sits under the aurora oval, so <b style="color:var(--aurora)">Kp 2–3</b> is usually enough. Clear skies matter more than the number. Best hours are 10 pm to 2 am.</p>
+          <span class="eyebrow">How strong is enough? (Kp index)</span>
+          <div class="kpbar" aria-label="Kp index scale from 0 to 9"><div>0</div><div>1</div><div class="on">2</div><div class="on">3</div><div class="on">4</div><div class="big">5</div><div class="big">6</div><div class="big">7</div><div class="big">8</div><div class="big">9</div></div>
+          <p style="margin:0;color:var(--frost);font-size:14px">Kp is the aurora strength forecast, from 0 to 9. Fairbanks is right under the aurora, so <b style="color:var(--aurora)">Kp 2–3</b> is usually enough. Clear skies matter more than the number.</p>
         </div>
-        <ul class="checks" style="margin-top:4px">
+        <ul class="checks">
           <li>Two sober drivers who swap when tired</li>
           <li>Keep both cars in sight, cell service is patchy</li>
           <li>Park fully off the road at pullouts</li>
-          <li>Take turns warming up in the cars</li>
           <li>If it's strong at Ester Dome, stay put</li>
         </ul>
       </div>
@@ -711,10 +770,97 @@ body.intro-lock{overflow:hidden}
   </div>
 </section>
 
-<section data-tab="packing" id="packing">
+<section data-tab="highlights" class="decide-sec"><div class="wrap"><div class="sec-head"><span class="eyebrow">Decide</span><h2>Your votes for Highlights</h2></div><div class="decisions" data-decisions="highlights"><p class="empty">Loading votes…</p></div></div></section>
+
+<!-- ================= BUDGET ================= -->
+<section data-tab="budget">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">07 · Pack</span>
+      <span class="eyebrow">Budget</span>
+      <h2>What it costs each of us</h2>
+      <p>Estimates per person, from a careful low to a comfortable high. Shared costs like houses and cars are split evenly. Pick the group size to see how it changes.</p>
+    </div>
+    <div class="budget-top">
+      <div class="sizepick" role="group" aria-label="Group size"><span>Group size</span><button type="button" class="btn" data-size="6">6</button><button type="button" class="btn" data-size="8">8</button><button type="button" class="btn" data-size="10">10</button></div>
+      <div class="total"><span class="eyebrow">Per person, all in</span><b id="bTotal">—</b><span id="bTotalEx" class="sub">—</span></div>
+    </div>
+    <div class="btable-wrap"><table class="btable" id="btable">
+      <thead><tr><th>Item</th><th>Status</th><th class="num">Per person</th><th class="num">Group total</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <p class="fine">Not included: souvenirs, lift tickets, the Nordic spa, and getting to Miami. Flight prices change daily over Christmas, so they're the biggest unknown. Numbers update here as we book things.</p>
+  </div>
+</section>
+
+<!-- ================= STASH ================= -->
+<section data-tab="stash">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Stash</span>
+      <h2>Links and ideas</h2>
+      <p>Drop anything useful: places to stay, tours, restaurants, photo spots. Ideas are anonymous, so suggest freely and upvote the good ones.</p>
+    </div>
+    <div class="stash">
+      <div>
+        <form id="linkForm" class="panel" autocomplete="off">
+          <h3 class="ph">Share a link</h3>
+          <label class="field" for="linkUrl">Link<input id="linkUrl" type="url" inputmode="url" placeholder="https://…" required maxlength="600"></label>
+          <label class="field" for="linkNote">Why it's worth a look (optional)<input id="linkNote" maxlength="280" placeholder="Dog sledding with Dec 28 slots"></label>
+          <div class="row"><button class="btn primary" type="submit" id="linkSave">Add link</button></div>
+          <div class="status" id="linkStatus"></div>
+        </form>
+        <div class="links" id="links"><p class="empty">No links yet. Add the first one.</p></div>
+      </div>
+      <div>
+        <form id="ideaForm" class="panel" autocomplete="off">
+          <h3 class="ph">Suggest something, anonymously</h3>
+          <label class="field" for="ideaBody">Your idea<textarea id="ideaBody" maxlength="280" placeholder="Ice fishing on Chena Lakes?" required></textarea></label>
+          <div class="row">
+            <label class="field" for="ideaCat">Type<select id="ideaCat"><option value="activity">Activity</option><option value="food">Food</option><option value="stay">Stay</option><option value="other">Other</option></select></label>
+            <button class="btn primary" type="submit" id="ideaSave">Post idea</button>
+          </div>
+          <div class="status" id="ideaStatus">No name is attached to ideas.</div>
+        </form>
+        <div class="ideas" id="ideas"><p class="empty">No ideas yet.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TO-DO ================= -->
+<section data-tab="todo">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">To-do</span>
+      <h2>Vote on every decision</h2>
+      <p>Each decision is voted on separately, so you can agree with one and not another. Tap an option to vote, tap it again to take your vote back.</p>
+    </div>
+    <div class="vprog" id="vprog"></div>
+    <div class="decisions" data-decisions="all"><p class="empty">Loading votes…</p></div>
+  </div>
+</section>
+
+<section data-tab="todo">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Bookings</span>
+      <h2>What still needs booking</h2>
+    </div>
+    <div class="todo">
+      <div><span class="pill wait">After vote</span><span><b>Flights</b><p>All three legs, once the flights vote is settled.</p></span></div>
+      <div><span class="pill wait">Waiting</span><span><b>Fairbanks cabin</b><p>As soon as the host answers our questions.</p></span></div>
+      <div><span class="pill wait">After vote</span><span><b>Dec 27–28 stay</b><p>Option A, B or C.</p></span></div>
+      <div><span class="pill wait">To book</span><span><b>Cars in Fairbanks and Anchorage</b><p>Winter tires, 3 am pickup confirmed.</p></span></div>
+      <div><span class="pill idea">Later</span><span><b>Girdwood and Anchorage stays</b><p>Holiday week fills up, so soon.</p></span></div>
+      <div><span class="pill idea">Money</span><span><b>Splitwise and deposits</b><p>Holiday bookings need prepayment.</p></span></div>
+    </div>
+  </div>
+</section>
+
+<section data-tab="todo" id="packing">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Packing</span>
       <h2>Dress for −40°</h2>
       <p>Tick things off as you pack. Your checklist is saved on your own phone.</p>
     </div>
@@ -737,74 +883,24 @@ body.intro-lock{overflow:hidden}
         <label class="tick"><input type="checkbox" id="p11"><span>Tripod</span></label>
         <label class="tick"><input type="checkbox" id="p12"><span>Swimsuit for Chena</span></label>
         <label class="tick"><input type="checkbox" id="p13"><span>Lotion and lip balm</span></label>
-        <label class="tick"><input type="checkbox" id="p14"><span>Photo ID for the ice bar</span></label>
+        <label class="tick"><input type="checkbox" id="p14"><span>Photo ID</span></label>
       </div>
     </div>
     <div class="packprog" id="packprog">0 of 14 packed</div>
   </div>
 </section>
-
-
-<section data-tab="stash" id="stash">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">08 · The stash</span>
-      <h2>Links and ideas</h2>
-      <p>Drop anything useful: Airbnbs, tours, restaurants, photo spots. Ideas are anonymous, so suggest freely and upvote the good ones.</p>
-    </div>
-    <div class="stash">
-      <div>
-        <form id="linkForm" class="panel" autocomplete="off">
-          <h3 style="font-family:var(--body);font-size:17px">Share a link</h3>
-          <label class="field" for="linkUrl">Link
-            <input id="linkUrl" type="url" inputmode="url" placeholder="https://…" required maxlength="600">
-          </label>
-          <label class="field" for="linkNote">Why it's worth a look (optional)
-            <input id="linkNote" maxlength="280" placeholder="Dog sledding, $95 each, has Dec 28 slots">
-          </label>
-          <div class="row"><button class="btn primary" type="submit" id="linkSave">Add link</button></div>
-          <div class="status" id="linkStatus"></div>
-        </form>
-        <div class="links" id="links"><p class="empty">No links yet. Add the first one.</p></div>
-      </div>
-      <div>
-        <form id="ideaForm" class="panel" autocomplete="off">
-          <h3 style="font-family:var(--body);font-size:17px">Suggest something, anonymously</h3>
-          <label class="field" for="ideaBody">Your idea
-            <textarea id="ideaBody" maxlength="280" placeholder="Ice fishing on Chena Lakes?" required></textarea>
-          </label>
-          <div class="row">
-            <label class="field" for="ideaCat">Type
-              <select id="ideaCat"><option value="activity">Activity</option><option value="food">Food</option><option value="stay">Stay</option><option value="other">Other</option></select>
-            </label>
-            <button class="btn primary" type="submit" id="ideaSave">Post idea</button>
-          </div>
-          <div class="status" id="ideaStatus">No name is attached to ideas.</div>
-        </form>
-        <div class="ideas" id="ideas"><p class="empty">No ideas yet.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section data-tab="todo" id="todo" style="border-bottom:none">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">09 · Still to do</span>
-      <h2>Before we can relax</h2>
-    </div>
-    <div class="todo">
-      <div><span class="pill wait">Book</span><span><b>Flights</b><p>All three Alaska Airlines legs as one multi-city ticket.</p></span></div>
-      <div><span class="pill wait">Book</span><span><b>The cabin</b><p>As soon as the host answers our questions.</p></span></div>
-      <div><span class="pill wait">Book</span><span><b>Two SUVs in Fairbanks</b><p>Winter tires and a 3 am pickup confirmed.</p></span></div>
-      <div><span class="pill wait">Vote</span><span><b>Dec 27–28 stay</b><p>Option A, B or C.</p></span></div>
-      <div><span class="pill idea">Later</span><span><b>Girdwood and Anchorage stays</b><p>Plus Anchorage cars and Chena dog sledding.</p></span></div>
-      <div><span class="pill idea">Money</span><span><b>Splitwise and deposits</b><p>Holiday bookings need prepayment.</p></span></div>
-    </div>
-  </div>
-</section>
 </main>
+
+<div class="sheet" id="nameSheet" hidden role="dialog" aria-modal="true" aria-labelledby="nameSheetTitle">
+  <form class="sheet-card" id="nameSheetForm" autocomplete="off">
+    <h3 id="nameSheetTitle">What's your name?</h3>
+    <p>So friends know who voted or commented. No account needed.</p>
+    <label class="field" for="sheetName">Your name<input id="sheetName" maxlength="40" required></label>
+    <div class="row"><button class="btn primary" type="submit">Continue</button><button class="btn" type="button" id="sheetCancel">Cancel</button></div>
+  </form>
+</div>
 <footer><div class="wrap">Planned together · Fairbanks 64.8°N · Anchorage 61.2°N · see you under the lights</div></footer>
+
 <script>
 (function(){
   var NS='http://www.w3.org/2000/svg',intro=document.getElementById('intro');
@@ -912,265 +1008,317 @@ body.intro-lock{overflow:hidden}
   setTimeout(finish,still?1800:5200);
 })();
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 <script>
 (function(){
-  var TABS=[['home','Home','Roll call & countdown'],['plan','Plan','Day by day'],['flights','Flights','3 legs'],['vote','Vote','Dec 27–28 stay'],['stay','Stay & cars','Cabin and SUVs'],['aurora','Aurora night','The big drive'],['packing','Packing','Checklist'],['stash','Stash','Links & ideas'],['todo','To-do','Still to book']];
+  'use strict';
+  function $(s,r){return (r||document).querySelector(s)}
+  function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))}
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  var NS='http://www.w3.org/2000/svg';
+  function el(n,a,p,txt){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;if(p)p.appendChild(e);return e}
+  function toast(msg){var t=document.createElement('div');t.className='toast';t.setAttribute('role','status');t.textContent=msg;document.body.appendChild(t);setTimeout(function(){t.remove()},2600)}
+
+  /* ================= TABS ================= */
+  var TABS=[['home','Home','Basics & roll call'],['travel','Travel','Map & how we get around'],['stay','Stay','Where we sleep'],['highlights','Highlights','The fun stuff'],['budget','Budget','Cost per person'],['stash','Stash','Links & ideas'],['todo','To-do','Votes, bookings, packing']];
   var ids=TABS.map(function(t){return t[0]});
-  var tabs=document.getElementById('tabs'),grid=document.getElementById('menuGrid'),menu=document.getElementById('menu'),mb=document.getElementById('menubtn');
+  var tabs=$('#tabs'),grid=$('#menuGrid'),menu=$('#menu'),mb=$('#menubtn');
   TABS.forEach(function(t){
     var a=document.createElement('a');a.className='tab';a.href='#'+t[0];a.textContent=t[1];a.dataset.go=t[0];tabs.appendChild(a);
-    var m=document.createElement('a');m.href='#'+t[0];m.dataset.go=t[0];m.innerHTML=t[1]+'<small>'+t[2]+'</small>';grid.appendChild(m);
+    var m=document.createElement('a');m.href='#'+t[0];m.dataset.go=t[0];m.innerHTML=esc(t[1])+'<small>'+esc(t[2])+'</small>';grid.appendChild(m);
   });
-  // prev / next buttons at the end of each tab
+  // comments + prev/next at the end of each page
   TABS.forEach(function(t,i){
-    var secs=document.querySelectorAll('section[data-tab="'+t[0]+'"]');if(!secs.length)return;
-    var last=secs[secs.length-1].querySelector('.wrap'),nav=document.createElement('div');nav.className='nextnav';
-    if(i>0)nav.innerHTML+='<a href="#'+TABS[i-1][0]+'">← '+TABS[i-1][1]+'</a>';
-    if(i<TABS.length-1)nav.innerHTML+='<a class="fwd" href="#'+TABS[i+1][0]+'">'+TABS[i+1][1]+' →</a>';
-    last.appendChild(nav);
+    var secs=$$('section[data-tab="'+t[0]+'"]');if(!secs.length)return;
+    var host=secs[secs.length-1].querySelector('.wrap');
+    var c=document.createElement('div');c.className='pagecomments';c.dataset.page=t[0];
+    c.innerHTML='<details class="thread" open><summary><span aria-hidden="true">💬</span> <b data-n>0</b> <span data-l>comments on '+esc(t[1])+'</span></summary>'+
+      '<div class="thread-body"><div data-items><p class="empty">No comments yet. Start the conversation.</p></div>'+
+      '<form class="row" autocomplete="off"><label class="field" for="c-'+t[0]+'">Add a comment<input id="c-'+t[0]+'" maxlength="500" placeholder="Thoughts on '+esc(t[1])+'?" required></label><button class="btn primary" type="submit">Post</button></form>'+
+      '<div class="status"></div></div></details>';
+    host.appendChild(c);
+    var nav=document.createElement('div');nav.className='nextnav';
+    if(i>0)nav.innerHTML+='<a href="#'+TABS[i-1][0]+'">← '+esc(TABS[i-1][1])+'</a>';
+    if(i<TABS.length-1)nav.innerHTML+='<a class="fwd" href="#'+TABS[i+1][0]+'">'+esc(TABS[i+1][1])+' →</a>';
+    host.appendChild(nav);
   });
   function closeMenu(){menu.hidden=true;mb.setAttribute('aria-expanded','false');mb.textContent='☰'}
   mb.addEventListener('click',function(){var open=menu.hidden;menu.hidden=!open;mb.setAttribute('aria-expanded',String(open));mb.textContent=open?'✕':'☰'});
   function current(){var h=(location.hash||'').slice(1);return ids.indexOf(h)>=0?h:'home'}
   function show(scroll){
     var cur=current();
-    document.querySelectorAll('[data-tab]').forEach(function(el){el.hidden=el.dataset.tab!==cur});
-    document.querySelectorAll('[data-go]').forEach(function(a){if(a.dataset.go===cur)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
-    var act=tabs.querySelector('[aria-current]');if(act)act.scrollIntoView({block:'nearest',inline:'center'});
-    closeMenu();
-    if(scroll)window.scrollTo({top:0,behavior:'auto'});
+    $$('[data-tab]').forEach(function(x){x.hidden=x.dataset.tab!==cur});
+    $$('[data-go]').forEach(function(a){if(a.dataset.go===cur)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+    var act=tabs.querySelector('[aria-current]');if(act&&act.scrollIntoView)act.scrollIntoView({block:'nearest',inline:'center'});
+    closeMenu();if(scroll)window.scrollTo(0,0);
     var t=TABS[ids.indexOf(cur)];document.title=(cur==='home'?'':t[1]+' · ')+'Alaska Aurora Trip';
   }
   window.addEventListener('hashchange',function(){show(true)});
   show(false);
-})();
-</script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
-<script>
-(function(){
-  /* ---------- static bits ---------- */
-  var dep=new Date(2026,11,24,18,11);
-  var days=Math.ceil((dep-new Date())/86400000);
-  var cd=document.getElementById('cd'),cdl=document.getElementById('cdl');
-  if(days>0){cd.textContent=days;cdl.textContent=(days===1?'day':'days')+' until we fly out of Miami';}
-  else{cd.textContent='Now';cdl.textContent='We are in Alaska';}
 
-  function fmt(h){var H=Math.floor(h),M=Math.round((h-H)*60);if(M===60){H++;M=0}var ap=H>=12?'pm':'am';var h12=H%12||12;return h12+':'+(M<10?'0':'')+M+' '+ap}
-  document.querySelectorAll('.light').forEach(function(el){
-    var r=+el.dataset.rise,s=+el.dataset.set,len=s-r,h=Math.floor(len),m=Math.round((len-h)*60);
-    el.innerHTML='<span>'+fmt(r)+'</span><div class="lightbar" title="Approximate daylight"><i style="left:'+(r/24*100)+'%;width:'+(len/24*100)+'%"></i></div><span>'+h+'h '+m+'m light</span>';
-  });
+  /* ================= COUNTDOWN ================= */
+  var dep=new Date(2026,11,24,18,11),days=Math.ceil((dep-new Date())/86400000);
+  if(days>0){$('#cd').textContent=days;$('#cdl').textContent=(days===1?'day':'days')+' until we fly out of Miami';}else{$('#cd').textContent='Now';$('#cdl').textContent="We're in Alaska";}
 
-  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
-  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  /* ================= PACKING ================= */
+  var boxes=$$('#packs input'),prog=$('#packprog');
+  function pcount(){var n=boxes.filter(function(b){return b.checked}).length;prog.textContent=n+' of '+boxes.length+' packed'+(n===boxes.length?' · ready for the cold':'')}
+  boxes.forEach(function(b){if(get('ak-'+b.id)==='1')b.checked=true;b.addEventListener('change',function(){set('ak-'+b.id,b.checked?'1':'0');pcount()})});pcount();
 
-  var boxes=document.querySelectorAll('#packs input'),prog=document.getElementById('packprog');
-  function count(){var n=0;boxes.forEach(function(b){if(b.checked)n++});prog.textContent=n+' of '+boxes.length+' packed'+(n===boxes.length?' · ready for the cold':'');}
-  boxes.forEach(function(b){if(get('ak-'+b.id)==='1')b.checked=true;b.addEventListener('change',function(){set('ak-'+b.id,b.checked?'1':'0');count()})});
-  count();
+  /* ================= MAPS ================= */
+  function drawMap(svg,cfg){
+    var pad=22,W=cfg.w,lat0=cfg.lat[0],lat1=cfg.lat[1],lon0=cfg.lon[0],lon1=cfg.lon[1];
+    var k=Math.cos((lat0+lat1)/2*Math.PI/180),S=(W-2*pad)/((lon1-lon0)*k),H=Math.round((lat1-lat0)*S+2*pad);
+    svg.setAttribute('viewBox','0 0 '+W+' '+H);
+    function P(p){var la=p[0],lo=p[1];return [pad+(lo-lon0)*k*S, pad+(lat1-la)*S]}
+    function pt(key){return Array.isArray(key)?P(key):P(cfg.places[key].at)}
+    el('rect',{width:W,height:H,fill:'#06101c'},svg);
+    (cfg.water||[]).forEach(function(w){var d=w.pts.map(function(q,i){var a=P(q);return (i?'L':'M')+a[0].toFixed(1)+' '+a[1].toFixed(1)}).join(' ')+'Z';
+      el('path',{d:d,fill:'#0c2740',stroke:'#1d4466','stroke-width':1},svg);if(w.label){var c=P(w.labelAt);el('text',{x:c[0],y:c[1],fill:'#5b85a8','font-size':11,'font-style':'italic','text-anchor':'middle','font-family':'Figtree,system-ui,sans-serif'},svg,w.label)}});
+    (cfg.lats||[]).forEach(function(l){var y=pad+(lat1-l.v)*S;el('line',{x1:0,x2:W,y1:y,y2:y,stroke:l.arctic?'#a98bff':'#132640','stroke-width':l.arctic?1.2:1,'stroke-dasharray':l.arctic?'6 5':'0'},svg);
+      el('text',{x:W-6,y:y-5,fill:l.arctic?'#a98bff':'#4b6684','font-size':10,'text-anchor':'end','font-family':'JetBrains Mono,monospace'},svg,l.label||(l.v+'°N'))});
+    (cfg.faint||[]).forEach(function(f){var d=f.pts.map(function(q,i){var a=P(q);return (i?'L':'M')+a[0].toFixed(1)+' '+a[1].toFixed(1)}).join(' ');
+      el('path',{d:d,fill:'none',stroke:'#2a4563','stroke-width':1.5,'stroke-dasharray':'2 4'},svg);if(f.label){var c=P(f.labelAt);el('text',{x:c[0],y:c[1],fill:'#4b6684','font-size':10,'font-family':'Figtree,system-ui,sans-serif',transform:'rotate('+(f.rot||0)+' '+c[0]+' '+c[1]+')'},svg,f.label)}});
+    (cfg.peaks||[]).forEach(function(m){var c=P(m.at);el('path',{d:'M'+(c[0]-9)+' '+(c[1]+7)+' L'+c[0]+' '+(c[1]-8)+' L'+(c[0]+9)+' '+(c[1]+7)+' Z',fill:'#1a3048',stroke:'#4b6684','stroke-width':1},svg);
+      el('text',{x:c[0],y:c[1]+20,fill:'#6f8aa6','font-size':10,'text-anchor':'middle','font-family':'Figtree,system-ui,sans-serif'},svg,m.label)});
+    var colors={drive:'#5df2b0',fly:'#e6eef7',night:'#a98bff',maybe:'#ffc46b'};
+    cfg.routes.forEach(function(r){
+      var pts=r.pts.map(pt),d;
+      if(r.mode==='fly'){var a=pts[0],b=pts[pts.length-1],mx=(a[0]+b[0])/2,my=(a[1]+b[1])/2,dx=b[0]-a[0],dy=b[1]-a[1],len=Math.sqrt(dx*dx+dy*dy)||1,bend=r.bend==null?0.22:r.bend;
+        d='M'+a[0]+' '+a[1]+' Q '+(mx-dy/len*len*bend)+' '+(my+dx/len*len*bend)+' '+b[0]+' '+b[1];}
+      else d=pts.map(function(a,i){return (i?'L':'M')+a[0].toFixed(1)+' '+a[1].toFixed(1)}).join(' ');
+      el('path',{d:d,fill:'none',stroke:colors[r.mode],'stroke-width':r.mode==='fly'?1.6:2.4,'stroke-linecap':'round','stroke-linejoin':'round','stroke-dasharray':r.mode==='fly'?'6 5':(r.mode==='night'||r.mode==='maybe'?'4 4':'0'),opacity:.9},svg);
+      if(r.label){var lp=pt(r.labelAt);el('text',{x:lp[0],y:lp[1],fill:colors[r.mode],'font-size':10.5,'font-weight':600,'text-anchor':r.anchor||'middle','font-family':'JetBrains Mono,monospace','paint-order':'stroke',stroke:'#06101c','stroke-width':3},svg,r.label)}
+    });
+    (cfg.notes||[]).forEach(function(n){var c=P(n.at);el('text',{x:c[0],y:c[1],fill:'#93a7bf','font-size':10.5,'text-anchor':'start','font-family':'JetBrains Mono,monospace'},svg,n.text)});
+    Object.keys(cfg.places).forEach(function(key){
+      var p=cfg.places[key];if(p.hide)return;var c=P(p.at),sleep=p.kind==='sleep',alt=p.kind==='alt';
+      if(sleep||alt)el('circle',{cx:c[0],cy:c[1],r:9,fill:alt?'rgba(255,196,107,.12)':'rgba(255,196,107,.22)'},svg);
+      el('circle',{cx:c[0],cy:c[1],r:sleep?5:(p.kind==='air'?4.5:3.6),fill:sleep||alt?'#ffc46b':(p.kind==='air'?'#e6eef7':'#5df2b0'),stroke:'#06101c','stroke-width':1.5},svg);
+      var an=p.anchor||'r',dx=an==='r'?10:an==='l'?-10:0,dy=an==='t'?-11:an==='b'?17:4;
+      var t=el('text',{x:c[0]+dx,y:c[1]+dy,fill:sleep?'#ffe2a8':'#e6eef7','font-size':p.size||11.5,'font-weight':sleep?700:500,'text-anchor':an==='r'?'start':an==='l'?'end':'middle','font-family':'Figtree,system-ui,sans-serif','paint-order':'stroke',stroke:'#06101c','stroke-width':3.5,'stroke-linejoin':'round'},svg,p.label);
+    });
+  }
+  drawMap($('#mapAll'),{w:420,lat:[60.25,66.95],lon:[-154.6,-142.4],
+    lats:[{v:61},{v:62},{v:63},{v:64},{v:65},{v:66},{v:66.56,arctic:true,label:'Arctic Circle 66.56°N'}],
+    water:[{pts:[[61.55,-154.6],[61.5,-151.6],[61.32,-150.4],[61.24,-150.03],[61.05,-150.05],[60.98,-149.6],[60.93,-149.1],[60.9,-149.6],[60.75,-150.5],[60.5,-151.3],[60.25,-151.6],[60.25,-154.6]],label:'Cook Inlet',labelAt:[60.62,-152.9]}],
+    faint:[{pts:[[64.84,-147.72],[64.56,-149.09],[63.39,-148.95],[62.32,-150.11],[61.58,-149.44],[61.2,-149.9]],label:'Parks Hwy, 7–8 h (we fly)',labelAt:[62.75,-149.25],rot:-62}],
+    peaks:[{at:[63.07,-151.0],label:'Denali'}],
+    places:{fai:{at:[64.84,-147.72],label:'Fairbanks',kind:'sleep',anchor:'l'},chena:{at:[65.05,-146.06],label:'Chena Hot Springs',anchor:'t'},
+      anc:{at:[61.2,-149.9],label:'Anchorage',kind:'sleep',anchor:'l'},gw:{at:[60.96,-149.17],label:'Girdwood',kind:'sleep',anchor:'r'}},
+    routes:[{pts:['fai','chena'],mode:'drive'},
+      {pts:['fai','anc'],mode:'fly',bend:0.25,label:'fly Dec 29 · 1h 17m',labelAt:[63.6,-149.3],anchor:'start'},
+      {pts:['anc','gw'],mode:'drive'}],
+    notes:[{at:[66.25,-154.35],text:'In: Miami → Seattle → Fairbanks'},{at:[66.05,-154.35],text:'Out: Anchorage → Seattle → Tampa'}]});
+  drawMap($('#mapFai'),{w:420,lat:[64.69,65.12],lon:[-148.3,-145.85],
+    places:{air:{at:[64.815,-147.856],label:'Airport',kind:'air',anchor:'b'},cabin:{at:[64.852,-147.97],label:'Our cabin',kind:'sleep',anchor:'l'},
+      ester:{at:[64.88,-148.05],label:'Ester Dome',anchor:'t'},uaf:{at:[64.858,-147.835],label:'Museum',anchor:'r',size:10.5},
+      np:{at:[64.751,-147.349],label:'North Pole · Santa Claus House',anchor:'b'},cleary:{at:[65.05,-147.43],label:'Cleary Summit',anchor:'r'},
+      pa:{at:[64.86,-146.87],label:'Igloos (option A)',kind:'alt',anchor:'b'},chena:{at:[65.053,-146.056],label:'Chena Hot Springs',anchor:'l'}},
+    routes:[{pts:['cabin','ester','cleary','cabin'],mode:'night'},{pts:['air','cabin'],mode:'drive'},{pts:['cabin','uaf','np'],mode:'drive'},{pts:['uaf','pa'],mode:'maybe'},{pts:['pa','chena'],mode:'drive'}]});
+  drawMap($('#mapAnc'),{w:420,lat:[60.78,61.3],lon:[-150.25,-148.85],
+    water:[{pts:[[61.3,-150.25],[61.3,-149.98],[61.23,-149.93],[61.19,-150.02],[61.13,-150.09],[61.07,-150.02],[61.03,-149.8],[60.99,-149.6],[60.97,-149.35],[60.93,-149.17],[60.9,-149.05],[60.87,-149.0],[60.89,-149.25],[60.92,-149.55],[60.95,-149.85],[60.98,-150.1],[61.0,-150.25]],label:'Turnagain Arm',labelAt:[60.94,-149.65]}],
+    places:{air:{at:[61.174,-149.996],label:'Airport',kind:'air',anchor:'b'},dt:{at:[61.218,-149.89],label:'Downtown · NYE fireworks',kind:'sleep',anchor:'r'},
+      bel:{at:[61.0,-149.69],label:'Beluga Point',anchor:'t'},
+      awcc:{at:[60.822,-148.977],label:'Wildlife Center',anchor:'l'},gw:{at:[60.961,-149.11],label:'Girdwood · Alyeska',kind:'sleep',anchor:'t'}},
+    routes:[{pts:['air',[61.12,-149.82],'bel','gw','awcc'],mode:'drive'},{pts:['gw',[61.12,-149.82],'dt'],mode:'drive'},{pts:['dt','air'],mode:'drive'},
+      {pts:[[61.29,-149.45],'air'],mode:'fly',bend:-0.15,label:'from Fairbanks, 8:20 am Dec 29',labelAt:[61.285,-149.2],anchor:'middle'}]});
 
-  /* ---------- aurora canvas ---------- */
-  var c=document.getElementById('sky'),ctx=c.getContext('2d'),W,H,stars=[],dpr=Math.min(window.devicePixelRatio||1,2);
-  var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function size(){W=c.clientWidth;H=c.clientHeight;c.width=W*dpr;c.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
-    stars=[];var n=Math.round(W*H/2600);for(var i=0;i<n;i++)stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.2+.2,p:Math.random()*6.28})}
-  // aurora drawn small then scaled up, so it reads as a soft glow instead of stripes
-  var off=document.createElement('canvas'),octx=off.getContext('2d'),S=8;
-  function band(t,hue,yBase,amp,alpha,speed){var w=off.width,h=off.height;
-    for(var x=0;x<=w;x++){var X=x*S,y=(yBase+Math.sin(X*0.004+t*speed)*amp+Math.sin(X*0.011-t*speed*1.7)*amp*0.4)/S;
-      var hgt=(H*0.32+Math.sin(X*0.007+t*speed*0.6)*H*0.08)/S;var g=octx.createLinearGradient(0,y-hgt,0,y);
-      g.addColorStop(0,'hsla('+hue+',85%,62%,0)');g.addColorStop(0.75,'hsla('+hue+',85%,62%,'+alpha*0.5+')');g.addColorStop(1,'hsla('+hue+',90%,66%,'+alpha+')');
-      octx.fillStyle=g;octx.fillRect(x,y-hgt,1.5,hgt);}}
-  function draw(ts){var t=(ts||0)/1000;var bg=ctx.createLinearGradient(0,0,0,H);bg.addColorStop(0,'#030a14');bg.addColorStop(1,'#07111f');
-    ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
-    off.width=Math.ceil(W/S);off.height=Math.ceil(H/S);octx.globalCompositeOperation='lighter';
-    band(t,152,H*0.62,H*0.05,0.26,0.22);band(t+40,168,H*0.54,H*0.07,0.14,0.16);band(t+90,262,H*0.44,H*0.05,0.10,0.13);
-    ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(off,0,0,W,H);
-    stars.forEach(function(s){ctx.globalAlpha=.35+.35*Math.sin(t*1.5+s.p);ctx.fillStyle='#e6eef7';ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,6.28);ctx.fill()});
-    ctx.globalAlpha=1;var f=ctx.createLinearGradient(0,H*0.6,0,H);f.addColorStop(0,'rgba(7,17,31,0)');f.addColorStop(1,'rgba(7,17,31,0.95)');
-    ctx.fillStyle=f;ctx.fillRect(0,H*0.6,W,H*0.4);if(!still)requestAnimationFrame(draw);}
-  size();window.addEventListener('resize',function(){size();if(still)draw(0)});
-  if(still)draw(4000);else requestAnimationFrame(draw);
+  /* ================= TRAVEL LEGS ================= */
+  var LEGS=[
+    ['Thu','Dec 24',1,[['fly','Miami → Seattle → Fairbanks','6:11 pm → 2:48 am (Dec 25) · Alaska Airlines · 1h 49m stop in Seattle']]],
+    ['Fri','Dec 25',2,[['drive','Fairbanks airport → our cabin in Ester','About 15 min, around 3:30 am. Pick up both SUVs first.'],['night','Aurora drive (if clear)','Cabin → Ester Dome 15 min → Cleary Summit 45 min → back 45 min']]],
+    ['Sat','Dec 26',3,[['drive','Cabin → Museum of the North → North Pole','10–15 min, then about 30 min to Santa Claus House, 35 min back'],['stay','Night 3 at the cabin','Or the aurora drive, if we skipped it on the 25th']]],
+    ['Sun','Dec 27',4,[['drive','Cabin → Dec 27–28 stay','Depends on the vote. The igloos (option A) are about 50 min east.']]],
+    ['Mon','Dec 28',5,[['drive','Chena Hot Springs and back','About 45 min each way from the igloos, 1.5–2 h from the cabin']]],
+    ['Tue','Dec 29',6,[['drive','→ Fairbanks airport, return the cars','Leave around 5 am, cars back by 6 am'],['fly','Fairbanks → Anchorage','7:03 → 8:20 am · Alaska Airlines AS 419 · nonstop'],['drive','Anchorage → Beluga Point → Wildlife Center → Girdwood','About 1 h 15 min of driving along Turnagain Arm, in daylight']]],
+    ['Wed','Dec 30',7,[['stay','Girdwood day','Alyeska tram, skiing, spa. Everything is a few minutes away.']]],
+    ['Thu','Dec 31',8,[['drive','Girdwood → downtown Anchorage','About 45 min. Then walk to the fireworks, nobody drives.']]],
+    ['Fri','Jan 1',9,[['drive','Coastal Trail and Kincaid Park','About 15 min from downtown']]],
+    ['Sat','Jan 2',10,[['drive','Downtown → Anchorage airport','15 min. Return the cars, be there by 1:15 pm'],['fly','Anchorage → Seattle → Tampa','3:15 pm → 5:40 am (Jan 3) · 1h 28m stop in Seattle']]]
+  ];
+  var modeName={fly:'Fly',drive:'Drive',night:'Night',stay:'Stay'};
+  $('#legs').innerHTML=LEGS.map(function(d){return '<div class="legday"><div class="date"><span class="dayn">Day '+d[2]+'</span><span class="dow">'+d[0]+'</span><span class="dn">'+d[1]+'</span></div><div class="leglist">'+
+    d[3].map(function(l){return '<div class="leg"><span class="mode m-'+l[0]+'">'+modeName[l[0]]+'</span><div><b>'+esc(l[1])+'</b><span class="m">'+esc(l[2])+'</span></div></div>'}).join('')+'</div></div>'}).join('');
 
-  /* ---------- shared data (Supabase) ---------- */
-  var SUPABASE_URL='https://zfiipirenpjflwdmqpen.supabase.co';
-  var SUPABASE_KEY='sb_publishable_raLigp2T7AblzqnRNHoOkg_ZqFtnutm';
-  var offline=document.getElementById('offline');
-  function showOffline(msg){offline.textContent=msg;offline.hidden=false;}
-  if(!window.supabase){showOffline('Live features could not load. Check your connection and refresh.');return;}
-  var sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
-  var me=null, rsvps=[], votes=[];
+  /* ================= HIGHLIGHTS ================= */
+  var TILES=[
+    ['Dec 25','Included','Christmas in a log cabin','Cook a big dinner together, snowshoe in the yard, sleep in after the 3 am landing.','rgba(255,196,107,.18)'],
+    ['Every clear night','Free','Northern lights from the yard','Turn off the porch light and look north. Fairbanks sits right under the aurora.','rgba(93,242,176,.22)'],
+    ['Dec 25 or 26','Gas only','The big aurora drive','Hot drinks, two cars, Ester Dome then Cleary Summit until 2 am.','rgba(169,139,255,.22)','aurora'],
+    ['Dec 26','$','Museum of the North','The university museum on a hill, with Alaska history, Native art and wildlife exhibits.','rgba(124,200,255,.18)'],
+    ['Dec 26','Free','Santa Claus House, North Pole','A town actually called North Pole, the day after Christmas. Reindeer outside.','rgba(255,143,163,.2)'],
+    ['Dec 27','In the stay','Igloos at a reindeer ranch','Glass-roof domes with aurora wake-up calls. Only if we pick option A.','rgba(255,196,107,.16)','dec27'],
+    ['Dec 28','$','Hot springs at −30°F','Soak in the outdoor pool while your hair freezes. Adults only outdoors.','rgba(93,242,176,.18)','chena'],
+    ['Dec 28','$','Aurora Ice Museum','A building made of ice, kept at 25°F. Drinks served in hand-carved ice glasses.','rgba(124,200,255,.2)','chena'],
+    ['Dec 28','$$$','Dog sledding','Mush through the snowy woods at Chena. Book ahead, it sells out.','rgba(255,143,163,.18)','sled'],
+    ['Dec 29','Free','Turnagain Arm drive','One of the most scenic roads in the state, in daylight. Stop at Beluga Point.','rgba(124,200,255,.18)'],
+    ['Dec 29','$','Wildlife Conservation Center','Moose, bears, musk ox and wood bison, open all winter.','rgba(255,196,107,.16)'],
+    ['Dec 30','$$','Alyeska aerial tram & skiing','Ride up the mountain for the view, ski or snowboard if you like.','rgba(169,139,255,.2)'],
+    ['Dec 30','$$','Nordic spa','Hot pools and saunas in the snow at Girdwood. Optional.','rgba(93,242,176,.16)'],
+    ['Dec 31','Free','New Year\'s Eve fireworks','8 pm downtown, or the torchlight ski parade in Girdwood. We vote on which.','rgba(255,143,163,.2)','nye'],
+    ['Jan 1','Free','Moose spotting at Kincaid Park','Slow New Year\'s Day walk on the Coastal Trail, moose often nearby.','rgba(93,242,176,.16)']
+  ];
+  $('#tiles').innerHTML=TILES.map(function(t){return '<article class="tile" style="--glow:'+t[4]+'"><div class="top"><span class="when">'+esc(t[0])+'</span><span class="price">'+esc(t[1])+'</span></div><h3>'+esc(t[2])+'</h3><p>'+esc(t[3])+'</p>'+(t[5]?'<a class="vote-chip" href="#todo">Vote on this →</a>':'')+'</article>'}).join('');
 
-  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+  /* ================= BUDGET ================= */
+  // [item, note, status, type (pp = per person, sh = shared), low, high, optional]
+  var BUD=[
+    ['Flights (3 legs)','Christmas-week fares, Miami → Fairbanks → Anchorage → Tampa','est','pp',900,1300],
+    ['Fairbanks cabin','Dec 24–27, 3 nights, Airbnb listing price','quote','sh',1200,1200],
+    ['Dec 27–28 stay','Option C ($800) up to option A (igloos + cabin)','est','sh',800,1700],
+    ['Girdwood stay','Dec 29–31, 2 nights, chalet for the group','est','sh',1000,1600],
+    ['Anchorage stay','Dec 31–Jan 2, 2 nights over New Year\'s','est','sh',900,1400],
+    ['Cars in Fairbanks','2 SUVs, Dec 25–29, with taxes','est','sh',700,1100],
+    ['Cars in Anchorage','2 SUVs, Dec 29–Jan 2, with taxes','est','sh',560,880],
+    ['Gas','Both cities, including the aurora drive','est','sh',200,300],
+    ['Food & groceries','9 days, mostly cooking with a few dinners out','est','pp',360,540],
+    ['Activities','Hot springs, ice museum, tram, wildlife center, museum','est','pp',120,200],
+    ['Extras','Bags, tips, airport food','est','pp',60,120],
+    ['Dog sledding','Optional, only if you join','est','pp',0,150,true]
+  ];
+  var size=8;
+  function money(n){return '$'+Math.round(n).toLocaleString('en-US')}
+  function range(a,b){return Math.round(a)===Math.round(b)?money(a):money(a)+' – '+money(b)}
+  function renderBudget(){
+    $$('[data-size]').forEach(function(b){b.classList.toggle('on',+b.dataset.size===size);b.setAttribute('aria-pressed',+b.dataset.size===size)});
+    var lo=0,hi=0,loEx=0,hiEx=0,maxHi=0,rows='';
+    BUD.forEach(function(r){var pl=r[3]==='pp'?r[4]:r[4]/size,ph=r[3]==='pp'?r[5]:r[5]/size;if(ph>maxHi)maxHi=ph});
+    BUD.forEach(function(r){
+      var pl=r[3]==='pp'?r[4]:r[4]/size,ph=r[3]==='pp'?r[5]:r[5]/size,gl=r[3]==='pp'?r[4]*size:r[4],gh=r[3]==='pp'?r[5]*size:r[5];
+      if(!r[6]){lo+=pl;hi+=ph;if(r[0].indexOf('Flights')<0){loEx+=pl;hiEx+=ph}}
+      rows+='<tr'+(r[6]?' class="optional"':'')+'><td><b>'+esc(r[0])+'</b><small>'+esc(r[1])+(r[3]==='sh'?' · split '+size+' ways':'')+'</small><span class="bbar"><i style="width:'+(ph/maxHi*100).toFixed(0)+'%"></i></span></td>'+
+        '<td><span class="pill '+(r[2]==='quote'?'quote':'est')+'">'+(r[2]==='quote'?'Quoted':'Estimate')+'</span></td><td class="num">'+range(pl,ph)+'</td><td class="num">'+range(gl,gh)+'</td></tr>';
+    });
+    rows+='<tr class="sum"><td>Total per person</td><td></td><td class="num">'+range(lo,hi)+'</td><td class="num">'+range(lo*size,hi*size)+'</td></tr>';
+    $('#btable tbody').innerHTML=rows;
+    $('#bTotal').textContent=range(lo,hi);
+    $('#bTotalEx').textContent=range(loEx,hiEx)+' without flights · group of '+size;
+    if(size===8)$('#costHead').textContent='About '+range(Math.round(lo/50)*50,Math.round(hi/50)*50);
+  }
+  $$('[data-size]').forEach(function(b){b.addEventListener('click',function(){size=+b.dataset.size;renderBudget()})});
+  renderBudget();
+
+  /* ================= HERO AURORA ================= */
+  (function(){
+    var c=$('#sky'),ctx=c.getContext('2d'),W,H,stars=[],dpr=Math.min(window.devicePixelRatio||1,2),still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var off=document.createElement('canvas'),octx=off.getContext('2d'),S=8;
+    function size(){W=c.clientWidth;H=c.clientHeight;if(!W||!H)return;c.width=W*dpr;c.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);stars=[];var n=Math.round(W*H/2600);for(var i=0;i<n;i++)stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.2+.2,p:Math.random()*6.28})}
+    function band(t,hue,yBase,amp,alpha,speed){var w=off.width;for(var x=0;x<=w;x++){var X=x*S,y=(yBase+Math.sin(X*0.004+t*speed)*amp+Math.sin(X*0.011-t*speed*1.7)*amp*0.4)/S,hgt=(H*0.32+Math.sin(X*0.007+t*speed*0.6)*H*0.08)/S,g=octx.createLinearGradient(0,y-hgt,0,y);
+      g.addColorStop(0,'hsla('+hue+',85%,62%,0)');g.addColorStop(0.75,'hsla('+hue+',85%,62%,'+alpha*0.5+')');g.addColorStop(1,'hsla('+hue+',90%,66%,'+alpha+')');octx.fillStyle=g;octx.fillRect(x,y-hgt,1.5,hgt)}}
+    function draw(ts){if(!W||!H){size();if(!still)requestAnimationFrame(draw);return}var t=(ts||0)/1000,bg=ctx.createLinearGradient(0,0,0,H);bg.addColorStop(0,'#030a14');bg.addColorStop(1,'#07111f');ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+      off.width=Math.ceil(W/S);off.height=Math.ceil(H/S);octx.globalCompositeOperation='lighter';band(t,152,H*0.62,H*0.05,0.26,0.22);band(t+40,168,H*0.54,H*0.07,0.14,0.16);band(t+90,262,H*0.44,H*0.05,0.10,0.13);
+      ctx.imageSmoothingEnabled=true;ctx.drawImage(off,0,0,W,H);stars.forEach(function(s){ctx.globalAlpha=.35+.35*Math.sin(t*1.5+s.p);ctx.fillStyle='#e6eef7';ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,6.28);ctx.fill()});
+      ctx.globalAlpha=1;var f=ctx.createLinearGradient(0,H*0.6,0,H);f.addColorStop(0,'rgba(7,17,31,0)');f.addColorStop(1,'rgba(7,17,31,0.95)');ctx.fillStyle=f;ctx.fillRect(0,H*0.6,W,H*0.4);if(!still)requestAnimationFrame(draw)}
+    size();window.addEventListener('resize',function(){size();if(still)draw(4000)});window.addEventListener('hashchange',function(){setTimeout(size,0)});
+    if(still)draw(4000);else requestAnimationFrame(draw);
+  })();
+
+  /* ================= SHARED DATA (no login) ================= */
+  var offline=$('#offline');
+  function showOffline(msg){offline.textContent=msg;offline.hidden=false}
+  if(!window.supabase){showOffline('Live features could not load. Check your connection and refresh.');return}
+  var sb=window.supabase.createClient('https://zfiipirenpjflwdmqpen.supabase.co','sb_publishable_raLigp2T7AblzqnRNHoOkg_ZqFtnutm',{auth:{persistSession:false,autoRefreshToken:false}});
+  var KEY=get('ak-key');
+  if(!KEY){KEY=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,function(c){var r=Math.random()*16|0;return (c==='x'?r:(r&3|8)).toString(16)});set('ak-key',KEY)}
+  var B={me:null,members:[],decisions:[],comments:[],links:[],ideas:[]};
   var palette=['#5df2b0','#a98bff','#ffc46b','#7cc8ff','#ff8fa3','#9be38b','#f2a5ff','#ffd27a'];
   function hue(s){var h=0;s=String(s||'');for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return palette[Math.abs(h)%palette.length]}
-  function avatar(name,key){return '<span class="avatar" style="background:'+hue(key||name)+'">'+esc((name||'?').trim().charAt(0).toUpperCase())+'</span>'}
+  function avatar(name,key,title){return '<span class="avatar" title="'+esc(title||name||'')+'" style="background:'+hue(key||name)+'">'+esc((name||'?').trim().charAt(0).toUpperCase())+'</span>'}
   function ago(ts){var s=(Date.now()-new Date(ts))/1000;if(s<60)return'just now';if(s<3600)return Math.floor(s/60)+' min ago';if(s<86400)return Math.floor(s/3600)+' h ago';return new Date(ts).toLocaleDateString(undefined,{month:'short',day:'numeric'})}
-  function myName(){return (document.getElementById('rsvpName').value||get('ak-name')||'').trim()}
-  function nameFor(uid){var r=rsvps.find(function(x){return x.user_id===uid});return r?r.name:null}
-  function setStatus(id,msg,err){var el=document.getElementById(id);el.textContent=msg;el.classList.toggle('err',!!err)}
-  function friendly(e){var m=(e&&e.message)||'';if(/anonymous/i.test(m))return 'Sign-in for guests is switched off. The trip organizer needs to turn on anonymous sign-ins in Supabase.';if(/fetch|network/i.test(m))return 'No connection. Check your internet and try again.';return 'That did not save. Try again in a moment.'}
+  function meRow(){return B.members.find(function(m){return m.id===B.me})}
+  function nameOf(id){var m=B.members.find(function(x){return x.id===id});return m?m.name:'Someone'}
+  function friendly(e){var m=(e&&e.message)||'';if(/need_name/.test(m))return 'Add your name first.';if(/fetch|network|Failed/i.test(m))return 'No connection. Check your internet and try again.';return 'That did not save. Try again in a moment.'}
 
-  /* RSVP */
+  async function call(fn,args){var r=await sb.rpc(fn,Object.assign({p_key:KEY},args||{}));if(r.error)throw r.error;return r.data}
+  async function load(){try{var d=await call('trip_board');B=d;offline.hidden=true;render()}catch(e){showOffline(friendly(e))}}
+
+  // name sheet: shown when an action needs a name
+  var sheet=$('#nameSheet'),pending=null;
+  function needName(then){if(meRow()){then();return}pending=then;sheet.hidden=false;var i=$('#sheetName');i.value=get('ak-name')||'';setTimeout(function(){i.focus()},50)}
+  $('#sheetCancel').addEventListener('click',function(){sheet.hidden=true;pending=null});
+  sheet.addEventListener('click',function(e){if(e.target===sheet){sheet.hidden=true;pending=null}});
+  $('#nameSheetForm').addEventListener('submit',async function(e){e.preventDefault();var n=$('#sheetName').value.trim();if(!n)return;
+    try{await call('trip_save_me',{p_name:n,p_status:null,p_note:null});set('ak-name',n);sheet.hidden=true;await load();var f=pending;pending=null;if(f)f()}catch(err){toast(friendly(err))}});
+
+  // roll call
   var chosen=null;
-  document.getElementById('rsvpName').value=get('ak-name')||'';
-  document.querySelectorAll('[data-status]').forEach(function(b){b.addEventListener('click',function(){chosen=b.dataset.status;paintChoice()})});
-  function paintChoice(){document.querySelectorAll('[data-status]').forEach(function(b){b.className='btn'+(b.dataset.status===chosen?' sel-'+chosen:'')})}
-  document.getElementById('rsvpForm').addEventListener('submit',async function(e){
-    e.preventDefault();var name=myName();
-    if(!name){setStatus('rsvpStatus','Add your name first.',true);return}
-    if(!chosen){setStatus('rsvpStatus','Pick I\'m in, Maybe or Can\'t make it.',true);return}
-    if(!me){setStatus('rsvpStatus','Still connecting. Try again in a second.',true);return}
-    set('ak-name',name);
-    var btn=document.getElementById('rsvpSave');btn.disabled=true;
-    var r=await sb.from('rsvps').upsert({user_id:me,name:name,status:chosen,note:document.getElementById('rsvpNote').value.trim()||null,updated_at:new Date().toISOString()});
-    btn.disabled=false;
-    if(r.error)setStatus('rsvpStatus',friendly(r.error),true);else{setStatus('rsvpStatus','Saved. Thanks, '+name+'!');loadRsvps()}
+  $('#rsvpName').value=get('ak-name')||'';
+  $$('[data-status]').forEach(function(b){b.addEventListener('click',function(){chosen=b.dataset.status;paintChoice()})});
+  function paintChoice(){$$('[data-status]').forEach(function(b){b.className='btn'+(b.dataset.status===chosen?' sel-'+chosen:'')})}
+  function stat(id,msg,err){var x=$('#'+id);x.textContent=msg;x.classList.toggle('err',!!err)}
+  $('#rsvpForm').addEventListener('submit',async function(e){e.preventDefault();var n=$('#rsvpName').value.trim();
+    if(!n){stat('rsvpStatus','Add your name first.',true);return}if(!chosen){stat('rsvpStatus',"Pick I'm in, Maybe or Can't make it.",true);return}
+    var b=$('#rsvpSave');b.disabled=true;
+    try{await call('trip_save_me',{p_name:n,p_status:chosen,p_note:$('#rsvpNote').value.trim()});set('ak-name',n);stat('rsvpStatus','Saved. Thanks, '+n+'!');await load()}catch(err){stat('rsvpStatus',friendly(err),true)}b.disabled=false});
+
+  // decisions
+  document.addEventListener('click',async function(e){
+    var o=e.target.closest('[data-opt]');if(!o)return;var dec=o.dataset.dec,opt=o.dataset.opt,mine=o.classList.contains('mine');
+    needName(async function(){try{await call(mine?'trip_unvote':'trip_vote',mine?{p_decision:dec}:{p_decision:dec,p_option:opt});await load();toast(mine?'Vote removed':'Vote saved')}catch(err){toast(friendly(err))}});
   });
-  async function loadRsvps(){
-    var r=await sb.from('rsvps').select('user_id,name,status,note,updated_at').order('updated_at');
-    if(r.error)return;rsvps=r.data;
-    ['going','maybe','no'].forEach(function(s){
-      var list=rsvps.filter(function(x){return x.status===s});
-      document.querySelector('[data-count="'+s+'"]').textContent=list.length;
-      document.querySelector('[data-list="'+s+'"]').innerHTML=list.length?list.map(function(p){
-        return '<div class="person">'+avatar(p.name,p.user_id)+'<span class="who">'+esc(p.name)+(p.user_id===me?' (you)':'')+(p.note?'<small>'+esc(p.note)+'</small>':'')+'</span></div>'}).join(''):'<p class="empty">Nobody yet</p>';
-    });
-    var going=rsvps.filter(function(x){return x.status==='going'}).length;
-    if(rsvps.length){document.getElementById('heroGoing').textContent=going;document.getElementById('heroGoingL').textContent=going===1?'friend is in':'friends are in';}
-    var mine=rsvps.find(function(x){return x.user_id===me});
-    if(mine&&!chosen){chosen=mine.status;paintChoice();document.getElementById('rsvpNote').value=mine.note||'';if(!document.getElementById('rsvpName').value)document.getElementById('rsvpName').value=mine.name}
-    paintVotes();
+  // comments
+  $$('.pagecomments form').forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault();var box=f.closest('.pagecomments'),inp=f.querySelector('input'),st=box.querySelector('.status');
+    needName(async function(){try{await call('trip_add_comment',{p_page:box.dataset.page,p_body:inp.value.trim()});inp.value='';st.textContent='';await load()}catch(err){st.textContent=friendly(err)}})})});
+  document.addEventListener('click',async function(e){var b=e.target.closest('[data-del-cmt]');if(!b)return;b.disabled=true;try{await call('trip_del_comment',{p_id:+b.dataset.delCmt});await load()}catch(err){toast(friendly(err))}});
+  // links
+  $('#linkForm').addEventListener('submit',function(e){e.preventDefault();
+    var url=$('#linkUrl').value.trim(),note=$('#linkNote').value.trim();if(!/^https?:\/\//i.test(url)){stat('linkStatus','Paste a full link starting with https://',true);return}
+    needName(async function(){var b=$('#linkSave');b.disabled=true;stat('linkStatus','Fetching a preview…');var title=null,image=null;
+      try{var ctl=new AbortController(),tm=setTimeout(function(){ctl.abort()},6000);var p=await fetch('https://api.microlink.io/?url='+encodeURIComponent(url),{signal:ctl.signal});clearTimeout(tm);var j=await p.json();
+        if(j&&j.status==='success'&&j.data){title=(j.data.title||'').slice(0,200)||null;image=(j.data.image&&j.data.image.url)||(j.data.logo&&j.data.logo.url)||null;if(image&&image.length>800)image=null}}catch(err){}
+      try{await call('trip_add_link',{p_url:url,p_title:title,p_image:image,p_note:note});stat('linkStatus','Added.');$('#linkForm').reset();await load()}catch(err){stat('linkStatus',friendly(err),true)}b.disabled=false})});
+  $('#links').addEventListener('click',async function(e){var b=e.target.closest('[data-del-link]');if(!b)return;b.disabled=true;try{await call('trip_del_link',{p_id:+b.dataset.delLink});await load()}catch(err){toast(friendly(err))}});
+  // ideas
+  $('#ideaForm').addEventListener('submit',async function(e){e.preventDefault();var body=$('#ideaBody').value.trim();if(!body)return;var b=$('#ideaSave');b.disabled=true;
+    try{await call('trip_add_idea',{p_body:body,p_category:$('#ideaCat').value});stat('ideaStatus','Posted anonymously.');$('#ideaBody').value='';await load()}catch(err){stat('ideaStatus',friendly(err),true)}b.disabled=false});
+  $('#ideas').addEventListener('click',async function(e){var b=e.target.closest('[data-idea]');if(!b)return;b.disabled=true;try{await call('trip_toggle_idea',{p_id:+b.dataset.idea});await load()}catch(err){toast(friendly(err))}});
+
+  function decisionHTML(d){
+    var total=0,max=0;d.options.forEach(function(o){total+=o.voters.length;if(o.voters.length>max)max=o.voters.length});
+    var leaders=d.options.filter(function(o){return max>0&&o.voters.length===max});
+    var voted=d.options.some(function(o){return o.voters.indexOf(B.me)>=0});
+    var state=total===0?'No votes yet':(leaders.length>1?'Tied · '+total+' votes':'Leading: '+leaders[0].label+' · '+total+(total===1?' vote':' votes'));
+    return '<article class="decision"><div class="dh"><h3>'+esc(d.title)+'</h3><span class="state'+(voted?' done':'')+'">'+(voted?'✓ You voted · ':'')+esc(state)+'</span></div>'+(d.detail?'<p class="dd">'+esc(d.detail)+'</p>':'')+
+      '<div class="dopts">'+d.options.map(function(o){var n=o.voters.length,pct=total?Math.round(n/total*100):0,mine=o.voters.indexOf(B.me)>=0,lead=leaders.length===1&&leaders[0].id===o.id;
+        return '<button type="button" class="dopt'+(mine?' mine':'')+(lead?' lead':'')+'" data-dec="'+esc(d.id)+'" data-opt="'+esc(o.id)+'" aria-pressed="'+mine+'">'+
+          '<span class="l1"><span class="lbl">'+esc(o.label)+'</span><span class="cnt">'+n+(n===1?' vote':' votes')+' · '+pct+'%</span></span>'+
+          (o.detail?'<span class="det">'+esc(o.detail)+'</span>':'')+'<span class="bar"><i style="width:'+pct+'%"></i></span>'+
+          (n?'<span class="who">'+o.voters.map(function(v){return avatar(nameOf(v),v,nameOf(v))}).join('')+'</span>':'')+(mine?'<span class="yours">Your vote · tap again to undo</span>':'')+'</button>'}).join('')+'</div></article>';
   }
 
-  /* Votes */
-  var opts=document.querySelectorAll('.opt');
-  opts.forEach(function(o){
-    function go(){castVote(o.dataset.opt)}
-    o.addEventListener('click',function(e){if(e.target.closest('a,button'))return;go()});
-    o.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}});
-  });
-  async function castVote(l){
-    var hint=document.getElementById('pickhint');
-    if(!me){hint.textContent='Still connecting. Try again in a second.';return}
-    if(!nameFor(me)){hint.textContent='Add your name in the roll call at the top first, so everyone knows who voted.';document.getElementById('rsvpName').focus();return}
-    var r=await sb.from('votes').upsert({user_id:me,option:l,updated_at:new Date().toISOString()});
-    if(r.error){hint.textContent=friendly(r.error);return}
-    hint.textContent='You voted for option '+l+'. Tap another card to change it.';loadVotes();
-  }
-  async function loadVotes(){var r=await sb.from('votes').select('user_id,option');if(r.error)return;votes=r.data;paintVotes()}
-  function paintVotes(){
-    var total=votes.length,max=0,counts={A:0,B:0,C:0};
-    votes.forEach(function(v){counts[v.option]++});
-    Object.keys(counts).forEach(function(k){if(counts[k]>max)max=counts[k]});
-    var mine=(votes.find(function(v){return v.user_id===me})||{}).option;
-    opts.forEach(function(o){
-      var k=o.dataset.opt,n=counts[k],pct=total?Math.round(n/total*100):0;
-      var names=votes.filter(function(v){return v.option===k}).map(function(v){return nameFor(v.user_id)||'Someone'});
-      o.classList.toggle('picked',mine===k);o.setAttribute('aria-checked',mine===k);
-      o.classList.toggle('leader',max>0&&n===max);
-      o.querySelector('[data-tally]').innerHTML=
-        '<div class="meta"><span>'+n+(n===1?' vote':' votes')+(max>0&&n===max?' · leading':'')+'</span><span>'+pct+'%</span></div>'+
-        '<div class="bar"><i style="width:'+pct+'%"></i></div>'+
-        (names.length?'<div class="names">'+esc(names.join(', '))+'</div>':'')+
-        (mine===k?'<span class="yours">Your vote</span>':'');
-    });
+  function render(){
+    // roll call
+    var going=0;['going','maybe','no'].forEach(function(s){var list=B.members.filter(function(m){return m.status===s});if(s==='going')going=list.length;
+      $('[data-count="'+s+'"]').textContent=list.length;
+      $('[data-list="'+s+'"]').innerHTML=list.length?list.map(function(p){return '<div class="person">'+avatar(p.name,p.id)+'<span class="who">'+esc(p.name)+(p.id===B.me?' (you)':'')+(p.note?'<small>'+esc(p.note)+'</small>':'')+'</span></div>'}).join(''):'<p class="empty">Nobody yet</p>'});
+    var gn=B.members.filter(function(m){return m.status==='going'}).map(function(m){return m.name});
+    $('#whoCount').textContent=going?going+(going===1?' friend is in':' friends are in'):'Friends';
+    $('#whoNames').textContent=going?gn.join(', '):'Add your name below so we know you\'re coming.';
+    var mine=meRow();if(mine&&!chosen&&mine.status){chosen=mine.status;paintChoice();if(!$('#rsvpName').value)$('#rsvpName').value=mine.name;$('#rsvpNote').value=mine.note||''}
+    // decisions
+    $$('[data-decisions]').forEach(function(box){var pg=box.dataset.decisions;var list=B.decisions.filter(function(d){return pg==='all'||d.page===pg});box.innerHTML=list.map(decisionHTML).join('')||'<p class="empty">Nothing to decide here.</p>'});
+    var done=B.decisions.filter(function(d){return d.options.some(function(o){return o.voters.indexOf(B.me)>=0})}).length;
+    $('#vprog').innerHTML='You\'ve voted on <b>'+done+' of '+B.decisions.length+'</b> decisions.<div class="track"><i style="width:'+(B.decisions.length?done/B.decisions.length*100:0)+'%"></i></div>';
+    // comments
+    $$('.pagecomments').forEach(function(box){var list=B.comments.filter(function(c){return c.page===box.dataset.page});var label=TABS[ids.indexOf(box.dataset.page)][1];
+      box.querySelector('[data-n]').textContent=list.length;box.querySelector('[data-l]').textContent=(list.length===1?'comment on ':'comments on ')+label;
+      box.querySelector('[data-items]').innerHTML=list.length?list.map(function(c){return '<div class="cmt">'+avatar(c.name,c.member)+'<div><div class="meta"><b>'+esc(c.name)+'</b>'+ago(c.at)+(c.member===B.me?' · <button class="del" data-del-cmt="'+c.id+'">Delete</button>':'')+'</div><p>'+esc(c.body)+'</p></div></div>'}).join(''):'<p class="empty">No comments yet. Start the conversation.</p>'});
+    // links
+    function dom(u){try{return new URL(u).hostname.replace(/^www\./,'')}catch(e){return u}}
+    $('#links').innerHTML=B.links.length?B.links.map(function(l){var d=dom(l.url),img=l.image&&/^https:\/\//i.test(l.image)?l.image:null;
+      return '<div><a class="linkcard" href="'+esc(l.url)+'" target="_blank" rel="noopener noreferrer"><div class="thumb"'+(img?' style="background-image:url(&quot;'+esc(img)+'&quot;)"':'')+'>'+(img?'':esc(d.charAt(0).toUpperCase()))+'</div>'+
+        '<div class="info"><span class="d">'+esc(d)+'</span><span class="t">'+esc(l.title||d)+'</span>'+(l.note?'<span class="n">'+esc(l.note)+'</span>':'')+'<span class="by">Added by '+esc(l.name||'someone')+' · '+ago(l.at)+'</span></div></a>'+
+        (l.member===B.me?'<button class="del" data-del-link="'+l.id+'">Remove my link</button>':'')+'</div>'}).join(''):'<p class="empty">No links yet. Add the first one.</p>';
+    var cat={activity:'Activity',food:'Food',stay:'Stay',other:'Other'};
+    $('#ideas').innerHTML=B.ideas.length?B.ideas.map(function(i){return '<div class="ideacard"><button class="upv'+(i.voted?' on':'')+'" data-idea="'+i.id+'" aria-pressed="'+i.voted+'" aria-label="Upvote">▲<span>'+i.votes+'</span></button><div><span class="cat">'+esc(cat[i.category]||'Other')+(i.mine?' · yours':'')+'</span><p>'+esc(i.body)+'</p></div></div>'}).join(''):'<p class="empty">No ideas yet.</p>';
   }
 
-  /* Links with previews */
-  document.getElementById('linkForm').addEventListener('submit',async function(e){
-    e.preventDefault();if(!me){setStatus('linkStatus','Still connecting. Try again in a second.',true);return}
-    var url=document.getElementById('linkUrl').value.trim(),note=document.getElementById('linkNote').value.trim();
-    if(!/^https?:\/\//i.test(url)){setStatus('linkStatus','Paste a full link starting with https://',true);return}
-    var btn=document.getElementById('linkSave');btn.disabled=true;setStatus('linkStatus','Fetching a preview…');
-    var title=null,image=null;
-    try{var ctl=new AbortController();var tm=setTimeout(function(){ctl.abort()},6000);
-      var p=await fetch('https://api.microlink.io/?url='+encodeURIComponent(url),{signal:ctl.signal});clearTimeout(tm);
-      var j=await p.json();if(j&&j.status==='success'&&j.data){title=(j.data.title||'').slice(0,200)||null;image=(j.data.image&&j.data.image.url)||(j.data.logo&&j.data.logo.url)||null;if(image&&image.length>800)image=null}}catch(err){}
-    var r=await sb.from('links').insert({url:url,note:note||null,title:title,image:image,added_by:myName()||null});
-    btn.disabled=false;
-    if(r.error)setStatus('linkStatus',friendly(r.error),true);else{setStatus('linkStatus','Added.');document.getElementById('linkForm').reset();loadLinks()}
-  });
-  function domain(u){try{return new URL(u).hostname.replace(/^www\./,'')}catch(e){return u}}
-  async function loadLinks(){
-    var r=await sb.from('links').select('id,user_id,url,title,note,image,added_by,created_at').order('created_at',{ascending:false});if(r.error)return;
-    var box=document.getElementById('links');
-    box.innerHTML=r.data.length?r.data.map(function(l){
-      var d=domain(l.url),safeImg=l.image&&/^https:\/\//i.test(l.image)?l.image:null;
-      return '<div><a class="linkcard" href="'+esc(l.url)+'" target="_blank" rel="noopener noreferrer">'+
-        '<div class="thumb"'+(safeImg?' style="background-image:url(&quot;'+esc(safeImg)+'&quot;)"':'')+'>'+(safeImg?'':esc(d.charAt(0).toUpperCase()))+'</div>'+
-        '<div class="info"><span class="d">'+esc(d)+'</span><span class="t">'+esc(l.title||d)+'</span>'+(l.note?'<span class="n">'+esc(l.note)+'</span>':'')+
-        '<span class="by">'+(l.added_by?'Added by '+esc(l.added_by)+' · ':'')+ago(l.created_at)+'</span></div></a>'+
-        (l.user_id===me?'<button class="del" data-del-link="'+l.id+'">Remove my link</button>':'')+'</div>'}).join(''):'<p class="empty">No links yet. Add the first one.</p>';
-  }
-  document.getElementById('links').addEventListener('click',async function(e){var b=e.target.closest('[data-del-link]');if(!b)return;b.disabled=true;await sb.from('links').delete().eq('id',b.dataset.delLink);loadLinks()});
-
-  /* Anonymous ideas */
-  document.getElementById('ideaForm').addEventListener('submit',async function(e){
-    e.preventDefault();if(!me){setStatus('ideaStatus','Still connecting. Try again in a second.',true);return}
-    var body=document.getElementById('ideaBody').value.trim();if(!body)return;
-    var btn=document.getElementById('ideaSave');btn.disabled=true;
-    var r=await sb.from('ideas').insert({body:body,category:document.getElementById('ideaCat').value});
-    btn.disabled=false;
-    if(r.error)setStatus('ideaStatus',friendly(r.error),true);else{setStatus('ideaStatus','Posted anonymously.');document.getElementById('ideaBody').value='';loadIdeas()}
-  });
-  var catLabel={activity:'Activity',food:'Food',stay:'Stay',other:'Other'};
-  async function loadIdeas(){
-    var r=await sb.rpc('get_ideas');if(r.error)return;
-    document.getElementById('ideas').innerHTML=r.data.length?r.data.map(function(i){
-      return '<div class="ideacard"><button class="upv'+(i.voted?' on':'')+'" data-idea="'+i.id+'" data-voted="'+i.voted+'" aria-pressed="'+i.voted+'" aria-label="Upvote">▲<span>'+i.votes+'</span></button>'+
-        '<div><span class="cat">'+esc(catLabel[i.category]||'Other')+(i.mine?' · yours':'')+'</span><p>'+esc(i.body)+'</p></div></div>'}).join(''):'<p class="empty">No ideas yet.</p>';
-  }
-  document.getElementById('ideas').addEventListener('click',async function(e){
-    var b=e.target.closest('[data-idea]');if(!b||!me)return;b.disabled=true;
-    if(b.dataset.voted==='true')await sb.from('idea_votes').delete().eq('idea_id',b.dataset.idea).eq('user_id',me);
-    else await sb.from('idea_votes').insert({idea_id:+b.dataset.idea});
-    loadIdeas();
-  });
-
-  /* Comments under each section */
-  var sections={flights:'flights',days:'the plan',options:'the options',basecamp:'the cabin',wheels:'the cars',aurora:'the aurora night',packing:'packing',todo:'the to-do list'};
-  Object.keys(sections).forEach(function(id){
-    var sec=document.getElementById(id);if(!sec)return;
-    var d=document.createElement('details');d.className='thread';d.dataset.section=id;
-    d.innerHTML='<summary><span aria-hidden="true">💬</span> <b data-n>0</b> <span data-l>comments on '+sections[id]+'</span></summary>'+
-      '<div class="thread-body"><div data-items><p class="empty">No comments yet.</p></div>'+
-      '<form class="row" autocomplete="off"><label class="field" for="c-'+id+'">Add a comment<input id="c-'+id+'" maxlength="500" placeholder="Say something about '+sections[id]+'" required></label><button class="btn primary" type="submit">Post</button></form>'+
-      '<div class="status"></div></div>';
-    sec.querySelector('.wrap').appendChild(d);
-    d.querySelector('form').addEventListener('submit',async function(e){
-      e.preventDefault();var st=d.querySelector('.status');var name=myName();
-      if(!name){st.textContent='Add your name in the roll call at the top first.';st.classList.add('err');return}
-      if(!me){st.textContent='Still connecting. Try again in a second.';st.classList.add('err');return}
-      var inp=d.querySelector('input');var r=await sb.from('comments').insert({section:id,name:name,body:inp.value.trim()});
-      if(r.error){st.textContent=friendly(r.error);st.classList.add('err')}else{st.textContent='';st.classList.remove('err');inp.value='';loadComments()}
-    });
-  });
-  async function loadComments(){
-    var r=await sb.from('comments').select('id,user_id,section,name,body,created_at').order('created_at');if(r.error)return;
-    document.querySelectorAll('details.thread').forEach(function(d){
-      var list=r.data.filter(function(c){return c.section===d.dataset.section});
-      d.querySelector('[data-n]').textContent=list.length;
-      d.querySelector('[data-l]').textContent=(list.length===1?'comment on ':'comments on ')+sections[d.dataset.section];
-      d.querySelector('[data-items]').innerHTML=list.length?list.map(function(c){
-        return '<div class="cmt">'+avatar(c.name,c.user_id)+'<div><div class="meta"><b>'+esc(c.name)+'</b>'+ago(c.created_at)+
-          (c.user_id===me?' · <button class="del" data-del-cmt="'+c.id+'">Delete</button>':'')+'</div><p>'+esc(c.body)+'</p></div></div>'}).join(''):'<p class="empty">No comments yet.</p>';
-    });
-  }
-  document.addEventListener('click',async function(e){var b=e.target.closest('[data-del-cmt]');if(!b)return;b.disabled=true;await sb.from('comments').delete().eq('id',b.dataset.delCmt);loadComments()});
-
-  /* Boot: silent guest sign-in, then load + live updates */
-  (async function(){
-    var s=await sb.auth.getSession();
-    if(!s.data.session){var a=await sb.auth.signInAnonymously();if(a.error){showOffline(friendly(a.error));return}}
-    var u=await sb.auth.getUser();me=u.data.user&&u.data.user.id;
-    await loadRsvps();loadVotes();loadLinks();loadIdeas();loadComments();
-    sb.channel('trip').on('postgres_changes',{event:'*',schema:'public',table:'rsvps'},loadRsvps)
-      .on('postgres_changes',{event:'*',schema:'public',table:'votes'},loadVotes)
-      .on('postgres_changes',{event:'*',schema:'public',table:'links'},loadLinks)
-      .on('postgres_changes',{event:'*',schema:'public',table:'comments'},loadComments).subscribe();
-    setInterval(loadIdeas,30000);
-  })();
+  load();
+  setInterval(function(){if(!document.hidden&&sheet.hidden)load()},15000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)load()});
 })();
 </script>
 </body>
