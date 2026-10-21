@@ -253,9 +253,73 @@ details.thread[open] summary{border-bottom:1px solid var(--sky-3)}
   .coords{left:max(16px,env(safe-area-inset-left,0px));right:auto}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ---------- opening scene ---------- */
+#intro{position:fixed;inset:0;z-index:100;background:#030a14;overflow:hidden;display:grid;cursor:pointer;transition:opacity .9s ease,transform .9s cubic-bezier(.6,0,.2,1)}
+#intro.out{opacity:0;transform:translateY(-6%);pointer-events:none}
+#intro svg{position:absolute;display:block}
+#intro .ig-sky{inset:0;width:100%;height:100%}
+#intro .ig-ground{left:0;right:0;bottom:0;width:100%;height:min(58vh,380px);overflow:visible}
+@media (max-aspect-ratio:3/4){#intro .ig-ground{bottom:14vh;height:42vh}}
+.aur{opacity:0;animation:aurIn 1.6s .2s ease forwards}
+.aur path{transform-box:fill-box;transform-origin:center;animation:sway 6s ease-in-out infinite alternate}
+.aur path:nth-child(2){animation-duration:7.5s;animation-delay:-2s}
+.aur path:nth-child(3){animation-duration:9s;animation-delay:-4s}
+@keyframes aurIn{to{opacity:1}}
+@keyframes sway{0%{transform:translateX(-4%) skewX(-6deg) scaleY(.92)}100%{transform:translateX(4%) skewX(6deg) scaleY(1.08)}}
+.star{animation:tw 2.4s ease-in-out infinite alternate}
+@keyframes tw{from{opacity:.25}to{opacity:1}}
+.crew>g{opacity:0;transform:translateY(40px);animation:rise .8s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes rise{to{opacity:1;transform:translateY(0)}}
+.arm{transform-box:fill-box}
+.arm.l{transform-origin:100% 100%}.arm.r{transform-origin:0% 100%}
+.wave.l{animation:waveL 1.1s ease-in-out infinite alternate}
+.wave.r{animation:waveR 1.1s ease-in-out infinite alternate}
+@keyframes waveL{from{transform:rotate(-8deg)}to{transform:rotate(14deg)}}
+@keyframes waveR{from{transform:rotate(8deg)}to{transform:rotate(-14deg)}}
+.hop{animation:hop 1.4s ease-in-out infinite}
+@keyframes hop{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+.flake{animation:fall linear infinite}
+@keyframes fall{from{transform:translateY(-20px)}to{transform:translateY(600px)}}
+.intro-copy{position:relative;z-index:2;align-self:start;justify-self:center;text-align:center;margin-top:max(12vh,calc(env(safe-area-inset-top,0px) + 56px));padding-inline:max(16px,env(safe-area-inset-left,0px));display:grid;gap:10px;opacity:0;animation:copyIn 1s 1.9s ease forwards}
+.intro-copy .k{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--frost)}
+.intro-copy h2{font-family:var(--display);font-weight:800;font-size:clamp(30px,8vw,64px);line-height:1.05;color:var(--ice);text-wrap:balance}
+.intro-copy h2 em{font-style:normal;color:var(--aurora);text-shadow:0 0 30px rgba(93,242,176,.5)}
+@keyframes copyIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+#skip{position:absolute;z-index:3;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));font:600 13px var(--body);color:var(--ice);background:rgba(12,26,46,.7);border:1px solid var(--sky-3);border-radius:999px;padding:8px 14px;cursor:pointer;backdrop-filter:blur(4px)}
+body.intro-lock{overflow:hidden}
+@media (prefers-reduced-motion:reduce){.aur,.aur path,.star,.crew>g,.arm,.hop,.flake,.intro-copy{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
 </head>
-<body>
+<body class="intro-lock">
+<div id="intro" role="img" aria-label="Eight friends on a snowy ridge cheering under the northern lights">
+<svg class="ig-sky" viewBox="0 0 400 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="ig-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#02060d"/><stop offset=".7" stop-color="#071a2c"/><stop offset="1" stop-color="#0c2a3c"/></linearGradient>
+    <linearGradient id="ig-a1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5df2b0" stop-opacity="0"/><stop offset=".6" stop-color="#5df2b0" stop-opacity=".55"/><stop offset="1" stop-color="#b6ffd9" stop-opacity=".9"/></linearGradient>
+    <linearGradient id="ig-a2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a98bff" stop-opacity="0"/><stop offset=".7" stop-color="#a98bff" stop-opacity=".45"/><stop offset="1" stop-color="#5df2b0" stop-opacity=".5"/></linearGradient>
+    <filter id="ig-glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter>
+  </defs>
+  <rect width="400" height="560" fill="url(#ig-sky)"/>
+  <g id="ig-stars"></g>
+  <g class="aur" filter="url(#ig-glow)">
+    <path d="M-40 330 C 40 230, 120 380, 200 280 S 360 200, 440 310 L 440 140 C 360 90, 260 200, 200 160 S 40 80, -40 170 Z" fill="url(#ig-a1)"/>
+    <path d="M-40 380 C 60 300, 140 400, 230 330 S 380 280, 440 360 L 440 250 C 360 220, 280 290, 220 250 S 60 200, -40 270 Z" fill="url(#ig-a2)" opacity=".8"/>
+    <path d="M60 310 C 120 260, 200 340, 260 270 S 360 240, 400 280 L 400 200 C 330 190, 280 240, 230 210 S 120 180, 60 230 Z" fill="url(#ig-a1)" opacity=".6"/>
+  </g>
+  <g id="ig-flakes" fill="#e6eef7"></g>
+</svg>
+<svg class="ig-ground" viewBox="30 352 340 128" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+  <defs><linearGradient id="ig-snow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b3a52"/><stop offset=".25" stop-color="#0b1c2c"/><stop offset="1" stop-color="#07111f"/></linearGradient></defs>
+  <path id="ig-ridge" fill="#081624"/>
+  <g fill="#050f1a" id="ig-trees"></g>
+  <path d="M-3000 470 C -1000 455, -200 440, 0 470 C 80 440, 160 452, 220 448 S 340 438, 400 462 C 600 440, 1400 455, 3400 470 L3400 1600 L-3000 1600 Z" fill="url(#ig-snow)"/>
+  <path d="M-3000 470 C -1000 455, -200 440, 0 470 C 80 440, 160 452, 220 448 S 340 438, 400 462 C 600 440, 1400 455, 3400 470" fill="none" stroke="#5df2b0" stroke-opacity=".25" stroke-width="1.2"/>
+  <g class="crew" id="ig-crew"></g>
+</svg>
+<div class="intro-copy"><span class="k">Dec 24 · Fairbanks · 64.8°N</span><h2>Eight friends.<br>One <em>sky</em>.</h2></div>
+<button id="skip" type="button">Skip intro</button>
+</div>
 <header class="hero">
   <canvas id="sky" aria-hidden="true"></canvas>
   <div class="wrap">
@@ -707,6 +771,66 @@ details.thread[open] summary{border-bottom:1px solid var(--sky-3)}
 </section>
 </main>
 <footer><div class="wrap">Planned together · Fairbanks 64.8°N · Anchorage 61.2°N · see you under the lights</div></footer>
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg',intro=document.getElementById('intro');
+  function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+  var stars=document.getElementById('ig-stars');
+  for(var i=0;i<70;i++)el('circle',{cx:(Math.random()*400).toFixed(1),cy:(Math.random()*330).toFixed(1),r:(Math.random()*1.1+.3).toFixed(2),fill:'#e6eef7',class:'star',style:'animation-delay:'+(Math.random()*2.4).toFixed(2)+'s'},stars);
+  var rd='M-3000 600 L-3000 420';for(var rx=-3000;rx<=3400;rx+=24){rd+=' L'+rx+' '+(392+((rx*37)%23+23)%23*1.2-(Math.abs(Math.sin(rx/90))*18)).toFixed(1)}rd+=' L3400 600 Z';document.getElementById('ig-ridge').setAttribute('d',rd);
+  var trees=document.getElementById('ig-trees');var tl=[[18,462,1],[40,458,.8],[352,456,1.1],[378,462,.85],[300,450,.7],[95,452,.6]];for(var tx=-1500;tx<1900;tx+=37){if(tx>-20&&tx<420)continue;tl.push([tx,462+((tx*13)%7),.7+((tx*7)%5)/10])}
+  tl.forEach(function(t){var x=t[0],y=t[1],k=t[2];
+    el('path',{d:'M'+x+' '+(y-48*k)+' L'+(x-11*k)+' '+(y-20*k)+' L'+(x-6*k)+' '+(y-20*k)+' L'+(x-15*k)+' '+y+' L'+(x+15*k)+' '+y+' L'+(x+6*k)+' '+(y-20*k)+' L'+(x+11*k)+' '+(y-20*k)+' Z'},trees)});
+  var fl=document.getElementById('ig-flakes');
+  for(var f=0;f<40;f++)el('circle',{cx:(Math.random()*400).toFixed(1),cy:(Math.random()*-500).toFixed(1),r:(Math.random()*1.4+.4).toFixed(2),opacity:(Math.random()*.6+.3).toFixed(2),class:'flake',style:'animation-duration:'+(6+Math.random()*6).toFixed(1)+'s;animation-delay:-'+(Math.random()*8).toFixed(1)+'s'},fl);
+
+  // eight friends: g = girl, b = boy; pose: wave, point, phone, cheer
+  var C='#060d17',RIM='rgba(93,242,176,.55)';
+  var crew=[['b',64,1.02,'cheer','#ff8fa3'],['g',104,.95,'wave','#ffc46b'],['b',146,1.06,'point','#7cc8ff'],['g',184,.93,'phone','#a98bff'],['g',222,.96,'cheer','#5df2b0'],['b',262,1.04,'wave','#ffc46b'],['g',300,.94,'point','#ff8fa3'],['b',340,1.0,'cheer','#7cc8ff']];
+  var root=document.getElementById('ig-crew');
+  crew.forEach(function(p,idx){
+    var sex=p[0],x=p[1],k=p[2],pose=p[3],hat=p[4],ground=452-((x-200)*(x-200))/9000;
+    var wrap=el('g',{style:'animation-delay:'+(0.7+idx*0.09).toFixed(2)+'s'},root);
+    var g=el('g',{transform:'translate('+x+' '+ground.toFixed(1)+') scale('+k+')'},wrap);
+    var body=el('g',{class:pose==='cheer'?'hop':'',style:'animation-delay:'+(idx*.17).toFixed(2)+'s'},g);
+    var att={fill:C,stroke:RIM,'stroke-width':.8,'stroke-linejoin':'round'};
+    // legs + boots
+    el('path',Object.assign({d:'M-6 -26 L-7 -2 L-12 0 L-1 0 L-1 -26 Z M1 -26 L1 0 L12 0 L7 -2 L6 -26 Z'},att),body);
+    // parka
+    el('path',Object.assign({d:sex==='g'?'M-10 -58 Q -13 -40 -13 -26 L13 -26 Q 13 -40 10 -58 Q 0 -63 -10 -58 Z':'M-11 -58 Q -13 -42 -12 -26 L12 -26 Q 13 -42 11 -58 Q 0 -63 -11 -58 Z'},att),body);
+    // arms (upper pose)
+    function arm(side,ang,wave,extra){var a=el('g',{class:'arm '+side+(wave?' wave '+side:''),style:'animation-delay:'+(idx*.13).toFixed(2)+'s'},body);
+      var sx=side==='l'?-9:9;var inner=el('g',{transform:'translate('+sx+' -55) rotate('+ang+')'},a);
+      el('rect',Object.assign({x:-2.6,y:-24,width:5.2,height:25,rx:2.6},att),inner);
+      el('circle',Object.assign({cx:0,cy:-24,r:3.2},att),inner);
+      if(extra==='phone'){el('rect',{x:-3.5,y:-34,width:7,height:11,rx:1.2,fill:'#0c1a2e',stroke:'#e6eef7','stroke-width':.8},inner);el('rect',{x:-2.4,y:-32.8,width:4.8,height:8.4,rx:.6,fill:'#5df2b0',opacity:.85},inner)}
+      return a}
+    if(pose==='cheer'){arm('l',-28,true);arm('r',28,true)}
+    else if(pose==='wave'){arm('l',-150,false);arm('r',22,true)}
+    else if(pose==='point'){arm('l',-150,false);arm('r',38,false)}
+    else {arm('l',-150,false);arm('r',8,false,'phone')}
+    // scarf
+    el('path',{d:'M-7 -60 Q 0 -56 7 -60 L7 -57 Q 0 -53 -7 -57 Z M3 -57 L6 -46 L2 -46 Z',fill:hat,opacity:.9},body);
+    // head
+    if(sex==='g'){
+      el('path',Object.assign({d:'M-8 -70 Q -10 -56 -6 -50 L6 -50 Q 10 -56 8 -70 Z'},att),body); // long hair
+    }
+    el('circle',Object.assign({cx:0,cy:-70,r:7.5},att),body);
+    // beanie + pompom
+    el('path',{d:'M-8 -71 Q 0 -84 8 -71 Z',fill:hat},body);
+    el('rect',{x:-8.4,y:-72.5,width:16.8,height:3,rx:1.5,fill:hat,opacity:.75},body);
+    if(sex==='g')el('circle',{cx:0,cy:-82,r:3.2,fill:hat},body);
+    else el('rect',{x:-1.5,y:-83,width:3,height:3,rx:1,fill:hat},body);
+  });
+
+  var done=false;
+  function finish(){if(done)return;done=true;intro.classList.add('out');document.body.classList.remove('intro-lock');setTimeout(function(){intro.remove()},950)}
+  document.getElementById('skip').addEventListener('click',function(e){e.stopPropagation();finish()});
+  intro.addEventListener('click',finish);
+  var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  setTimeout(finish,still?1800:5200);
+})();
+</script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 <script>
 (function(){
