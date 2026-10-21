@@ -292,7 +292,7 @@ body.intro-lock{overflow:hidden}
 </style>
 </head>
 <body class="intro-lock">
-<div id="intro" role="img" aria-label="Eight friends on a snowy ridge cheering under the northern lights">
+<div id="intro" role="img" aria-label="Friends on a snowy ridge cheering under the northern lights">
 <svg class="ig-sky" viewBox="0 0 400 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
   <defs>
     <linearGradient id="ig-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#02060d"/><stop offset=".7" stop-color="#071a2c"/><stop offset="1" stop-color="#0c2a3c"/></linearGradient>
@@ -317,7 +317,7 @@ body.intro-lock{overflow:hidden}
   <path d="M-3000 470 C -1000 455, -200 440, 0 470 C 80 440, 160 452, 220 448 S 340 438, 400 462 C 600 440, 1400 455, 3400 470" fill="none" stroke="#5df2b0" stroke-opacity=".25" stroke-width="1.2"/>
   <g class="crew" id="ig-crew"></g>
 </svg>
-<div class="intro-copy"><span class="k">Dec 24 · Fairbanks · 64.8°N</span><h2>Eight friends.<br>One <em>sky</em>.</h2></div>
+<div class="intro-copy"><span class="k">Dec 24 · Fairbanks · 64.8°N</span><h2>Good friends.<br><em>Green</em> skies.</h2></div>
 <button id="skip" type="button">Skip intro</button>
 </div>
 <header class="hero">
@@ -784,7 +784,7 @@ body.intro-lock{overflow:hidden}
   var fl=document.getElementById('ig-flakes');
   for(var f=0;f<40;f++)el('circle',{cx:(Math.random()*400).toFixed(1),cy:(Math.random()*-500).toFixed(1),r:(Math.random()*1.4+.4).toFixed(2),opacity:(Math.random()*.6+.3).toFixed(2),class:'flake',style:'animation-duration:'+(6+Math.random()*6).toFixed(1)+'s;animation-delay:-'+(Math.random()*8).toFixed(1)+'s'},fl);
 
-  // eight friends: g = girl, b = boy; pose: wave, point, phone, cheer
+  // the crew: g = girl, b = boy; pose: wave, point, phone, cheer
   var C='#060d17',RIM='rgba(93,242,176,.55)';
   var crew=[['b',64,1.02,'cheer','#ff8fa3'],['g',104,.95,'wave','#ffc46b'],['b',146,1.06,'point','#7cc8ff'],['g',184,.93,'phone','#a98bff'],['g',222,.96,'cheer','#5df2b0'],['b',262,1.04,'wave','#ffc46b'],['g',300,.94,'point','#ff8fa3'],['b',340,1.0,'cheer','#7cc8ff']];
   var root=document.getElementById('ig-crew');
