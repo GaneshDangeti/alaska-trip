@@ -523,6 +523,83 @@ details.mini .checks{margin-top:10px}
 .moditem>div{min-width:0;overflow-wrap:anywhere}
 .modh{font-family:var(--body);font-size:16px;font-weight:700;margin:12px 0 4px}
 @media (max-width:640px){.journey{padding-left:34px}.journey::before{left:9px}.jday::before{left:-32px}}
+
+/* ---------- simple v5 ---------- */
+.s-wrap{max-width:760px}
+section[data-tab]{padding-block:40px}
+.hero .wrap{padding-block:56px 40px;gap:18px}
+.hero h1{font-size:clamp(36px,8vw,72px)}
+.h{font-family:var(--display);font-size:clamp(24px,4vw,32px);font-weight:600;margin:0 0 6px}
+.sub{color:var(--frost);margin:0 0 20px;font-size:15px}
+.card{background:var(--sky-2);border:1px solid var(--sky-3);border-radius:16px;padding:20px;display:grid;gap:14px}
+.facts3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.facts3 div{background:var(--sky-2);border:1px solid var(--sky-3);border-radius:14px;padding:14px;display:grid;gap:2px;min-width:0}
+.facts3 small{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--frost)}
+.facts3 b{font-size:16px;line-height:1.3}
+.rsvp form{display:grid;gap:12px}
+.people{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:8px;background:var(--sky);border:1px solid var(--sky-3);border-radius:999px;padding:4px 12px 4px 4px;font-size:14px}
+.chip .avatar{width:24px;height:24px;font-size:12px}
+.chip.maybe{border-color:rgba(255,196,107,.5)}
+.chip.no{opacity:.55}
+.chip i{font-style:normal;font-size:12px;color:var(--frost)}
+
+.days{display:grid;gap:8px}
+.day2{background:var(--sky-2);border:1px solid var(--sky-3);border-radius:14px}
+.day2>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:64px 36px 1fr auto;gap:12px;align-items:center;padding:12px 14px}
+.day2>summary::-webkit-details-marker{display:none}
+.day2 .d{font-family:var(--mono);font-size:13px;color:var(--aurora);line-height:1.2}
+.day2 .ib{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:rgba(93,242,176,.1);color:var(--aurora)}
+.day2.fly .ib{background:rgba(230,238,247,.08);color:var(--ice)}
+.day2.night .ib{background:rgba(169,139,255,.14);color:var(--violet)}
+.day2 .w{min-width:0}
+.day2 .w b{display:block;font-size:16px;line-height:1.3}
+.day2 .w span{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--amber);margin-top:2px}
+.day2 .w span .ico{width:14px;height:14px}
+.day2 .chev{color:var(--frost);transition:transform .2s}
+.day2[open] .chev{transform:rotate(90deg)}
+.day2 ul{margin:0;padding:0 16px 14px 126px;list-style:none;display:grid;gap:6px;color:var(--frost);font-size:14px}
+.day2 ul li::before{content:"·";color:var(--aurora);margin-right:8px}
+
+.staylist{display:grid;gap:10px}
+.stay2{display:grid;grid-template-columns:110px 1fr;gap:14px;background:var(--sky-2);border:1px solid var(--sky-3);border-radius:14px;padding:16px}
+.stay2 .dt{font-family:var(--mono);font-size:13px;color:var(--aurora)}
+.stay2 .dt small{display:block;color:var(--frost);font-size:12px;margin-top:2px}
+.stay2 b{font-size:17px;display:block}
+.stay2 p{margin:2px 0 0;color:var(--frost);font-size:14px}
+.stay2 .row{margin-top:10px;gap:8px;align-items:center}
+.stay2 .btn{text-decoration:none;font-size:14px;padding:7px 14px}
+.stay2 .tag{font-size:12px;color:var(--amber)}
+.stay2>div{min-width:0}
+
+.tiles{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+.tile h3{font-size:17px}
+
+.costtop{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.costtop b{font-family:var(--display);font-size:clamp(30px,7vw,44px);font-weight:800;color:var(--aurora);font-variant-numeric:tabular-nums}
+.costlist{display:grid;gap:0;background:var(--sky-2);border:1px solid var(--sky-3);border-radius:14px;overflow:hidden}
+.costlist div{display:flex;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid var(--sky-3);font-size:15px}
+.costlist div:last-child{border-bottom:none}
+.costlist span:last-child{font-family:var(--mono);font-size:14px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.costlist .opt{color:var(--frost)}
+.costlist .tot{background:var(--sky);font-weight:700}
+.costlist .tot span:last-child{color:var(--aurora)}
+
+.decision{padding:16px;gap:10px}
+.decision h3{font-size:17px}
+.dopt{padding:10px 12px}
+
+.pagecomments{margin-top:28px}
+.pagecomments details.thread{margin-top:0;background:transparent}
+.pagecomments details.thread:not([open]){display:inline-block;border-radius:999px}
+.pagecomments details.thread:not([open]) summary{padding:8px 14px}
+@media (max-width:560px){
+  .facts3{grid-template-columns:1fr}
+  .day2>summary{grid-template-columns:52px 32px 1fr auto;gap:10px;padding:12px}
+  .day2 .ib{width:32px;height:32px}
+  .day2 ul{padding-left:16px}
+  .stay2{grid-template-columns:1fr;gap:6px}
+}
 </style>
 </head>
 <body class="intro-lock">
@@ -558,198 +635,122 @@ details.mini .checks{margin-top:10px}
   <div class="wrap">
     <a class="brand" href="#home"><i aria-hidden="true"></i><span>Alaska '26</span></a>
     <div class="tabs" id="tabs"></div>
-    <button class="menubtn" id="menubtn" type="button" aria-expanded="false" aria-controls="menu" aria-label="All pages">☰</button>
   </div>
-  <div class="menu" id="menu" hidden><div class="wrap" id="menuGrid"></div></div>
 </nav>
 
 <header class="hero" data-tab="home">
   <canvas id="sky" aria-hidden="true"></canvas>
   <div class="wrap">
-    <span class="eyebrow" data-c="trip.eyebrow"></span>
     <h1 id="heroTitle"></h1>
-    <p class="lede" data-c="trip.lede"></p>
+    <p class="lede" id="heroSub"></p>
     <div class="countdown"><span class="n" id="cd">—</span><span class="l" id="cdl"></span></div>
   </div>
-  <span class="coords" data-c="trip.coords"></span>
 </header>
 
 <main>
-<!-- HOME -->
 <section data-tab="home">
-  <div class="wrap">
+  <div class="wrap s-wrap">
     <div id="offline" class="offline" hidden></div>
-    <div class="sec-head"><span class="eyebrow">The trip at a glance</span><h2>Everything in one look</h2></div>
-    <div class="glance" id="glance"></div>
-    <div class="weather" id="weather"></div>
-    <div class="steps"><h3>What you need to do now</h3><ol id="steps"></ol></div>
-  </div>
-</section>
-<section data-tab="home" id="rsvp">
-  <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Roll call</span><h2>Are you in?</h2><p>No account or login needed. This phone remembers you, so you can change your answer any time.</p></div>
-    <div class="rsvp-grid">
-      <form id="rsvpForm" class="panel" autocomplete="off">
+    <div class="facts3" id="facts"></div>
+    <div class="card rsvp">
+      <h2 class="h">Are you in?</h2>
+      <form id="rsvpForm" autocomplete="off">
         <label class="field" for="rsvpName">Your name<input id="rsvpName" maxlength="40" placeholder="e.g. Duggu" required></label>
         <div class="row" role="group" aria-label="Your answer">
-          <button type="button" class="btn" data-status="going">I'm in</button>
-          <button type="button" class="btn" data-status="maybe">Maybe</button>
-          <button type="button" class="btn" data-status="no">Can't make it</button>
+          <button type="submit" class="btn" data-status="going">I'm in</button>
+          <button type="submit" class="btn" data-status="maybe">Maybe</button>
+          <button type="submit" class="btn" data-status="no">Can't</button>
         </div>
-        <label class="field" for="rsvpNote">Anything we should know? (optional)<input id="rsvpNote" maxlength="200" placeholder="Arriving late, flying from another city…"></label>
-        <div class="row"><button class="btn primary" type="submit" id="rsvpSave">Save my answer</button></div>
         <div class="status" id="rsvpStatus"></div>
       </form>
-      <div class="rsvp-cols">
-        <div class="rsvp-col going"><h3>Going <span data-count="going">0</span></h3><div data-list="going"><p class="empty">Nobody yet</p></div></div>
-        <div class="rsvp-col maybe"><h3>Maybe <span data-count="maybe">0</span></h3><div data-list="maybe"><p class="empty">Nobody yet</p></div></div>
-        <div class="rsvp-col no"><h3>Can't <span data-count="no">0</span></h3><div data-list="no"><p class="empty">Nobody yet</p></div></div>
-      </div>
+      <div class="people" id="people"></div>
     </div>
   </div>
 </section>
 
-<!-- TRAVEL -->
-<section data-tab="travel">
-  <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Travel</span><h2>The journey, day by day</h2><p>How we get from place to place, from takeoff in Miami to landing back in Tampa.</p></div>
-    <div class="routestrip" id="route" aria-label="Route overview"></div>
-    <div class="journey" id="journey"></div>
-    <div class="note" id="travelNote"></div>
+<section data-tab="plan">
+  <div class="wrap s-wrap">
+    <h2 class="h">Day by day</h2>
+    <p class="sub">Tap a day for details.</p>
+    <div class="days" id="days"></div>
   </div>
 </section>
-<section data-tab="travel">
-  <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Flights</span><h2>The flights</h2></div>
-    <div class="passes" id="flights"></div>
-  </div>
-</section>
-<section data-tab="travel">
-  <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Cars</span><h2 id="carsTitle"></h2><p id="carsIntro"></p></div>
-    <ul class="rules" id="carsRules"></ul>
-  </div>
-</section>
-<section data-tab="travel" class="decide-sec"><div class="wrap"><div class="sec-head"><span class="eyebrow">Decide</span><h2>Your votes for Travel</h2></div><div class="decisions" data-decisions="travel"><p class="empty">Loading votes…</p></div></div></section>
 
-<!-- STAY -->
 <section data-tab="stay">
-  <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Stay</span><h2>Where we sleep each night</h2><p>Links open the listing or a search for our dates.</p></div>
-    <div class="stays" id="stays"></div>
+  <div class="wrap s-wrap">
+    <h2 class="h">Where we sleep</h2>
+    <div class="staylist" id="stays"></div>
   </div>
 </section>
-<section data-tab="stay" class="decide-sec"><div class="wrap"><div class="sec-head"><span class="eyebrow">Decide</span><h2>Your votes for Stay</h2></div><div class="decisions" data-decisions="stay"><p class="empty">Loading votes…</p></div></div></section>
 
-<!-- HIGHLIGHTS -->
-<section data-tab="highlights">
-  <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Highlights</span><h2>What's going to be fun</h2><p><b>Free</b> costs nothing extra, <b>$</b> is a small ticket, <b>$$</b> and <b>$$$</b> are bigger extras. Check prices before going.</p></div>
+<section data-tab="fun">
+  <div class="wrap s-wrap">
+    <h2 class="h">The fun stuff</h2>
     <div class="tiles" id="tiles"></div>
   </div>
 </section>
-<section data-tab="highlights">
-  <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">The big night</span><h2 id="auroraTitle"></h2><p id="auroraIntro"></p></div>
-    <div class="split">
-      <div class="route" id="auroraStops"></div>
-      <div class="panel">
-        <div class="kp">
-          <span class="eyebrow">How strong is enough? (Kp index)</span>
-          <div class="kpbar" aria-label="Kp index scale from 0 to 9"><div>0</div><div>1</div><div class="on">2</div><div class="on">3</div><div class="on">4</div><div class="big">5</div><div class="big">6</div><div class="big">7</div><div class="big">8</div><div class="big">9</div></div>
-          <p style="margin:0;color:var(--frost);font-size:14px">Kp is the aurora strength forecast, from 0 to 9. Fairbanks is right under the aurora, so <b style="color:var(--aurora)">Kp 2–3</b> is usually enough. Clear skies matter more than the number.</p>
-        </div>
-        <ul class="checks" id="auroraTips"></ul>
-      </div>
-    </div>
-  </div>
-</section>
-<section data-tab="highlights" class="decide-sec"><div class="wrap"><div class="sec-head"><span class="eyebrow">Decide</span><h2>Your votes for Highlights</h2></div><div class="decisions" data-decisions="highlights"><p class="empty">Loading votes…</p></div></div></section>
 
-<!-- BUDGET -->
-<section data-tab="budget">
-  <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Budget</span><h2>What it costs each of us</h2><p>Estimates per person, from a careful low to a comfortable high. Shared costs like houses and cars are split evenly. Pick the group size to see how it changes.</p></div>
-    <div class="budget-top">
-      <div class="sizepick" role="group" aria-label="Group size"><span>Group size</span><button type="button" class="btn" data-size="6">6</button><button type="button" class="btn" data-size="8">8</button><button type="button" class="btn" data-size="10">10</button></div>
-      <div class="total"><span class="eyebrow">Per person, all in</span><b id="bTotal">—</b><span id="bTotalEx" class="sub">—</span></div>
+<section data-tab="cost">
+  <div class="wrap s-wrap">
+    <h2 class="h">Cost per person</h2>
+    <div class="costtop">
+      <b id="bTotal">—</b>
+      <div class="sizepick" role="group" aria-label="Group size"><span>People</span><button type="button" class="btn" data-size="6">6</button><button type="button" class="btn" data-size="8">8</button><button type="button" class="btn" data-size="10">10</button></div>
     </div>
-    <div class="btable-wrap"><table class="btable" id="btable"><thead><tr><th>Item</th><th>Status</th><th class="num">Per person</th><th class="num">Group total</th></tr></thead><tbody></tbody></table></div>
-    <p class="fine" id="bFine"></p>
+    <p class="sub">Estimates, flights included.</p>
+    <div class="costlist" id="costlist"></div>
   </div>
 </section>
 
-<!-- STASH -->
-<section data-tab="stash">
-  <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Stash</span><h2>Links and ideas</h2><p>Drop anything useful: places to stay, tours, restaurants, photo spots. Ideas are anonymous, so suggest freely and upvote the good ones.</p></div>
+<section data-tab="vote">
+  <div class="wrap s-wrap">
+    <h2 class="h">Vote</h2>
+    <p class="sub" id="vprog">Tap an option. Tap again to undo.</p>
+    <div class="decisions" data-decisions="all"><p class="empty">Loading…</p></div>
+  </div>
+</section>
+
+<section data-tab="ideas">
+  <div class="wrap s-wrap">
+    <h2 class="h">Ideas & links</h2>
     <div class="stash">
       <div>
-        <form id="linkForm" class="panel" autocomplete="off">
-          <h3 class="ph">Share a link</h3>
-          <label class="field" for="linkUrl">Link<input id="linkUrl" type="url" inputmode="url" placeholder="https://…" required maxlength="600"></label>
-          <label class="field" for="linkNote">Why it's worth a look (optional)<input id="linkNote" maxlength="280" placeholder="Dog sledding with Dec 28 slots"></label>
-          <div class="row"><button class="btn primary" type="submit" id="linkSave">Add link</button></div>
-          <div class="status" id="linkStatus"></div>
+        <form id="ideaForm" class="card" autocomplete="off">
+          <label class="field" for="ideaBody">Share an idea (anonymous)<textarea id="ideaBody" maxlength="280" placeholder="Ice fishing on Chena Lakes?" required></textarea></label>
+          <div class="row"><button class="btn primary" type="submit" id="ideaSave">Post</button></div>
+          <div class="status" id="ideaStatus"></div>
         </form>
-        <div class="links" id="links"><p class="empty">No links yet. Add the first one.</p></div>
+        <div class="ideas" id="ideas"></div>
       </div>
       <div>
-        <form id="ideaForm" class="panel" autocomplete="off">
-          <h3 class="ph">Suggest something, anonymously</h3>
-          <label class="field" for="ideaBody">Your idea<textarea id="ideaBody" maxlength="280" placeholder="Ice fishing on Chena Lakes?" required></textarea></label>
-          <div class="row">
-            <label class="field" for="ideaCat">Type<select id="ideaCat"><option value="activity">Activity</option><option value="food">Food</option><option value="stay">Stay</option><option value="other">Other</option></select></label>
-            <button class="btn primary" type="submit" id="ideaSave">Post idea</button>
-          </div>
-          <div class="status" id="ideaStatus">No name is attached to ideas.</div>
+        <form id="linkForm" class="card" autocomplete="off">
+          <label class="field" for="linkUrl">Share a link<input id="linkUrl" type="url" inputmode="url" placeholder="https://…" required maxlength="600"></label>
+          <label class="field" for="linkNote">Note (optional)<input id="linkNote" maxlength="280"></label>
+          <div class="row"><button class="btn primary" type="submit" id="linkSave">Add</button></div>
+          <div class="status" id="linkStatus"></div>
         </form>
-        <div class="ideas" id="ideas"><p class="empty">No ideas yet.</p></div>
+        <div class="links" id="links"></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TO-DO -->
-<section data-tab="todo">
-  <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">To-do</span><h2>Vote on every decision</h2><p>Each decision is voted on separately, so you can agree with one and not another. Tap an option to vote, tap it again to take your vote back.</p></div>
-    <div class="vprog" id="vprog"></div>
-    <div class="decisions" data-decisions="all"><p class="empty">Loading votes…</p></div>
-  </div>
-</section>
-<section data-tab="todo">
-  <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Bookings</span><h2>What still needs booking</h2></div>
-    <div class="todo" id="bookings"></div>
-  </div>
-</section>
-<section data-tab="todo" id="packing">
-  <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Packing</span><h2>Dress for −40°</h2><p>Tick things off as you pack. Your checklist is saved on your own phone.</p></div>
-    <div class="packs" id="packs"></div>
-    <div class="packprog" id="packprog"></div>
-  </div>
-</section>
-
-<!-- ADMIN (not in the menu) -->
 <section data-tab="admin" class="adminsec">
   <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Admin</span><h2>Edit the trip</h2><p>Change anything on the site. Saved changes show up for everyone within a few seconds.</p></div>
-    <form id="adminLogin" class="panel adminlogin" autocomplete="off">
-      <label class="field" for="adminPass">Admin password<input id="adminPass" type="password" autocomplete="current-password" required></label>
+    <h2 class="h">Admin</h2>
+    <form id="adminLogin" class="card adminlogin" autocomplete="off">
+      <label class="field" for="adminPass">Password<input id="adminPass" type="password" autocomplete="current-password" required></label>
       <div class="row"><button class="btn primary" type="submit">Unlock</button></div>
       <div class="status" id="adminLoginStatus"></div>
     </form>
     <div id="adminApp" hidden>
       <div class="adminbar">
-        <label class="field" for="adminPick">Section<select id="adminPick"></select></label>
+        <label class="field" for="adminPick">Edit<select id="adminPick"></select></label>
         <button class="btn" type="button" id="adminLock">Lock</button>
       </div>
-      <div class="adminhelp" id="adminHelp"></div>
       <div id="adminForm" class="adminform"></div>
-      <div class="adminactions" id="adminActions">
-        <button class="btn primary" type="button" id="adminSave">Save changes</button>
+      <div class="adminactions">
+        <button class="btn primary" type="button" id="adminSave">Save</button>
         <button class="btn" type="button" id="adminReset">Reset to original</button>
         <span class="status" id="adminStatus"></span>
       </div>
@@ -760,13 +761,11 @@ details.mini .checks{margin-top:10px}
 
 <div class="sheet" id="nameSheet" hidden role="dialog" aria-modal="true" aria-labelledby="nameSheetTitle">
   <form class="sheet-card" id="nameSheetForm" autocomplete="off">
-    <h3 id="nameSheetTitle">What's your name?</h3>
-    <p>So friends know who voted or commented. No account needed.</p>
-    <label class="field" for="sheetName">Your name<input id="sheetName" maxlength="40" required></label>
+    <h3 id="nameSheetTitle">Your name?</h3>
+    <label class="field" for="sheetName">Name<input id="sheetName" maxlength="40" required></label>
     <div class="row"><button class="btn primary" type="submit">Continue</button><button class="btn" type="button" id="sheetCancel">Cancel</button></div>
   </form>
 </div>
-<footer><div class="wrap">Planned together · Fairbanks 64.8°N · Anchorage 61.2°N · see you under the lights</div></footer>
 
 <script>
 (function(){
@@ -899,213 +898,105 @@ details.mini .checks{margin-top:10px}
   };
   function icon(m){return ICON[m]||ICON.explore}
 
-  /* ================= DEFAULT CONTENT (admin can change all of it) ================= */
+  /* ================= CONTENT (editable in admin) ================= */
   var DEF={
-    trip:{eyebrow:"Friends' trip · Christmas to New Year 2026",title_a:'Chasing the',title_em:'aurora',title_b:'in Alaska',
-      lede:"Ten days in the Alaskan winter: Christmas in a Fairbanks log cabin, chasing the northern lights ourselves, then Girdwood and New Year's Eve in Anchorage.",
-      depart:'2026-12-24T18:11',countdown:'until we fly out of Miami',coords:'64.85°N 147.97°W · inside the aurora oval',
-      weather:'Fairbanks is usually −10°F to −40°F at Christmas, with about 4 hours of daylight. Anchorage is milder, around 0°F to 25°F.'},
-    glance:[
-      {label:'When',title:'Thu, Dec 24 → Sat, Jan 2',text:'10 days, 9 nights in Alaska. We land in Fairbanks early on Christmas morning.'},
-      {label:'Where',title:'Fairbanks → Girdwood → Anchorage',text:"5 nights up north for the aurora, 2 in a ski town, 2 in the city for New Year's Eve."},
-      {label:'Cost per person',title:'About $2,100 – $3,200',text:'Estimate including flights, for 8 people sharing. See the Budget page.'}],
-    steps:[
-      {title:"Tell us if you're in.",text:'Add your name in the roll call below.'},
-      {title:'Vote on the open decisions.',text:'Each one is voted on separately, on the To-do page.'},
-      {title:"Don't book flights yet.",text:'We book together once the flights vote is settled.'},
-      {title:'Drop ideas and links',text:'in the Stash. Ideas are anonymous.'}],
-    route:[
-      {place:'Miami',sub:'Dec 24',sleep:false,next:'fly'},{place:'Seattle',sub:'Connect',sleep:false,next:'fly'},
-      {place:'Fairbanks',sub:'Dec 25 – 29',sleep:true,next:'fly'},{place:'Anchorage',sub:'Dec 29',sleep:false,next:'drive'},
-      {place:'Girdwood',sub:'Dec 29 – 31',sleep:true,next:'drive'},{place:'Anchorage',sub:'Dec 31 – Jan 2',sleep:true,next:'fly'},
-      {place:'Seattle',sub:'Connect',sleep:false,next:'fly'},{place:'Tampa',sub:'Jan 3',sleep:false,next:''}],
+    trip:{title_a:'Chasing the',title_em:'aurora',title_b:'in Alaska',sub:"Christmas to New Year's · Fairbanks, Girdwood & Anchorage",
+      depart:'2026-12-24T18:11',dates:'Dec 24 – Jan 2',places:'Fairbanks → Anchorage',cost:'~$2,100 – $3,200'},
     days:[
-      {date:'Thu, Dec 24',title:'Fly north',sleep:'On the plane',legs:[{mode:'fly',title:'Miami → Seattle → Fairbanks',note:'6:11 pm → 2:48 am (Dec 25) · Alaska Airlines · 1h 49m stop in Seattle'}]},
-      {date:'Fri, Dec 25',title:'Christmas at the cabin',sleep:"Grandma & Grandpa's Cabin, Ester",legs:[{mode:'drive',title:'Fairbanks airport → our cabin',note:'About 15 min, around 3:30 am. Pick up both SUVs first.'},{mode:'explore',title:'Easy Christmas Day',note:'Sleep in, snowshoe, keep meals simple. Stores are closed.'},{mode:'night',title:'Aurora drive (if clear)',note:'Cabin → Ester Dome 15 min → Cleary Summit 45 min → back 45 min'}]},
-      {date:'Sat, Dec 26',title:'Museum, North Pole and the big dinner',sleep:"Grandma & Grandpa's Cabin, Ester",legs:[{mode:'drive',title:'Cabin → Museum of the North → North Pole',note:'10–15 min, then about 30 min to Santa Claus House'},{mode:'explore',title:'Groceries and group dinner',note:'Cook together at the cabin'}]},
-      {date:'Sun, Dec 27',title:'Move to the Dec 27–28 stay',sleep:'Depends on the vote',legs:[{mode:'drive',title:'Cabin → Dec 27–28 stay',note:'The igloos (option A) are about 50 min east'}]},
-      {date:'Mon, Dec 28',title:'Chena Hot Springs',sleep:'Same as Dec 27',legs:[{mode:'drive',title:'To Chena Hot Springs and back',note:'About 45 min each way from the igloos, 1.5–2 h from the cabin'},{mode:'explore',title:'Ice museum, hot springs, dinner',note:'Back by about 8 pm, early night'}]},
-      {date:'Tue, Dec 29',title:'Fly south to Anchorage',sleep:'Girdwood',legs:[{mode:'drive',title:'To Fairbanks airport, return the cars',note:'Leave around 5 am, cars back by 6 am'},{mode:'fly',title:'Fairbanks → Anchorage',note:'7:03 → 8:20 am · Alaska Airlines AS 419 · nonstop'},{mode:'drive',title:'Anchorage → Beluga Point → Wildlife Center → Girdwood',note:'About 1 h 15 min along Turnagain Arm, in daylight'}]},
-      {date:'Wed, Dec 30',title:'Alyeska day',sleep:'Girdwood',legs:[{mode:'explore',title:'Tram, skiing, Nordic spa',note:'Everything is a few minutes away'}]},
-      {date:"Thu, Dec 31",title:"New Year's Eve",sleep:'Downtown Anchorage',legs:[{mode:'drive',title:'Girdwood → downtown Anchorage',note:'About 45 min'},{mode:'explore',title:'Fireworks at 8 pm',note:'Walk to 3rd Ave & E St, nobody drives'}]},
-      {date:'Fri, Jan 1',title:'Slow New Year\'s Day',sleep:'Downtown Anchorage',legs:[{mode:'drive',title:'Coastal Trail and Kincaid Park',note:'About 15 min from downtown'}]},
-      {date:'Sat, Jan 2',title:'Fly home',sleep:'On the plane',legs:[{mode:'drive',title:'Downtown → Anchorage airport',note:'Return the cars, be there by 1:15 pm'},{mode:'fly',title:'Anchorage → Seattle → Tampa',note:'3:15 pm → 5:40 am (Jan 3) · 1h 28m stop in Seattle'}]}],
-    travel_note:{title:'Getting to Miami, and home from Tampa',points:['The trip starts in Miami (about 4 hours from Tampa) and ends in Tampa. If you drive to Miami, your car stays there, so a one-way rental or a ride down works better.','We land at 2:48 am on Christmas morning. The rental counter and the cabin host both need a heads-up.']},
-    flights:[
-      {when:'Thu, Dec 24 · out',from:'MIA',to:'FAI',from_city:'Miami',to_city:'Fairbanks · Dec 25',depart:'6:11 pm',arrive:'2:48 am',via:'via SEA · 1h 49m',note:'Lands Christmas morning'},
-      {when:'Tue, Dec 29 · hop',from:'FAI',to:'ANC',from_city:'Fairbanks',to_city:'Anchorage',depart:'7:03 am',arrive:'8:20 am',via:'nonstop · 1h 17m',note:'Flight AS 419'},
-      {when:'Sat, Jan 2 · home',from:'ANC',to:'TPA',from_city:'Anchorage',to_city:'Tampa · Jan 3',depart:'3:15 pm',arrive:'5:40 am',via:'via SEA · 1h 28m',note:'Airport by 1:15 pm'}],
-    cars:{title:'Two SUVs in each city',intro:'Fairbanks: picked up and returned at the airport (Dec 25 – 29). Anchorage: picked up at the airport (Dec 29 – Jan 2).',
-      rules:[{title:'Winter or studded tires',text:'Matter more than AWD. Confirm when booking.'},{title:'Engine block heater cords',text:"Plug in overnight when it's −30°F."},{title:'3 am pickup on Dec 25',text:'Call the Fairbanks counter ahead.'},{title:'Return by 6 am on Dec 29',text:'Before the 7:03 am flight.'},{title:'2–3 snow drivers',text:'People comfortable on ice.'}]},
+      {date:'Dec 24',icon:'fly',what:'Fly Miami → Fairbanks',sleep:'On the plane',details:['Leave Miami 6:11 pm, via Seattle','Land Fairbanks 2:48 am']},
+      {date:'Dec 25',icon:'drive',what:'Christmas at the cabin',sleep:'Cabin in Ester',details:['Pick up 2 SUVs at the airport','Easy day, stores are closed','Aurora from the yard at night']},
+      {date:'Dec 26',icon:'drive',what:'Museum & North Pole',sleep:'Cabin in Ester',details:['Museum of the North','Santa Claus House, North Pole','Big group dinner']},
+      {date:'Dec 27',icon:'drive',what:'Move to Dec 27–28 stay',sleep:'Up for a vote',details:['Igloos, aurora cabin or same cabin']},
+      {date:'Dec 28',icon:'explore',what:'Chena Hot Springs',sleep:'Same as Dec 27',details:['Hot springs, ice museum, dinner','Back by 8 pm, early night']},
+      {date:'Dec 29',icon:'fly',what:'Fly to Anchorage, drive to Girdwood',sleep:'Girdwood',details:['Return cars by 6 am','Flight 7:03 → 8:20 am','Scenic drive along Turnagain Arm']},
+      {date:'Dec 30',icon:'explore',what:'Alyeska: tram, ski, spa',sleep:'Girdwood',details:[]},
+      {date:'Dec 31',icon:'drive',what:"New Year's Eve in Anchorage",sleep:'Downtown Anchorage',details:['Drive 45 min to Anchorage','Fireworks at 8 pm, walk there']},
+      {date:'Jan 1',icon:'explore',what:'Coastal Trail & moose spotting',sleep:'Downtown Anchorage',details:[]},
+      {date:'Jan 2',icon:'fly',what:'Fly home to Tampa',sleep:'On the plane',details:['Airport by 1:15 pm','Leave 3:15 pm, land Tampa 5:40 am Jan 3']}],
     stays:[
-      {dates:'Dec 24 – 27',nights:'3 nights',name:"Grandma & Grandpa's Cabin",status:'Not booked yet',where:'Ester, about 15 min west of Fairbanks airport',text:'Log cabin with 6 bedrooms, 11 beds, 2.5 baths. Full kitchen, dining table for 8, two-car garage to keep the cars warm. About $1,200 for all 3 nights.',links:[{label:'View on Airbnb',url:'https://www.airbnb.com/rooms/1658265901523497451'}]},
-      {dates:'Dec 27 – 29',nights:'2 nights',name:'Option A, B or C',status:'Up for a vote',where:'Fairbanks area. We leave for the airport around 5 am on Dec 29.',text:'A: one night in glass-roof igloos at a reindeer ranch ($400 per dome for 3 people), then an aurora cabin. B: two nights in an aurora cabin. C: stay at the same cabin, about $800 more.',links:[{label:'Pleasant Acres on Maps',url:'https://www.google.com/maps/search/Pleasant+Acres+Reindeer+Ranch+Alaska'},{label:'Search aurora cabins',url:'https://www.airbnb.com/s/Fairbanks--AK/homes?checkin=2026-12-27&checkout=2026-12-29&adults=8'}]},
-      {dates:'Dec 29 – 31',nights:'2 nights',name:'Girdwood',status:'Up for a vote',where:'Ski town 45 min south of Anchorage, along Turnagain Arm',text:'A chalet or condo for the group, or rooms at Hotel Alyeska.',links:[{label:'Search chalets',url:'https://www.airbnb.com/s/Girdwood--AK/homes?checkin=2026-12-29&checkout=2026-12-31&adults=8'},{label:'Hotel Alyeska',url:'https://www.alyeskaresort.com'}]},
-      {dates:'Dec 31 – Jan 2',nights:'2 nights',name:'Downtown Anchorage',status:'Not booked yet',where:"Walking distance to the New Year's Eve fireworks at 3rd Ave & E St",text:"A house for the group so nobody has to drive on New Year's Eve. About 15 min to the airport.",links:[{label:'Search rentals',url:'https://www.airbnb.com/s/Downtown-Anchorage--AK/homes?checkin=2026-12-31&checkout=2027-01-02&adults=8'}]},
-      {dates:'Jan 2',nights:'Fly home',name:'Overnight flight to Tampa',status:'',where:'Leaves Anchorage 3:15 pm, lands Tampa 5:40 am on Jan 3',text:'',links:[]}],
-    highlights:[
-      {when:'Dec 25',price:'Included',title:'Christmas in a log cabin',text:'Cook a big dinner together, snowshoe in the yard, sleep in after the 3 am landing.',vote:''},
-      {when:'Every clear night',price:'Free',title:'Northern lights from the yard',text:'Turn off the porch light and look north. Fairbanks sits right under the aurora.',vote:''},
-      {when:'Dec 25 or 26',price:'Gas only',title:'The big aurora drive',text:'Hot drinks, two cars, Ester Dome then Cleary Summit until 2 am.',vote:'aurora'},
-      {when:'Dec 26',price:'$',title:'Museum of the North',text:'The university museum on a hill, with Alaska history, Native art and wildlife exhibits.',vote:''},
-      {when:'Dec 26',price:'Free',title:'Santa Claus House, North Pole',text:'A town actually called North Pole, the day after Christmas.',vote:''},
-      {when:'Dec 27',price:'In the stay',title:'Igloos at a reindeer ranch',text:'Glass-roof domes with aurora wake-up calls. Only if we pick option A.',vote:'dec27'},
-      {when:'Dec 28',price:'$',title:'Hot springs at −30°F',text:'Soak in the outdoor pool while your hair freezes. Adults only outdoors.',vote:'chena'},
-      {when:'Dec 28',price:'$',title:'Aurora Ice Museum',text:'A building made of ice, kept at 25°F. Drinks served in hand-carved ice glasses.',vote:'chena'},
-      {when:'Dec 28',price:'$$$',title:'Dog sledding',text:'Mush through the snowy woods at Chena. Book ahead, it sells out.',vote:'sled'},
-      {when:'Dec 29',price:'Free',title:'Turnagain Arm drive',text:'One of the most scenic roads in the state, in daylight. Stop at Beluga Point.',vote:''},
-      {when:'Dec 29',price:'$',title:'Wildlife Conservation Center',text:'Moose, bears, musk ox and wood bison, open all winter.',vote:''},
-      {when:'Dec 30',price:'$$',title:'Alyeska aerial tram & skiing',text:'Ride up the mountain for the view, ski or snowboard if you like.',vote:''},
-      {when:'Dec 30',price:'$$',title:'Nordic spa',text:'Hot pools and saunas in the snow at Girdwood. Optional.',vote:''},
-      {when:'Dec 31',price:'Free',title:"New Year's Eve fireworks",text:'8 pm downtown, or the torchlight ski parade in Girdwood. We vote on which.',vote:'nye'},
-      {when:'Jan 1',price:'Free',title:'Moose spotting at Kincaid Park',text:"Slow New Year's Day walk on the Coastal Trail, moose often nearby.",vote:''}],
-    aurora:{title:'Aurora drive, 9 pm to 2 am',intro:'Dec 25 or 26, whichever is clearer. Check the forecast and cloud cover around 6–7 pm and make the call.',
-      stops:[{time:'8:30 pm',title:'Check the sky',text:'Aurora forecast and cloud map, fill the thermoses',alt:false},{time:'9:00 pm',title:'Leave the cabin',text:'Both cars, full tanks',alt:false},{time:'9:15 – 11:00 pm',title:'Ester Dome',text:'A hilltop 15 min from the cabin with wide views',alt:false},{time:'11:00 pm',title:'Stay or move?',text:'Clear and active, stay. Cloudy or quiet, drive on.',alt:true},{time:'11:45 pm – 1:15 am',title:'Cleary Summit',text:'The local favorite, 45 min north of town',alt:true},{time:'2:00 am',title:'Back at the cabin',text:'Hot drinks, photo dump',alt:false}],
-      tips:['Two sober drivers who swap when tired','Keep both cars in sight, cell service is patchy','Park fully off the road at pullouts',"If it's strong at Ester Dome, stay put"]},
-    budget:{people:8,fine:"Not included: souvenirs, lift tickets, the Nordic spa, and getting to Miami. Flight prices change daily over Christmas, so they're the biggest unknown.",
-      items:[
-        {name:'Flights (3 legs)',note:'Christmas-week fares, Miami → Fairbanks → Anchorage → Tampa',status:'est',type:'pp',low:900,high:1300,optional:false},
-        {name:'Fairbanks cabin',note:'Dec 24–27, 3 nights, Airbnb listing price',status:'quote',type:'sh',low:1200,high:1200,optional:false},
-        {name:'Dec 27–28 stay',note:'Option C ($800) up to option A (igloos + cabin)',status:'est',type:'sh',low:800,high:1700,optional:false},
-        {name:'Girdwood stay',note:'Dec 29–31, 2 nights, chalet for the group',status:'est',type:'sh',low:1000,high:1600,optional:false},
-        {name:'Anchorage stay',note:"Dec 31–Jan 2, 2 nights over New Year's",status:'est',type:'sh',low:900,high:1400,optional:false},
-        {name:'Cars in Fairbanks',note:'2 SUVs, Dec 25–29, with taxes',status:'est',type:'sh',low:700,high:1100,optional:false},
-        {name:'Cars in Anchorage',note:'2 SUVs, Dec 29–Jan 2, with taxes',status:'est',type:'sh',low:560,high:880,optional:false},
-        {name:'Gas',note:'Both cities, including the aurora drive',status:'est',type:'sh',low:200,high:300,optional:false},
-        {name:'Food & groceries',note:'9 days, mostly cooking with a few dinners out',status:'est',type:'pp',low:360,high:540,optional:false},
-        {name:'Activities',note:'Hot springs, ice museum, tram, wildlife center, museum',status:'est',type:'pp',low:120,high:200,optional:false},
-        {name:'Extras',note:'Bags, tips, airport food',status:'est',type:'pp',low:60,high:120,optional:false},
-        {name:'Dog sledding',note:'Optional, only if you join',status:'est',type:'pp',low:0,high:150,optional:true}]},
-    bookings:[
-      {tag:'After vote',title:'Flights',text:'All three legs, once the flights vote is settled.'},
-      {tag:'Waiting',title:'Fairbanks cabin',text:'As soon as the host answers our questions.'},
-      {tag:'After vote',title:'Dec 27–28 stay',text:'Option A, B or C.'},
-      {tag:'To book',title:'Cars in Fairbanks and Anchorage',text:'Winter tires, 3 am pickup confirmed.'},
-      {tag:'Soon',title:'Girdwood and Anchorage stays',text:'Holiday week fills up.'},
-      {tag:'Money',title:'Splitwise and deposits',text:'Holiday bookings need prepayment.'}],
-    packing:[
-      {group:'Cold-weather gear',items:['Insulated winter boots','Warm parka','Thermal base layers, top and bottom','Mittens plus thin liner gloves','Warm hat and neck gaiter','Wool socks','Hand and toe warmers']},
-      {group:'Aurora night kit',items:['Thermos','Headlamp with red light','Power bank and charger','Tripod','Swimsuit for Chena','Lotion and lip balm','Photo ID']}]
+      {dates:'Dec 24 – 27',nights:'3 nights',name:"Grandma & Grandpa's Cabin",where:'Ester, near Fairbanks',status:'Not booked',link:'https://www.airbnb.com/rooms/1658265901523497451'},
+      {dates:'Dec 27 – 29',nights:'2 nights',name:'Igloos, aurora cabin or same cabin',where:'Fairbanks area',status:'Vote',link:''},
+      {dates:'Dec 29 – 31',nights:'2 nights',name:'Chalet or Hotel Alyeska',where:'Girdwood',status:'Vote',link:'https://www.airbnb.com/s/Girdwood--AK/homes?checkin=2026-12-29&checkout=2026-12-31&adults=8'},
+      {dates:'Dec 31 – Jan 2',nights:'2 nights',name:'House downtown',where:'Anchorage',status:'Not booked',link:'https://www.airbnb.com/s/Downtown-Anchorage--AK/homes?checkin=2026-12-31&checkout=2027-01-02&adults=8'}],
+    fun:[
+      {when:'Every clear night',price:'Free',title:'Northern lights',line:'Right above Fairbanks'},
+      {when:'Dec 25',price:'Free',title:'Log cabin Christmas',line:'Cook together, snowshoe'},
+      {when:'Dec 25 or 26',price:'Gas',title:'Aurora drive',line:'Ester Dome to Cleary Summit'},
+      {when:'Dec 26',price:'Free',title:'North Pole',line:'Santa Claus House'},
+      {when:'Dec 27',price:'Vote',title:'Igloo night',line:'Glass roof over the bed'},
+      {when:'Dec 28',price:'$',title:'Hot springs at −30°F',line:'Outdoor soak, frozen hair'},
+      {when:'Dec 28',price:'$',title:'Ice museum',line:'Drinks in ice glasses'},
+      {when:'Dec 28',price:'$$$',title:'Dog sledding',line:'Optional, book ahead'},
+      {when:'Dec 29',price:'Free',title:'Turnagain Arm',line:'Scenic coastal drive'},
+      {when:'Dec 29',price:'$',title:'Wildlife center',line:'Moose, bears, musk ox'},
+      {when:'Dec 30',price:'$$',title:'Alyeska tram & ski',line:'Mountain views'},
+      {when:'Dec 31',price:'Free',title:'NYE fireworks',line:'8 pm downtown'}],
+    budget:{people:8,items:[
+      {name:'Flights',type:'pp',low:900,high:1300,optional:false},
+      {name:'Places to stay',type:'sh',low:3900,high:5900,optional:false},
+      {name:'Cars & gas',type:'sh',low:1460,high:2280,optional:false},
+      {name:'Food',type:'pp',low:360,high:540,optional:false},
+      {name:'Activities & extras',type:'pp',low:180,high:320,optional:false},
+      {name:'Dog sledding',type:'pp',low:0,high:150,optional:true}]}
   };
   var C=clone(DEF);
+  function arr(x){return Array.isArray(x)?x:[]}
   function applyContent(remote){C=clone(DEF);Object.keys(remote||{}).forEach(function(k){if(k in DEF)C[k]=remote[k]})}
 
   /* ================= TABS ================= */
-  var TABS=[['home','Home','Basics & roll call'],['travel','Travel','The journey day by day'],['stay','Stay','Where we sleep'],['highlights','Highlights','The fun stuff'],['budget','Budget','Cost per person'],['stash','Stash','Links & ideas'],['todo','To-do','Votes, bookings, packing']];
-  var ids=TABS.map(function(t){return t[0]}),ALL=ids.concat(['admin']);
-  var tabs=$('#tabs'),grid=$('#menuGrid'),menu=$('#menu'),mb=$('#menubtn');
+  var TABS=[['home','Home'],['plan','Plan'],['stay','Stay'],['fun','Fun'],['cost','Cost'],['vote','Vote'],['ideas','Ideas']];
+  var ids=TABS.map(function(t){return t[0]}),ALL=ids.concat(['admin']),tabs=$('#tabs');
+  TABS.forEach(function(t){var a=document.createElement('a');a.className='tab';a.href='#'+t[0];a.textContent=t[1];a.dataset.go=t[0];tabs.appendChild(a)});
   TABS.forEach(function(t){
-    var a=document.createElement('a');a.className='tab';a.href='#'+t[0];a.textContent=t[1];a.dataset.go=t[0];tabs.appendChild(a);
-    var m=document.createElement('a');m.href='#'+t[0];m.dataset.go=t[0];m.innerHTML=esc(t[1])+'<small>'+esc(t[2])+'</small>';grid.appendChild(m);
-  });
-  TABS.forEach(function(t,i){
     var secs=$$('section[data-tab="'+t[0]+'"]');if(!secs.length)return;
-    var host=secs[secs.length-1].querySelector('.wrap');
     var c=document.createElement('div');c.className='pagecomments';c.dataset.page=t[0];
-    c.innerHTML='<details class="thread" open><summary><span aria-hidden="true">💬</span> <b data-n>0</b> <span data-l>comments on '+esc(t[1])+'</span></summary>'+
-      '<div class="thread-body"><div data-items><p class="empty">No comments yet. Start the conversation.</p></div>'+
-      '<form class="row" autocomplete="off"><label class="field" for="c-'+t[0]+'">Add a comment<input id="c-'+t[0]+'" maxlength="500" placeholder="Thoughts on '+esc(t[1])+'?" required></label><button class="btn primary" type="submit">Post</button></form>'+
-      '<div class="status"></div></div></details>';
-    host.appendChild(c);
-    var nav=document.createElement('div');nav.className='nextnav';
-    if(i>0)nav.innerHTML+='<a href="#'+TABS[i-1][0]+'">← '+esc(TABS[i-1][1])+'</a>';
-    if(i<TABS.length-1)nav.innerHTML+='<a class="fwd" href="#'+TABS[i+1][0]+'">'+esc(TABS[i+1][1])+' →</a>';
-    host.appendChild(nav);
+    c.innerHTML='<details class="thread"><summary><span aria-hidden="true">💬</span> <span data-l>Comments</span> <b data-n></b></summary>'+
+      '<div class="thread-body"><div data-items></div><form class="row" autocomplete="off"><label class="field" for="c-'+t[0]+'">Comment<input id="c-'+t[0]+'" maxlength="500" required></label><button class="btn primary" type="submit">Post</button></form><div class="status"></div></div></details>';
+    secs[secs.length-1].querySelector('.wrap').appendChild(c);
   });
-  function closeMenu(){menu.hidden=true;mb.setAttribute('aria-expanded','false');mb.textContent='☰'}
-  mb.addEventListener('click',function(){var open=menu.hidden;menu.hidden=!open;mb.setAttribute('aria-expanded',String(open));mb.textContent=open?'✕':'☰'});
+  var PAGEKEY={home:'home',plan:'travel',stay:'stay',fun:'highlights',cost:'budget',vote:'todo',ideas:'stash'};
   function current(){var h=(location.hash||'').slice(1);return ALL.indexOf(h)>=0?h:'home'}
   function show(scroll){
     var cur=current();
     $$('[data-tab]').forEach(function(x){x.hidden=x.dataset.tab!==cur});
     $$('[data-go]').forEach(function(a){if(a.dataset.go===cur)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
     var act=tabs.querySelector('[aria-current]');if(act&&act.scrollIntoView)act.scrollIntoView({block:'nearest',inline:'center'});
-    closeMenu();if(scroll)window.scrollTo(0,0);
-    document.title=(cur==='home'?'':(cur==='admin'?'Admin':TABS[ids.indexOf(cur)][1])+' · ')+'Alaska Aurora Trip';
-    if(cur==='admin')adminOpen();
+    if(scroll)window.scrollTo(0,0);
+    var t=TABS[ids.indexOf(cur)];document.title=(cur==='home'?'':(t?t[1]:'Admin')+' · ')+'Alaska Aurora Trip';
+    if(cur==='admin'&&typeof adminOpen==='function')adminOpen();
   }
   window.addEventListener('hashchange',function(){show(true)});
 
-  /* ================= RENDER CONTENT ================= */
-  function arr(x){return Array.isArray(x)?x:[]}
-  function renderContent(){
-    var t=C.trip||{};
-    $$('[data-c]').forEach(function(n){var p=n.dataset.c.split('.');var v=C[p[0]]&&C[p[0]][p[1]];n.textContent=v||''});
-    $('#heroTitle').innerHTML=esc(t.title_a||'')+' <em>'+esc(t.title_em||'')+'</em> '+esc(t.title_b||'');
-    var dep=new Date(t.depart||'2026-12-24T18:11'),days=Math.ceil((dep-new Date())/86400000);
-    if(isNaN(days)){$('#cd').textContent='';$('#cdl').textContent=''}
-    else if(days>0){$('#cd').textContent=days;$('#cdl').textContent=(days===1?'day ':'days ')+(t.countdown||'')}
-    else{$('#cd').textContent='Now';$('#cdl').textContent="We're on the trip"}
-    // home
-    $('#glance').innerHTML=arr(C.glance).map(function(g){return '<div class="gcard"><span class="eyebrow">'+esc(g.label)+'</span><b>'+esc(g.title)+'</b><p>'+esc(g.text)+'</p></div>'}).join('')+
-      '<div class="gcard"><span class="eyebrow">Who</span><b id="whoCount">Friends</b><p id="whoNames">Add your name below so we know you\'re coming.</p></div>';
-    $('#weather').innerHTML=t.weather?'<b>Weather:</b> '+esc(t.weather)+' <a href="#todo">Packing list →</a>':'';
-    $('#steps').innerHTML=arr(C.steps).map(function(s){return '<li><b>'+esc(s.title)+'</b> '+esc(s.text)+'</li>'}).join('');
-    // travel
-    var r=arr(C.route);
-    $('#route').innerHTML=r.map(function(s,i){return '<div class="rstop'+(s.sleep?' sleep':'')+'"><span class="dot"></span><b>'+esc(s.place)+'</b><small>'+esc(s.sub)+'</small></div>'+
-      (i<r.length-1?'<div class="rlink '+(s.next==='fly'?'fly':'drive')+'" aria-hidden="true">'+icon(s.next==='fly'?'fly':'drive')+'</div>':'')}).join('');
-    $('#journey').innerHTML=arr(C.days).map(function(d,i){return '<div class="jday"><div class="jhead"><span class="dnum">Day '+(i+1)+'</span><span class="ddate">'+esc(d.date)+'</span>'+(d.title?'<h3>'+esc(d.title)+'</h3>':'')+'</div>'+
-      '<div class="jlegs">'+arr(d.legs).map(function(l){var m=['fly','drive','night','stay','explore'].indexOf(l.mode)>=0?l.mode:'explore';return '<div class="jleg '+m+'"><span class="ib">'+icon(m)+'</span><div><b>'+esc(l.title)+'</b>'+(l.note?'<span>'+esc(l.note)+'</span>':'')+'</div></div>'}).join('')+'</div>'+
-      (d.sleep?'<span class="jsleep">'+icon('stay')+'Sleep: '+esc(d.sleep)+'</span>':'')+'</div>'}).join('');
-    var tn=C.travel_note||{};
-    $('#travelNote').hidden=!(tn.title||arr(tn.points).length);
-    $('#travelNote').innerHTML='<strong>'+esc(tn.title)+'</strong><ul>'+arr(tn.points).map(function(p){return '<li>'+esc(p)+'</li>'}).join('')+'</ul>';
-    $('#flights').innerHTML=arr(C.flights).map(function(f){return '<article class="pass"><div class="pass-top"><span class="eyebrow">'+esc(f.when)+'</span>'+
-      '<div class="pass-route"><span class="iata">'+esc(f.from)+'</span><div class="path"><span>'+esc(f.via)+'</span></div><span class="iata">'+esc(f.to)+'</span></div>'+
-      '<div class="pass-times"><div>'+esc(f.depart)+'<small>'+esc(f.from_city)+'</small></div><div style="text-align:right">'+esc(f.arrive)+'<small>'+esc(f.to_city)+'</small></div></div></div>'+
-      (f.note?'<div class="pass-stub"><span>'+esc(f.note)+'</span></div>':'')+'</article>'}).join('');
-    var cars=C.cars||{};$('#carsTitle').textContent=cars.title||'';$('#carsIntro').textContent=cars.intro||'';
-    $('#carsRules').innerHTML=arr(cars.rules).map(function(x){return '<li><b>'+esc(x.title)+'</b>'+esc(x.text)+'</li>'}).join('');
-    // stay
-    $('#stays').innerHTML=arr(C.stays).map(function(s){return '<article class="stay"><div class="stay-dates"><span class="mono">'+esc(s.dates)+'</span><b>'+esc(s.nights)+'</b></div><div class="stay-body">'+
-      '<div class="row1"><h3>'+esc(s.name)+'</h3>'+(s.status?'<span class="pill est">'+esc(s.status)+'</span>':'')+'</div>'+(s.where?'<p class="where">'+esc(s.where)+'</p>':'')+(s.text?'<p>'+esc(s.text)+'</p>':'')+
-      (arr(s.links).length?'<div class="stay-links">'+arr(s.links).map(function(l){return '<a class="btn" href="'+esc(safeUrl(l.url))+'" target="_blank" rel="noopener">'+esc(l.label||'Open link')+' ↗</a>'}).join('')+'</div>':'')+'</div></article>'}).join('');
-    // highlights
-    var glows=['rgba(93,242,176,.2)','rgba(169,139,255,.2)','rgba(255,196,107,.18)','rgba(124,200,255,.18)','rgba(255,143,163,.18)'];
-    $('#tiles').innerHTML=arr(C.highlights).map(function(h,i){return '<article class="tile" style="--glow:'+glows[i%glows.length]+'"><div class="top"><span class="when">'+esc(h.when)+'</span>'+(h.price?'<span class="price">'+esc(h.price)+'</span>':'')+'</div><h3>'+esc(h.title)+'</h3><p>'+esc(h.text)+'</p>'+(h.vote?'<a class="vote-chip" href="#todo">Vote on this →</a>':'')+'</article>'}).join('');
-    var au=C.aurora||{};$('#auroraTitle').textContent=au.title||'';$('#auroraIntro').textContent=au.intro||'';
-    $('#auroraStops').innerHTML=arr(au.stops).map(function(s){return '<div class="stop'+(s.alt?' alt':'')+'"><span class="t">'+esc(s.time)+'</span><b>'+esc(s.title)+'</b><span>'+esc(s.text)+'</span></div>'}).join('');
-    $('#auroraTips').innerHTML=arr(au.tips).map(function(x){return '<li>'+esc(x)+'</li>'}).join('');
-    // budget
-    if(!budgetTouched)size=+(C.budget&&C.budget.people)||8;
-    renderBudget();
-    // to-do
-    $('#bookings').innerHTML=arr(C.bookings).map(function(b){return '<div><span class="pill wait">'+esc(b.tag)+'</span><span><b>'+esc(b.title)+'</b><p>'+esc(b.text)+'</p></span></div>'}).join('');
-    renderPacking();
-  }
-
-  /* packing */
-  function pid(g,x){var s=g+'|'+x,h=0;for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return 'pk'+Math.abs(h)}
-  function renderPacking(){
-    $('#packs').innerHTML=arr(C.packing).map(function(g){return '<div><h3>'+esc(g.group)+'</h3>'+arr(g.items).map(function(x){var id=pid(g.group,x);return '<label class="tick"><input type="checkbox" id="'+id+'"'+(get('ak-'+id)==='1'?' checked':'')+'><span>'+esc(x)+'</span></label>'}).join('')+'</div>'}).join('');
-    var boxes=$$('#packs input');function pc(){var n=boxes.filter(function(b){return b.checked}).length;$('#packprog').textContent=n+' of '+boxes.length+' packed'+(n&&n===boxes.length?' · ready for the cold':'')}
-    boxes.forEach(function(b){b.addEventListener('change',function(){set('ak-'+b.id,b.checked?'1':'0');pc()})});pc();
-  }
-
-  /* budget */
-  var size=8,budgetTouched=false;
+  /* ================= RENDER ================= */
+  var size=8,touched=false;
   function money(n){return '$'+Math.round(n).toLocaleString('en-US')}
   function range(a,b){return Math.round(a)===Math.round(b)?money(a):money(a)+' – '+money(b)}
-  function renderBudget(){
-    var items=arr(C.budget&&C.budget.items);
-    $$('[data-size]').forEach(function(b){b.classList.toggle('on',+b.dataset.size===size);b.setAttribute('aria-pressed',+b.dataset.size===size)});
-    function pp(r,w){var v=+r[w]||0;return r.type==='pp'?v:v/size}
-    function gt(r,w){var v=+r[w]||0;return r.type==='pp'?v*size:v}
-    var lo=0,hi=0,loEx=0,hiEx=0,maxHi=1,rows='';
-    items.forEach(function(r){if(pp(r,'high')>maxHi)maxHi=pp(r,'high')});
-    items.forEach(function(r){var pl=pp(r,'low'),ph=pp(r,'high');
-      if(!r.optional){lo+=pl;hi+=ph;if(!/flight/i.test(r.name||'')){loEx+=pl;hiEx+=ph}}
-      rows+='<tr'+(r.optional?' class="optional"':'')+'><td><b>'+esc(r.name)+'</b><small>'+esc(r.note)+(r.type==='sh'?' · split '+size+' ways':'')+'</small><span class="bbar"><i style="width:'+(ph/maxHi*100).toFixed(0)+'%"></i></span></td>'+
-        '<td><span class="pill '+(r.status==='quote'?'quote':'est')+'">'+(r.status==='quote'?'Quoted':r.status==='booked'?'Booked':'Estimate')+'</span></td><td class="num">'+range(pl,ph)+'</td><td class="num">'+range(gt(r,'low'),gt(r,'high'))+'</td></tr>'});
-    rows+='<tr class="sum"><td>Total per person</td><td></td><td class="num">'+range(lo,hi)+'</td><td class="num">'+range(lo*size,hi*size)+'</td></tr>';
-    $('#btable tbody').innerHTML=rows;$('#bTotal').textContent=range(lo,hi);$('#bTotalEx').textContent=range(loEx,hiEx)+' without flights · group of '+size;
-    $('#bFine').textContent=(C.budget&&C.budget.fine)||'';
+  function renderContent(){
+    var t=C.trip||{};
+    $('#heroTitle').innerHTML=esc(t.title_a)+' <em>'+esc(t.title_em)+'</em> '+esc(t.title_b);
+    $('#heroSub').textContent=t.sub||'';
+    var dep=new Date(t.depart),d=Math.ceil((dep-new Date())/86400000);
+    $('#cd').textContent=isNaN(d)?'':(d>0?d:'Now');$('#cdl').textContent=isNaN(d)?'':(d>0?(d===1?'day to go':'days to go'):"We're on the trip");
+    $('#facts').innerHTML=[['When',t.dates],['Where',t.places],['Cost each',t.cost]].map(function(f){return '<div><small>'+f[0]+'</small><b>'+esc(f[1])+'</b></div>'}).join('');
+    $('#days').innerHTML=arr(C.days).map(function(x){var m=x.icon||'explore',det=arr(x.details);
+      return '<details class="day2 '+esc(m)+'"'+(det.length?'':' data-nodet')+'><summary><span class="d">'+esc(x.date)+'</span><span class="ib">'+icon(m)+'</span><span class="w"><b>'+esc(x.what)+'</b>'+(x.sleep?'<span>'+icon('stay')+esc(x.sleep)+'</span>':'')+'</span><span class="chev" aria-hidden="true">'+(det.length?'›':'')+'</span></summary>'+
+        (det.length?'<ul>'+det.map(function(l){return '<li>'+esc(l)+'</li>'}).join('')+'</ul>':'')+'</details>'}).join('');
+    $('#stays').innerHTML=arr(C.stays).map(function(s){return '<div class="stay2"><div class="dt">'+esc(s.dates)+'<small>'+esc(s.nights)+'</small></div><div><b>'+esc(s.name)+'</b><p>'+esc(s.where)+'</p>'+
+      '<div class="row">'+(s.link?'<a class="btn" href="'+esc(safeUrl(s.link))+'" target="_blank" rel="noopener">View ↗</a>':'')+(s.status?(/^vote$/i.test(s.status)?'<a class="tag" href="#vote">Vote →</a>':'<span class="tag">'+esc(s.status)+'</span>'):'')+'</div></div></div>'}).join('');
+    var glows=['rgba(93,242,176,.2)','rgba(169,139,255,.2)','rgba(255,196,107,.18)','rgba(124,200,255,.18)','rgba(255,143,163,.18)'];
+    $('#tiles').innerHTML=arr(C.fun).map(function(h,i){return '<article class="tile" style="--glow:'+glows[i%5]+'"><div class="top"><span class="when">'+esc(h.when)+'</span>'+(h.price?'<span class="price">'+esc(h.price)+'</span>':'')+'</div><h3>'+esc(h.title)+'</h3><p>'+esc(h.line)+'</p></article>'}).join('');
+    if(!touched)size=+(C.budget&&C.budget.people)||8;
+    renderCost();
   }
-  $$('[data-size]').forEach(function(b){b.addEventListener('click',function(){size=+b.dataset.size;budgetTouched=true;renderBudget()})});
-
-  renderContent();
-  show(false);
+  function renderCost(){
+    $$('[data-size]').forEach(function(b){b.classList.toggle('on',+b.dataset.size===size);b.setAttribute('aria-pressed',+b.dataset.size===size)});
+    var lo=0,hi=0,rows=arr(C.budget&&C.budget.items).map(function(r){var l=(+r.low||0)/(r.type==='sh'?size:1),h=(+r.high||0)/(r.type==='sh'?size:1);if(!r.optional){lo+=l;hi+=h}
+      return '<div'+(r.optional?' class="opt"':'')+'><span>'+esc(r.name)+(r.optional?' (optional)':'')+'</span><span>'+range(l,h)+'</span></div>'}).join('');
+    $('#costlist').innerHTML=rows+'<div class="tot"><span>Total</span><span>'+range(lo,hi)+'</span></div>';
+    $('#bTotal').textContent=range(lo,hi);
+  }
+  $$('[data-size]').forEach(function(b){b.addEventListener('click',function(){size=+b.dataset.size;touched=true;renderCost()})});
+  renderContent();show(false);
 
   /* ================= HERO AURORA ================= */
   (function(){
@@ -1125,7 +1016,7 @@ details.mini .checks{margin-top:10px}
   /* ================= SHARED DATA ================= */
   var offline=$('#offline');
   function showOffline(msg){offline.textContent=msg;offline.hidden=false}
-  if(!window.supabase){showOffline('Live features could not load. Check your connection and refresh.');return}
+  if(!window.supabase){showOffline('Could not connect. Check your internet and refresh.');return}
   var sb=window.supabase.createClient('https://zfiipirenpjflwdmqpen.supabase.co','sb_publishable_raLigp2T7AblzqnRNHoOkg_ZqFtnutm',{auth:{persistSession:false,autoRefreshToken:false}});
   var KEY=get('ak-key');
   if(!KEY){KEY=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,function(c){var r=Math.random()*16|0;return (c==='x'?r:(r&3|8)).toString(16)});set('ak-key',KEY)}
@@ -1133,10 +1024,11 @@ details.mini .checks{margin-top:10px}
   var palette=['#5df2b0','#a98bff','#ffc46b','#7cc8ff','#ff8fa3','#9be38b','#f2a5ff','#ffd27a'];
   function hue(s){var h=0;s=String(s||'');for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return palette[Math.abs(h)%palette.length]}
   function avatar(name,key,title){return '<span class="avatar" title="'+esc(title||name||'')+'" style="background:'+hue(key||name)+'">'+esc((name||'?').trim().charAt(0).toUpperCase())+'</span>'}
-  function ago(ts){var s=(Date.now()-new Date(ts))/1000;if(s<60)return'just now';if(s<3600)return Math.floor(s/60)+' min ago';if(s<86400)return Math.floor(s/3600)+' h ago';return new Date(ts).toLocaleDateString(undefined,{month:'short',day:'numeric'})}
+  function ago(ts){var s=(Date.now()-new Date(ts))/1000;if(s<60)return'now';if(s<3600)return Math.floor(s/60)+'m';if(s<86400)return Math.floor(s/3600)+'h';return new Date(ts).toLocaleDateString(undefined,{month:'short',day:'numeric'})}
   function meRow(){return B.members.find(function(m){return m.id===B.me})}
   function nameOf(id){var m=B.members.find(function(x){return x.id===id});return m?m.name:'Someone'}
-  function friendly(e){var m=(e&&e.message)||'';if(/need_name/.test(m))return 'Add your name first.';if(/not_admin/.test(m))return 'Wrong admin password.';if(/fetch|network|Failed/i.test(m))return 'No connection. Check your internet and try again.';return 'That did not save. Try again in a moment.'}
+  function friendly(e){var m=(e&&e.message)||'';if(/need_name/.test(m))return 'Add your name first.';if(/not_admin/.test(m))return 'Wrong password.';if(/fetch|network|Failed/i.test(m))return 'No connection. Try again.';return "Didn't save. Try again."}
+  function stat(id,msg,err){var x=$('#'+id);x.textContent=msg;x.classList.toggle('err',!!err)}
   async function call(fn,args){var r=await sb.rpc(fn,Object.assign({p_key:KEY},args||{}));if(r.error)throw r.error;return r.data}
   async function acall(fn,args){var r=await sb.rpc(fn,args);if(r.error)throw r.error;return r.data}
   async function load(){try{var d=await call('trip_board');B=d;offline.hidden=true;var cs=JSON.stringify(d.content||{});if(cs!==lastContent){lastContent=cs;applyContent(d.content);renderContent()}render()}catch(e){showOffline(friendly(e))}}
@@ -1146,34 +1038,30 @@ details.mini .checks{margin-top:10px}
   $('#sheetCancel').addEventListener('click',function(){sheet.hidden=true;pending=null});
   sheet.addEventListener('click',function(e){if(e.target===sheet){sheet.hidden=true;pending=null}});
   $('#nameSheetForm').addEventListener('submit',async function(e){e.preventDefault();var n=$('#sheetName').value.trim();if(!n)return;
-    try{await call('trip_save_me',{p_name:n,p_status:null,p_note:null});set('ak-name',n);sheet.hidden=true;await load();var f=pending;pending=null;if(f)f()}catch(err){toast(friendly(err))}});
+    try{await call('trip_save_me',{p_name:n,p_status:(meRow()||{}).status||null,p_note:null});set('ak-name',n);$('#rsvpName').value=n;sheet.hidden=true;await load();var f=pending;pending=null;if(f)f()}catch(err){toast(friendly(err))}});
 
-  var chosen=null;
+  // RSVP: the button you tap saves right away
   $('#rsvpName').value=get('ak-name')||'';
-  $$('[data-status]').forEach(function(b){b.addEventListener('click',function(){chosen=b.dataset.status;paintChoice()})});
-  function paintChoice(){$$('[data-status]').forEach(function(b){b.className='btn'+(b.dataset.status===chosen?' sel-'+chosen:'')})}
-  function stat(id,msg,err){var x=$('#'+id);x.textContent=msg;x.classList.toggle('err',!!err)}
-  $('#rsvpForm').addEventListener('submit',async function(e){e.preventDefault();var n=$('#rsvpName').value.trim();
-    if(!n){stat('rsvpStatus','Add your name first.',true);return}if(!chosen){stat('rsvpStatus',"Pick I'm in, Maybe or Can't make it.",true);return}
-    var b=$('#rsvpSave');b.disabled=true;
-    try{await call('trip_save_me',{p_name:n,p_status:chosen,p_note:$('#rsvpNote').value.trim()});set('ak-name',n);stat('rsvpStatus','Saved. Thanks, '+n+'!');await load()}catch(err){stat('rsvpStatus',friendly(err),true)}b.disabled=false});
+  $('#rsvpForm').addEventListener('submit',async function(e){e.preventDefault();var st=(e.submitter&&e.submitter.dataset.status)||'going',n=$('#rsvpName').value.trim();
+    if(!n){stat('rsvpStatus','Add your name first.',true);$('#rsvpName').focus();return}
+    try{await call('trip_save_me',{p_name:n,p_status:st,p_note:null});set('ak-name',n);stat('rsvpStatus','Saved!');await load()}catch(err){stat('rsvpStatus',friendly(err),true)}});
 
   document.addEventListener('click',function(e){
     var o=e.target.closest('[data-opt]');if(!o)return;var dec=o.dataset.dec,opt=o.dataset.opt,mine=o.classList.contains('mine');
-    needName(async function(){try{await call(mine?'trip_unvote':'trip_vote',mine?{p_decision:dec}:{p_decision:dec,p_option:opt});await load();toast(mine?'Vote removed':'Vote saved')}catch(err){toast(friendly(err))}});
+    needName(async function(){try{await call(mine?'trip_unvote':'trip_vote',mine?{p_decision:dec}:{p_decision:dec,p_option:opt});await load();toast(mine?'Vote removed':'Voted')}catch(err){toast(friendly(err))}});
   });
   $$('.pagecomments form').forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault();var box=f.closest('.pagecomments'),inp=f.querySelector('input'),st=box.querySelector('.status');
-    needName(async function(){try{await call('trip_add_comment',{p_page:box.dataset.page,p_body:inp.value.trim()});inp.value='';st.textContent='';await load()}catch(err){st.textContent=friendly(err)}})})});
+    needName(async function(){try{await call('trip_add_comment',{p_page:PAGEKEY[box.dataset.page],p_body:inp.value.trim()});inp.value='';st.textContent='';await load()}catch(err){st.textContent=friendly(err)}})})});
   document.addEventListener('click',async function(e){var b=e.target.closest('[data-del-cmt]');if(!b)return;b.disabled=true;try{await call('trip_del_comment',{p_id:+b.dataset.delCmt});await load()}catch(err){toast(friendly(err))}});
   $('#linkForm').addEventListener('submit',function(e){e.preventDefault();
-    var url=$('#linkUrl').value.trim(),note=$('#linkNote').value.trim();if(!/^https?:\/\//i.test(url)){stat('linkStatus','Paste a full link starting with https://',true);return}
-    needName(async function(){var b=$('#linkSave');b.disabled=true;stat('linkStatus','Fetching a preview…');var title=null,image=null;
+    var url=$('#linkUrl').value.trim(),note=$('#linkNote').value.trim();if(!/^https?:\/\//i.test(url)){stat('linkStatus','Use a full link (https://…)',true);return}
+    needName(async function(){var b=$('#linkSave');b.disabled=true;stat('linkStatus','Adding…');var title=null,image=null;
       try{var ctl=new AbortController(),tm=setTimeout(function(){ctl.abort()},6000);var p=await fetch('https://api.microlink.io/?url='+encodeURIComponent(url),{signal:ctl.signal});clearTimeout(tm);var j=await p.json();
         if(j&&j.status==='success'&&j.data){title=(j.data.title||'').slice(0,200)||null;image=(j.data.image&&j.data.image.url)||(j.data.logo&&j.data.logo.url)||null;if(image&&image.length>800)image=null}}catch(err){}
-      try{await call('trip_add_link',{p_url:url,p_title:title,p_image:image,p_note:note});stat('linkStatus','Added.');$('#linkForm').reset();await load()}catch(err){stat('linkStatus',friendly(err),true)}b.disabled=false})});
+      try{await call('trip_add_link',{p_url:url,p_title:title,p_image:image,p_note:note});stat('linkStatus','');$('#linkForm').reset();await load()}catch(err){stat('linkStatus',friendly(err),true)}b.disabled=false})});
   $('#links').addEventListener('click',async function(e){var b=e.target.closest('[data-del-link]');if(!b)return;b.disabled=true;try{await call('trip_del_link',{p_id:+b.dataset.delLink});await load()}catch(err){toast(friendly(err))}});
   $('#ideaForm').addEventListener('submit',async function(e){e.preventDefault();var body=$('#ideaBody').value.trim();if(!body)return;var b=$('#ideaSave');b.disabled=true;
-    try{await call('trip_add_idea',{p_body:body,p_category:$('#ideaCat').value});stat('ideaStatus','Posted anonymously.');$('#ideaBody').value='';await load()}catch(err){stat('ideaStatus',friendly(err),true)}b.disabled=false});
+    try{await call('trip_add_idea',{p_body:body,p_category:'other'});stat('ideaStatus','');$('#ideaBody').value='';await load()}catch(err){stat('ideaStatus',friendly(err),true)}b.disabled=false});
   $('#ideas').addEventListener('click',async function(e){var b=e.target.closest('[data-idea]');if(!b)return;b.disabled=true;try{await call('trip_toggle_idea',{p_id:+b.dataset.idea});await load()}catch(err){toast(friendly(err))}});
 
   function decisionHTML(d){
@@ -1189,58 +1077,45 @@ details.mini .checks{margin-top:10px}
           (n?'<span class="who">'+o.voters.map(function(v){return avatar(nameOf(v),v,nameOf(v))}).join('')+'</span>':'')+(mine?'<span class="yours">Your vote · tap again to undo</span>':'')+'</button>'}).join('')+'</div></article>';
   }
   function render(){
-    var going=0;['going','maybe','no'].forEach(function(s){var list=B.members.filter(function(m){return m.status===s});if(s==='going')going=list.length;
-      $('[data-count="'+s+'"]').textContent=list.length;
-      $('[data-list="'+s+'"]').innerHTML=list.length?list.map(function(p){return '<div class="person">'+avatar(p.name,p.id)+'<span class="who">'+esc(p.name)+(p.id===B.me?' (you)':'')+(p.note?'<small>'+esc(p.note)+'</small>':'')+'</span></div>'}).join(''):'<p class="empty">Nobody yet</p>'});
-    var gn=B.members.filter(function(m){return m.status==='going'}).map(function(m){return m.name});
-    if($('#whoCount')){$('#whoCount').textContent=going?going+(going===1?' friend is in':' friends are in'):'Friends';$('#whoNames').textContent=going?gn.join(', '):'Add your name below so we know you\'re coming.'}
-    var mine=meRow();if(mine&&!chosen&&mine.status){chosen=mine.status;paintChoice();if(!$('#rsvpName').value)$('#rsvpName').value=mine.name;$('#rsvpNote').value=mine.note||''}
-    $$('[data-decisions]').forEach(function(box){var pg=box.dataset.decisions;var list=B.decisions.filter(function(d){return pg==='all'||d.page===pg});box.innerHTML=list.map(decisionHTML).join('')||'<p class="empty">Nothing to decide here.</p>'});
+    var order={going:0,maybe:1,no:2},lab={going:'',maybe:'maybe',no:"can't"};
+    var ppl=B.members.filter(function(m){return m.status}).sort(function(a,b){return order[a.status]-order[b.status]});
+    $('#people').innerHTML=ppl.length?ppl.map(function(p){return '<span class="chip '+p.status+'">'+avatar(p.name,p.id)+esc(p.name)+(p.id===B.me?' (you)':'')+(lab[p.status]?' <i>'+lab[p.status]+'</i>':'')+'</span>'}).join(''):'<p class="empty">Nobody yet. Be the first!</p>';
+    var mine=meRow();$$('[data-status]').forEach(function(b){b.className='btn'+(mine&&mine.status===b.dataset.status?' sel-'+b.dataset.status:'')});
+    var going=B.members.filter(function(m){return m.status==='going'}).length;
+    $$('[data-decisions]').forEach(function(box){box.innerHTML=B.decisions.map(decisionHTML).join('')||'<p class="empty">Nothing to vote on.</p>'});
     var done=B.decisions.filter(function(d){return d.options.some(function(o){return o.voters.indexOf(B.me)>=0})}).length;
-    $('#vprog').innerHTML='You\'ve voted on <b>'+done+' of '+B.decisions.length+'</b> decisions.<div class="track"><i style="width:'+(B.decisions.length?done/B.decisions.length*100:0)+'%"></i></div>';
-    $$('.pagecomments').forEach(function(box){var list=B.comments.filter(function(c){return c.page===box.dataset.page});var label=TABS[ids.indexOf(box.dataset.page)][1];
-      box.querySelector('[data-n]').textContent=list.length;box.querySelector('[data-l]').textContent=(list.length===1?'comment on ':'comments on ')+label;
-      box.querySelector('[data-items]').innerHTML=list.length?list.map(function(c){return '<div class="cmt">'+avatar(c.name,c.member)+'<div><div class="meta"><b>'+esc(c.name)+'</b>'+ago(c.at)+(c.member===B.me?' · <button class="del" data-del-cmt="'+c.id+'">Delete</button>':'')+'</div><p>'+esc(c.body)+'</p></div></div>'}).join(''):'<p class="empty">No comments yet. Start the conversation.</p>'});
+    $('#vprog').textContent='You voted on '+done+' of '+B.decisions.length+'. Tap again to undo.';
+    $$('.pagecomments').forEach(function(box){var list=B.comments.filter(function(c){return c.page===PAGEKEY[box.dataset.page]});
+      box.querySelector('[data-n]').textContent=list.length?'('+list.length+')':'';
+      box.querySelector('[data-items]').innerHTML=list.map(function(c){return '<div class="cmt">'+avatar(c.name,c.member)+'<div><div class="meta"><b>'+esc(c.name)+'</b>'+ago(c.at)+(c.member===B.me?' · <button class="del" data-del-cmt="'+c.id+'">Delete</button>':'')+'</div><p>'+esc(c.body)+'</p></div></div>'}).join('')});
     function dom(u){try{return new URL(u).hostname.replace(/^www\./,'')}catch(e){return u}}
-    $('#links').innerHTML=B.links.length?B.links.map(function(l){var d=dom(l.url),img=l.image&&/^https:\/\//i.test(l.image)?l.image:null;
+    $('#links').innerHTML=B.links.map(function(l){var d=dom(l.url),img=l.image&&/^https:\/\//i.test(l.image)?l.image:null;
       return '<div><a class="linkcard" href="'+esc(safeUrl(l.url))+'" target="_blank" rel="noopener noreferrer"><div class="thumb"'+(img?' style="background-image:url(&quot;'+esc(img)+'&quot;)"':'')+'>'+(img?'':esc(d.charAt(0).toUpperCase()))+'</div>'+
-        '<div class="info"><span class="d">'+esc(d)+'</span><span class="t">'+esc(l.title||d)+'</span>'+(l.note?'<span class="n">'+esc(l.note)+'</span>':'')+'<span class="by">Added by '+esc(l.name||'someone')+' · '+ago(l.at)+'</span></div></a>'+
-        (l.member===B.me?'<button class="del" data-del-link="'+l.id+'">Remove my link</button>':'')+'</div>'}).join(''):'<p class="empty">No links yet. Add the first one.</p>';
-    var cat={activity:'Activity',food:'Food',stay:'Stay',other:'Other'};
-    $('#ideas').innerHTML=B.ideas.length?B.ideas.map(function(i){return '<div class="ideacard"><button class="upv'+(i.voted?' on':'')+'" data-idea="'+i.id+'" aria-pressed="'+i.voted+'" aria-label="Upvote">▲<span>'+i.votes+'</span></button><div><span class="cat">'+esc(cat[i.category]||'Other')+(i.mine?' · yours':'')+'</span><p>'+esc(i.body)+'</p></div></div>'}).join(''):'<p class="empty">No ideas yet.</p>';
+        '<div class="info"><span class="d">'+esc(d)+'</span><span class="t">'+esc(l.title||d)+'</span>'+(l.note?'<span class="n">'+esc(l.note)+'</span>':'')+'<span class="by">'+esc(l.name||'')+' · '+ago(l.at)+'</span></div></a>'+
+        (l.member===B.me?'<button class="del" data-del-link="'+l.id+'">Remove</button>':'')+'</div>'}).join('');
+    $('#ideas').innerHTML=B.ideas.map(function(i){return '<div class="ideacard"><button class="upv'+(i.voted?' on':'')+'" data-idea="'+i.id+'" aria-pressed="'+i.voted+'" aria-label="Upvote">▲<span>'+i.votes+'</span></button><div><p>'+esc(i.body)+'</p></div></div>'}).join('');
     if(current()==='admin'&&adminPick==='moderate'&&!adminDirty)buildAdminForm();
   }
 
   /* ================= ADMIN ================= */
-  // Field spec: [key, label, type, extra]. Types: text, area, num, bool, sel (extra = options), list (extra = item fields), strs
-  var MODES=[['fly','Fly'],['drive','Drive'],['night','Night out'],['stay','Stay'],['explore','Explore']];
+  var MODES=[['fly','Fly'],['drive','Drive'],['night','Night'],['explore','Explore']];
   var SECTIONS={
-    trip:{label:'Trip basics & home page',help:'Hero text, countdown and weather note on the Home page.',f:[['eyebrow','Small line above the title','text'],['title_a','Title, first part','text'],['title_em','Title, glowing word','text'],['title_b','Title, last part','text'],['lede','Intro paragraph','area'],['depart','Departure for the countdown (YYYY-MM-DDTHH:MM)','text'],['countdown','Countdown words','text'],['coords','Corner caption','text'],['weather','Weather note','area']]},
-    glance:{label:'At-a-glance cards',help:'Cards at the top of Home. The "Who" card fills itself from the roll call.',list:[['label','Small label','text'],['title','Headline','text'],['text','Text','area']],title:'title'},
-    steps:{label:'What you need to do now',help:'Numbered list on Home.',list:[['title','Bold part','text'],['text','Rest of the line','text']],title:'title'},
-    route:{label:'Travel: route strip',help:'The row of stops at the top of Travel. "Next" sets the line to the following stop.',list:[['place','Place','text'],['sub','Dates or note','text'],['sleep','We sleep here','bool'],['next','Next leg','sel',[['fly','Fly'],['drive','Drive'],['','(last stop)']]]],title:'place'},
-    days:{label:'Travel: day by day',help:'Each day with its legs. Day numbers are added automatically in order.',list:[['date','Date','text'],['title','Day title','text'],['sleep','Where we sleep','text'],['legs','Legs','list',[['mode','Type','sel',MODES],['title','From → to, or what','text'],['note','Time and details','text']]]],title:'date'},
-    travel_note:{label:'Travel: note box',help:'The yellow note under the journey.',f:[['title','Title','text'],['points','Points','strs']]},
-    flights:{label:'Flights',help:'Boarding-pass cards on Travel.',list:[['when','Date line','text'],['from','From code','text'],['to','To code','text'],['from_city','From city','text'],['to_city','To city','text'],['depart','Departs','text'],['arrive','Arrives','text'],['via','Stops / duration','text'],['note','Note','text']],title:'when'},
-    cars:{label:'Cars',help:'Car section on Travel.',f:[['title','Title','text'],['intro','Intro','area'],['rules','Tips','list',[['title','Bold part','text'],['text','Details','text']]]]},
-    stays:{label:'Stays',help:'Every night on the Stay page. Status can be anything, like "Booked" or "Not booked yet".',list:[['dates','Dates','text'],['nights','Nights','text'],['name','Name','text'],['status','Status','text'],['where','Where','text'],['text','Description','area'],['links','Links','list',[['label','Button text','text'],['url','Link (https://…)','text']]]],title:'name'},
-    highlights:{label:'Highlights tiles',help:'Price is free text: Free, $, $$, $$$. "Vote id" shows a vote link (use a vote id from the Votes section).',list:[['when','When','text'],['price','Price tag','text'],['title','Title','text'],['text','Text','area'],['vote','Vote id (optional)','text']],title:'title'},
-    aurora:{label:'Aurora night plan',help:'The big night section on Highlights.',f:[['title','Title','text'],['intro','Intro','area'],['stops','Timeline','list',[['time','Time','text'],['title','Title','text'],['text','Details','text'],['alt','Backup step (purple)','bool']]],['tips','Ground rules','strs']]},
-    budget:{label:'Budget',help:'Per person = the cost for each person. Shared = the total for the group, split evenly. Rows named with "flight" count as flights.',f:[['people','Default group size','num'],['fine','Small print','area'],['items','Items','list',[['name','Item','text'],['note','Note','text'],['status','Status','sel',[['est','Estimate'],['quote','Quoted'],['booked','Booked']]],['type','Cost type','sel',[['pp','Per person'],['sh','Shared by group']]],['low','Low ($)','num'],['high','High ($)','num'],['optional','Optional (not in total)','bool']]]]},
-    bookings:{label:'Bookings checklist',help:'"What still needs booking" on To-do.',list:[['tag','Tag','text'],['title','Title','text'],['text','Details','text']],title:'title'},
-    packing:{label:'Packing list',help:'Groups of checklist items on To-do.',list:[['group','Group name','text'],['items','Items','strs']],title:'group'},
-    decisions:{label:'Votes (decisions)',help:'Questions people vote on. Removing an option or question hides it along with its votes. Page decides where it appears besides To-do.',special:true,list:[['title','Question','text'],['detail','Details','area'],['page','Also show on','sel',[['todo','To-do only'],['travel','Travel'],['stay','Stay'],['highlights','Highlights']]],['id','Vote id (leave blank for new)','text'],['options','Options','list',[['label','Option','text'],['detail','Details','text'],['id','Option id (leave blank for new)','text']]]],title:'title'},
-    moderate:{label:'Comments, links, ideas & people',help:'Hide anything that should not be on the site.',special:true},
-    password:{label:'Change admin password',help:'At least 8 characters.',special:true}
+    trip:{label:'Home page',f:[['title_a','Title start','text'],['title_em','Glowing word','text'],['title_b','Title end','text'],['sub','Line under title','text'],['depart','Countdown to (YYYY-MM-DDTHH:MM)','text'],['dates','When','text'],['places','Where','text'],['cost','Cost each','text']]},
+    days:{label:'Plan (days)',list:[['date','Date','text'],['icon','Icon','sel',MODES],['what','What we do','text'],['sleep','Where we sleep','text'],['details','Details','strs']],title:'date'},
+    stays:{label:'Stay',list:[['dates','Dates','text'],['nights','Nights','text'],['name','Name','text'],['where','Where','text'],['status','Status (e.g. Booked)','text'],['link','Link (https://…)','text']],title:'name'},
+    fun:{label:'Fun',list:[['when','When','text'],['price','Price tag','text'],['title','Title','text'],['line','One line','text']],title:'title'},
+    budget:{label:'Cost',f:[['people','Default people','num'],['items','Items','list',[['name','Item','text'],['type','Cost type','sel',[['pp','Per person'],['sh','Group total (split)']]],['low','Low $','num'],['high','High $','num'],['optional','Optional','bool']]]]},
+    decisions:{label:'Votes',special:true,list:[['title','Question','text'],['id','Id (blank for new)','text'],['options','Options','list',[['label','Option','text'],['detail','Short note','text'],['id','Id (blank for new)','text']]]],title:'title'},
+    moderate:{label:'Hide comments, links, ideas, people',special:true},
+    password:{label:'Change password',special:true}
   };
-  var adminPass=sget('ak-admin'),adminPick='trip',adminDirty=false,getter=null;
-  var pick=$('#adminPick');
+  var adminPass=sget('ak-admin'),adminPick='trip',adminDirty=false,getter=null,pick=$('#adminPick');
   pick.innerHTML=Object.keys(SECTIONS).map(function(k){return '<option value="'+k+'">'+esc(SECTIONS[k].label)+'</option>'}).join('');
   function adminOpen(){if(adminPass){$('#adminLogin').hidden=true;$('#adminApp').hidden=false;if(!adminDirty)buildAdminForm()}else{$('#adminLogin').hidden=false;$('#adminApp').hidden=true}}
   $('#adminLogin').addEventListener('submit',async function(e){e.preventDefault();var p=$('#adminPass').value;stat('adminLoginStatus','Checking…');
     try{var ok=await acall('trip_admin_check',{p_pass:p});if(ok){adminPass=p;sset('ak-admin',p);stat('adminLoginStatus','');$('#adminPass').value='';adminOpen()}else stat('adminLoginStatus','Wrong password.',true)}catch(err){stat('adminLoginStatus',friendly(err),true)}});
   $('#adminLock').addEventListener('click',function(){adminPass=null;sset('ak-admin',null);adminOpen()});
-  pick.addEventListener('change',function(){if(adminDirty&&!window.__confirmSwitch){var keep=pick.dataset.prev;$('#adminStatus').textContent='You have unsaved changes. Save or reset first, or pick again to discard.';window.__confirmSwitch=true;pick.value=keep;return}window.__confirmSwitch=false;adminPick=pick.value;adminDirty=false;buildAdminForm()});
+  pick.addEventListener('change',function(){adminPick=pick.value;adminDirty=false;buildAdminForm()});
 
   function field(spec,val){ // returns {el,get}
     var key=spec[0],label=spec[1],type=spec[2],extra=spec[3],id='af'+Math.random().toString(36).slice(2,8);
@@ -1265,7 +1140,7 @@ details.mini .checks{margin-top:10px}
     if(!top){var l=document.createElement('span');l.className='lbl';l.textContent=label;box.appendChild(l)}
     var holder=document.createElement('div');holder.className='af-list';box.appendChild(holder);var rows=[];
     function addRow(v,open){var d=document.createElement('details');d.className='af-item';if(open)d.open=true;
-      var tk=titleKey||(['title','label','name','place','group','time'].filter(function(k){return fields.some(function(f){return f[0]===k})})[0])||fields[0][0];
+      var tk=titleKey||(['title','label','name','place','group','time','date'].filter(function(k){return fields.some(function(f){return f[0]===k})})[0])||fields[0][0];
       d.innerHTML='<summary><span class="t"></span><span class="af-tools"><button type="button" class="up" aria-label="Move up">↑</button><button type="button" class="dn" aria-label="Move down">↓</button><button type="button" class="rm" aria-label="Remove">✕</button></span></summary>';
       var body=document.createElement('div');body.className='af-body';var o=objField(fields,v);body.appendChild(o.el);d.appendChild(body);
       var row={el:d,get:o.get};
@@ -1288,14 +1163,13 @@ details.mini .checks{margin-top:10px}
   function dirty(){adminDirty=true;$('#adminStatus').textContent='Unsaved changes';}
   function slug(s){return (String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,24)||'item')+'-'+Math.random().toString(36).slice(2,6)}
 
+
   function buildAdminForm(){
-    var sec=SECTIONS[adminPick],form=$('#adminForm');pick.value=adminPick;pick.dataset.prev=adminPick;
-    $('#adminHelp').textContent=sec.help||'';form.innerHTML='';getter=null;$('#adminStatus').textContent='';
-    $('#adminSave').hidden=adminPick==='moderate';$('#adminReset').hidden=sec.special;
+    var sec=SECTIONS[adminPick],form=$('#adminForm');pick.value=adminPick;form.innerHTML='';getter=null;$('#adminStatus').textContent='';
+    $('#adminSave').hidden=adminPick==='moderate';$('#adminReset').hidden=!!sec.special;$('#adminSave').textContent=adminPick==='password'?'Change password':'Save';
     if(adminPick==='moderate'){form.innerHTML=modHTML();return}
-    if(adminPick==='password'){form.innerHTML='<div class="af-obj"><label class="field" for="newPass">New password<input id="newPass" type="password" autocomplete="new-password" minlength="8"></label></div>';$('#adminSave').textContent='Change password';getter=function(){return $('#newPass').value};return}
-    $('#adminSave').textContent='Save changes';
-    if(adminPick==='decisions'){var data=B.decisions.map(function(d){return {id:d.id,title:d.title,detail:d.detail||'',page:d.page,options:d.options.map(function(o){return {id:o.id,label:o.label,detail:o.detail||''}})}});
+    if(adminPick==='password'){form.innerHTML='<label class="field" for="newPass">New password (8+ characters)<input id="newPass" type="password" autocomplete="new-password" minlength="8"></label>';getter=function(){return $('#newPass').value};return}
+    if(adminPick==='decisions'){var data=B.decisions.map(function(d){return {id:d.id,title:d.title,options:d.options.map(function(o){return {id:o.id,label:o.label,detail:o.detail||''}})}});
       var lf=listField('Votes',sec.list,data,'title',true);form.appendChild(lf.el);getter=lf.get;return}
     var val=C[adminPick];
     if(sec.list){var l=listField(sec.label,sec.list,arr(val),sec.title,true);form.appendChild(l.el);getter=l.get}
@@ -1303,28 +1177,27 @@ details.mini .checks{margin-top:10px}
   }
   function modHTML(){
     function item(kind,id,main,sub){return '<div class="moditem"><div>'+esc(main)+'<small>'+esc(sub)+'</small></div><button class="btn" type="button" data-hide="'+kind+'" data-id="'+esc(id)+'">Hide</button></div>'}
-    var pages={};TABS.forEach(function(t){pages[t[0]]=t[1]});
-    return '<h3 class="modh">Comments ('+B.comments.length+')</h3><div class="modlist">'+(B.comments.map(function(c){return item('comment',c.id,c.body,c.name+' · '+(pages[c.page]||c.page)+' · '+ago(c.at))}).join('')||'<p class="empty">None</p>')+'</div>'+
-      '<h3 class="modh">Links ('+B.links.length+')</h3><div class="modlist">'+(B.links.map(function(l){return item('link',l.id,l.title||l.url,(l.name||'')+' · '+l.url)}).join('')||'<p class="empty">None</p>')+'</div>'+
-      '<h3 class="modh">Ideas ('+B.ideas.length+')</h3><div class="modlist">'+(B.ideas.map(function(i){return item('idea',i.id,i.body,i.votes+' upvotes')}).join('')||'<p class="empty">None</p>')+'</div>'+
-      '<h3 class="modh">People ('+B.members.length+')</h3><div class="modlist">'+(B.members.map(function(m){return item('member',m.id,m.name,(m.status||'no answer')+(m.note?' · '+m.note:''))}).join('')||'<p class="empty">None</p>')+'</div>';
+    return '<h3 class="modh">Comments</h3><div class="modlist">'+(B.comments.map(function(c){return item('comment',c.id,c.body,c.name+' · '+ago(c.at))}).join('')||'<p class="empty">None</p>')+'</div>'+
+      '<h3 class="modh">Links</h3><div class="modlist">'+(B.links.map(function(l){return item('link',l.id,l.title||l.url,l.name||'')}).join('')||'<p class="empty">None</p>')+'</div>'+
+      '<h3 class="modh">Ideas</h3><div class="modlist">'+(B.ideas.map(function(i){return item('idea',i.id,i.body,i.votes+' upvotes')}).join('')||'<p class="empty">None</p>')+'</div>'+
+      '<h3 class="modh">People</h3><div class="modlist">'+(B.members.map(function(m){return item('member',m.id,m.name,m.status||'')}).join('')||'<p class="empty">None</p>')+'</div>';
   }
   $('#adminForm').addEventListener('click',async function(e){var b=e.target.closest('[data-hide]');if(!b)return;b.disabled=true;
-    try{await acall('trip_admin_hide',{p_pass:adminPass,p_kind:b.dataset.hide,p_id:String(b.dataset.id)});toast('Hidden');await load();buildAdminForm()}catch(err){b.disabled=false;toast(friendly(err));if(/not_admin/.test(err.message||'')){adminPass=null;sset('ak-admin',null);adminOpen()}}});
+    try{await acall('trip_admin_hide',{p_pass:adminPass,p_kind:b.dataset.hide,p_id:String(b.dataset.id)});toast('Hidden');await load();buildAdminForm()}catch(err){b.disabled=false;toast(friendly(err))}});
   $('#adminSave').addEventListener('click',async function(){
     if(!getter)return;var b=$('#adminSave');b.disabled=true;$('#adminStatus').textContent='Saving…';
     try{
       if(adminPick==='password'){var np=getter();if(np.length<8)throw {message:'too_short'};await acall('trip_admin_set_pass',{p_pass:adminPass,p_new:np});adminPass=np;sset('ak-admin',np);$('#adminStatus').textContent='Password changed.'}
-      else if(adminPick==='decisions'){var ds=getter().filter(function(d){return d.title&&d.title.trim()});ds.forEach(function(d){if(!d.id)d.id=slug(d.title);d.options=arr(d.options).filter(function(o){return o.label&&o.label.trim()});d.options.forEach(function(o){if(!o.id)o.id=slug(d.id+'-'+o.label)})});
-        await acall('trip_admin_decisions',{p_pass:adminPass,p_data:ds});adminDirty=false;await load();buildAdminForm();$('#adminStatus').textContent='Saved. Everyone sees it now.'}
-      else{await acall('trip_admin_save',{p_pass:adminPass,p_key:adminPick,p_data:getter()});adminDirty=false;await load();$('#adminStatus').textContent='Saved. Everyone sees it now.'}
+      else if(adminPick==='decisions'){var ds=getter().filter(function(d){return d.title&&d.title.trim()});ds.forEach(function(d){d.page='todo';if(!d.id)d.id=slug(d.title);d.options=arr(d.options).filter(function(o){return o.label&&o.label.trim()});d.options.forEach(function(o){if(!o.id)o.id=slug(d.id+'-'+o.label)})});
+        await acall('trip_admin_decisions',{p_pass:adminPass,p_data:ds});adminDirty=false;await load();buildAdminForm();$('#adminStatus').textContent='Saved.'}
+      else{await acall('trip_admin_save',{p_pass:adminPass,p_key:adminPick,p_data:getter()});adminDirty=false;await load();$('#adminStatus').textContent='Saved.'}
       toast('Saved');
-    }catch(err){var m=(err&&err.message)||'';$('#adminStatus').textContent=/too_short/.test(m)?'Use at least 8 characters.':friendly(err);if(/not_admin/.test(m)){adminPass=null;sset('ak-admin',null);adminOpen()}}
+    }catch(err){var m=(err&&err.message)||'';$('#adminStatus').textContent=/too_short/.test(m)?'Use 8+ characters.':friendly(err);if(/not_admin/.test(m)){adminPass=null;sset('ak-admin',null);adminOpen()}}
     b.disabled=false;
   });
   $('#adminReset').addEventListener('click',function(){var form=$('#adminForm'),sec=SECTIONS[adminPick];form.innerHTML='';
     if(sec.list){var l=listField(sec.label,sec.list,clone(DEF[adminPick]),sec.title,true);form.appendChild(l.el);getter=l.get}else{var o=objField(sec.f,clone(DEF[adminPick]),'af-obj');form.appendChild(o.el);getter=o.get}
-    dirty();$('#adminStatus').textContent='Original text loaded. Save to apply it.'});
+    dirty();$('#adminStatus').textContent='Original loaded. Press Save to apply.'});
   if(current()==='admin')adminOpen();
 
   load();
